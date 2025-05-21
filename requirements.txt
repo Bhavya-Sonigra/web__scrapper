@@ -1,0 +1,7 @@
+beautifulsoup4==4.12.2
+flask==2.3.3
+pandas==2.0.3
+requests==2.31.0
+openpyxl==3.1.2
+aiohttp==3.8.4
+asyncio==3.4.3

@@ -1,0 +1,496 @@
+2025-05-21 23:18:08,562 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:18:08,563 [INFO] - Raw search query: Hotels in Ahmedabad
+2025-05-21 23:18:08,564 [INFO] - Selected platform: both
+2025-05-21 23:18:08,565 [INFO] - Parsed category: Hotels
+2025-05-21 23:18:08,566 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:18:08,569 [INFO] - 
+Starting scraping process...
+2025-05-21 23:18:08,570 [INFO] - Scraping both platforms for Hotels in Ahmedabad
+2025-05-21 23:18:08,570 [INFO] - Starting scrape for query: hotels in ahmedabad
+2025-05-21 23:18:08,571 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/restaurants-in-ahmedabad
+2025-05-21 23:18:09,895 [INFO] - Found 10 listings with {'class': 'resultbox_info'}
+2025-05-21 23:18:09,925 [INFO] - Total listings found on page 1: 10
+2025-05-21 23:18:12,010 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/restaurants-in-ahmedabad/page-2
+2025-05-21 23:18:12,795 [INFO] - Found 10 listings with {'class': 'resultbox_info'}
+2025-05-21 23:18:12,808 [INFO] - Total listings found on page 2: 10
+2025-05-21 23:18:14,867 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/restaurants-in-ahmedabad/page-3
+2025-05-21 23:18:15,845 [INFO] - Found 10 listings with {'class': 'resultbox_info'}
+2025-05-21 23:18:15,863 [INFO] - Total listings found on page 3: 10
+2025-05-21 23:18:16,027 [INFO] - Generating scraping report...
+2025-05-21 23:18:16,028 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 3,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 30,
+  "session_duration": 7.456888,
+  "errors": []
+}
+2025-05-21 23:18:16,028 [INFO] - Function scrape_justdial took 7.46 seconds to execute
+2025-05-21 23:18:16,029 [INFO] - 
+Scraping completed. Found 40 results
+2025-05-21 23:18:16,287 [INFO] - Created Excel file: scraped_data_20250521_231816.xlsx with 35 unique entries
+2025-05-21 23:22:04,214 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:22:04,215 [INFO] - Raw search query: Salon in Ahmedabad
+2025-05-21 23:22:04,216 [INFO] - Selected platform: both
+2025-05-21 23:22:04,218 [INFO] - Parsed category: Salon
+2025-05-21 23:22:04,218 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:22:04,221 [INFO] - 
+Starting scraping process...
+2025-05-21 23:22:04,222 [INFO] - Scraping both platforms for Salon in Ahmedabad
+2025-05-21 23:22:04,223 [INFO] - Starting scrape for query: salon in ahmedabad
+2025-05-21 23:22:04,226 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/salon-in-ahmedabad
+2025-05-21 23:22:05,867 [INFO] - Found 10 listings on page 1
+2025-05-21 23:22:07,928 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-2
+2025-05-21 23:22:09,153 [INFO] - Found 10 listings on page 2
+2025-05-21 23:22:11,217 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-3
+2025-05-21 23:22:11,525 [INFO] - Found 0 listings on page 3
+2025-05-21 23:22:11,527 [WARNING] - No data found on page 3
+2025-05-21 23:22:13,533 [INFO] - Fetching page 4: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-4
+2025-05-21 23:22:14,473 [INFO] - Found 10 listings on page 4
+2025-05-21 23:22:16,548 [INFO] - Fetching page 5: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-5
+2025-05-21 23:22:16,988 [INFO] - Found 0 listings on page 5
+2025-05-21 23:22:16,989 [WARNING] - No data found on page 5
+2025-05-21 23:22:18,998 [INFO] - Fetching page 6: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-6
+2025-05-21 23:22:20,011 [INFO] - Found 10 listings on page 6
+2025-05-21 23:22:22,075 [INFO] - Fetching page 7: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-7
+2025-05-21 23:22:23,249 [INFO] - Found 10 listings on page 7
+2025-05-21 23:22:25,332 [INFO] - Fetching page 8: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-8
+2025-05-21 23:22:26,261 [INFO] - Found 0 listings on page 8
+2025-05-21 23:22:26,261 [WARNING] - No data found on page 8
+2025-05-21 23:22:28,265 [INFO] - Fetching page 9: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-9
+2025-05-21 23:22:29,464 [INFO] - Found 10 listings on page 9
+2025-05-21 23:22:31,528 [INFO] - Fetching page 10: https://www.justdial.com/ahmedabad/salon-in-ahmedabad/page-10
+2025-05-21 23:22:32,179 [INFO] - Found 0 listings on page 10
+2025-05-21 23:22:32,180 [WARNING] - No data found on page 10
+2025-05-21 23:22:34,183 [INFO] - Generating scraping report...
+2025-05-21 23:22:34,183 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 60,
+  "session_duration": 29.959237,
+  "errors": []
+}
+2025-05-21 23:22:34,185 [INFO] - Function scrape_justdial took 29.96 seconds to execute
+2025-05-21 23:22:34,185 [INFO] - 
+Scraping completed. Found 60 results
+2025-05-21 23:22:34,445 [INFO] - Created Excel file: salon_ahmedabad_both_20250521.xlsx with 36 unique entries
+2025-05-21 23:23:58,710 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:23:58,711 [INFO] - Raw search query: Guitar Dealers in Ahmedabad
+2025-05-21 23:23:58,712 [INFO] - Selected platform: justdial
+2025-05-21 23:23:58,714 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:23:58,715 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:23:58,718 [INFO] - 
+Starting scraping process...
+2025-05-21 23:23:58,719 [INFO] - Scraping JustDial for Guitar Dealers in Ahmedabad
+2025-05-21 23:23:58,720 [INFO] - Starting scrape for query: guitar-dealers in ahmedabad
+2025-05-21 23:23:58,722 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad
+2025-05-21 23:24:00,544 [INFO] - Found 10 listings on page 1
+2025-05-21 23:24:02,736 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-2
+2025-05-21 23:24:03,711 [INFO] - Found 10 listings on page 2
+2025-05-21 23:24:05,988 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-3
+2025-05-21 23:24:06,813 [INFO] - Found 0 listings on page 3
+2025-05-21 23:24:06,814 [WARNING] - No data found on page 3
+2025-05-21 23:24:08,829 [INFO] - Fetching page 4: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-4
+2025-05-21 23:24:09,993 [INFO] - Found 10 listings on page 4
+2025-05-21 23:24:12,139 [INFO] - Fetching page 5: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-5
+2025-05-21 23:24:12,776 [INFO] - Found 0 listings on page 5
+2025-05-21 23:24:12,776 [WARNING] - No data found on page 5
+2025-05-21 23:24:14,183 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:24:14,183 [INFO] - Raw search query: Guitar Dealers in Ahmedabad
+2025-05-21 23:24:14,184 [INFO] - Selected platform: justdial
+2025-05-21 23:24:14,184 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:24:14,185 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:24:14,186 [INFO] - 
+Starting scraping process...
+2025-05-21 23:24:14,187 [INFO] - Scraping JustDial for Guitar Dealers in Ahmedabad
+2025-05-21 23:24:14,187 [INFO] - Starting scrape for query: guitar-dealers in ahmedabad
+2025-05-21 23:24:14,188 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad
+2025-05-21 23:24:14,299 [INFO] - Found 10 listings on page 1
+2025-05-21 23:24:14,784 [INFO] - Fetching page 6: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-6
+2025-05-21 23:24:15,742 [INFO] - Found 10 listings on page 6
+2025-05-21 23:24:16,374 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-2
+2025-05-21 23:24:16,483 [INFO] - Found 10 listings on page 2
+2025-05-21 23:24:17,815 [INFO] - Fetching page 7: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-7
+2025-05-21 23:24:18,562 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-3
+2025-05-21 23:24:18,599 [INFO] - Found 0 listings on page 3
+2025-05-21 23:24:18,600 [WARNING] - No data found on page 3
+2025-05-21 23:24:19,062 [INFO] - Found 10 listings on page 7
+2025-05-21 23:24:20,613 [INFO] - Fetching page 4: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-4
+2025-05-21 23:24:20,773 [INFO] - Found 10 listings on page 4
+2025-05-21 23:24:21,118 [INFO] - Fetching page 8: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-8
+2025-05-21 23:24:21,707 [INFO] - Found 0 listings on page 8
+2025-05-21 23:24:21,708 [WARNING] - No data found on page 8
+2025-05-21 23:24:22,842 [INFO] - Fetching page 5: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-5
+2025-05-21 23:24:22,860 [INFO] - Found 0 listings on page 5
+2025-05-21 23:24:22,861 [WARNING] - No data found on page 5
+2025-05-21 23:24:23,715 [INFO] - Fetching page 9: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-9
+2025-05-21 23:24:24,186 [INFO] - Found 0 listings on page 9
+2025-05-21 23:24:24,187 [WARNING] - No data found on page 9
+2025-05-21 23:24:24,864 [INFO] - Fetching page 6: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-6
+2025-05-21 23:24:24,939 [INFO] - Found 10 listings on page 6
+2025-05-21 23:24:26,195 [INFO] - Fetching page 10: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-10
+2025-05-21 23:24:26,991 [INFO] - Fetching page 7: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-7
+2025-05-21 23:24:27,263 [INFO] - Found 10 listings on page 7
+2025-05-21 23:24:27,346 [INFO] - Found 10 listings on page 10
+2025-05-21 23:24:29,401 [INFO] - Fetching page 8: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-8
+2025-05-21 23:24:29,415 [INFO] - Found 0 listings on page 8
+2025-05-21 23:24:29,415 [WARNING] - No data found on page 8
+2025-05-21 23:24:29,466 [INFO] - Generating scraping report...
+2025-05-21 23:24:29,469 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 13,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 80,
+  "session_duration": 15.279044,
+  "errors": []
+}
+2025-05-21 23:24:29,470 [INFO] - Function scrape_justdial took 30.75 seconds to execute
+2025-05-21 23:24:29,472 [INFO] - 
+Scraping completed. Found 60 results
+2025-05-21 23:24:29,550 [INFO] - Created Excel file: guitar_dealers_ahmedabad_justdial_20250521.xlsx with 10 unique entries
+2025-05-21 23:24:31,417 [INFO] - Fetching page 9: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-9
+2025-05-21 23:24:31,434 [INFO] - Found 0 listings on page 9
+2025-05-21 23:24:31,437 [WARNING] - No data found on page 9
+2025-05-21 23:24:33,439 [INFO] - Fetching page 10: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-10
+2025-05-21 23:24:33,522 [INFO] - Found 10 listings on page 10
+2025-05-21 23:24:35,735 [INFO] - Generating scraping report...
+2025-05-21 23:24:35,737 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 15,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 90,
+  "session_duration": 21.547633,
+  "errors": []
+}
+2025-05-21 23:24:35,738 [INFO] - Function scrape_justdial took 21.55 seconds to execute
+2025-05-21 23:24:35,739 [INFO] - 
+Scraping completed. Found 60 results
+2025-05-21 23:24:35,796 [INFO] - Created Excel file: guitar_dealers_ahmedabad_justdial_20250521.xlsx with 10 unique entries
+2025-05-21 23:26:59,623 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:26:59,624 [INFO] - Raw search query: Guitar Dealers in Ahmedabad
+2025-05-21 23:26:59,625 [INFO] - Selected platform: justdial
+2025-05-21 23:26:59,625 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:26:59,626 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:26:59,628 [INFO] - 
+Starting scraping process...
+2025-05-21 23:26:59,628 [INFO] - Scraping JustDial for Guitar Dealers in Ahmedabad
+2025-05-21 23:26:59,629 [INFO] - Starting scrape for query: guitar-dealers in ahmedabad
+2025-05-21 23:26:59,630 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad
+2025-05-21 23:26:59,993 [INFO] - Found 0 listings on page 1
+2025-05-21 23:26:59,993 [WARNING] - No data found on page 1
+2025-05-21 23:27:01,995 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-2
+2025-05-21 23:27:03,474 [INFO] - Found 10 listings on page 2
+2025-05-21 23:27:05,535 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-3
+2025-05-21 23:27:05,917 [INFO] - Found 0 listings on page 3
+2025-05-21 23:27:05,918 [WARNING] - No data found on page 3
+2025-05-21 23:27:07,931 [INFO] - Fetching page 4: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-4
+2025-05-21 23:27:08,801 [INFO] - Found 10 listings on page 4
+2025-05-21 23:27:10,882 [INFO] - Fetching page 5: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-5
+2025-05-21 23:27:11,130 [INFO] - Found 0 listings on page 5
+2025-05-21 23:27:11,131 [WARNING] - No data found on page 5
+2025-05-21 23:27:13,134 [INFO] - Fetching page 6: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-6
+2025-05-21 23:27:13,973 [INFO] - Found 10 listings on page 6
+2025-05-21 23:27:16,032 [INFO] - Fetching page 7: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-7
+2025-05-21 23:27:17,230 [INFO] - Found 10 listings on page 7
+2025-05-21 23:27:19,298 [INFO] - Fetching page 8: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-8
+2025-05-21 23:27:19,855 [INFO] - Found 0 listings on page 8
+2025-05-21 23:27:19,857 [WARNING] - No data found on page 8
+2025-05-21 23:27:21,866 [INFO] - Fetching page 9: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-9
+2025-05-21 23:27:22,668 [INFO] - Found 10 listings on page 9
+2025-05-21 23:27:24,733 [INFO] - Fetching page 10: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-10
+2025-05-21 23:27:25,305 [INFO] - Found 0 listings on page 10
+2025-05-21 23:27:25,308 [WARNING] - No data found on page 10
+2025-05-21 23:27:27,315 [INFO] - Generating scraping report...
+2025-05-21 23:27:27,316 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 50,
+  "session_duration": 27.686062,
+  "errors": []
+}
+2025-05-21 23:27:27,317 [INFO] - Function scrape_justdial took 27.69 seconds to execute
+2025-05-21 23:27:27,319 [INFO] - 
+Scraping completed. Found 50 results
+2025-05-21 23:27:27,474 [INFO] - Created Excel file: guitar_dealers_ahmedabad_justdial_20250521_232727.xlsx with 10 unique entries
+2025-05-21 23:29:37,878 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:29:37,879 [INFO] - Raw search query: Guitar Shop in Delhi
+2025-05-21 23:29:37,879 [INFO] - Selected platform: both
+2025-05-21 23:29:37,880 [INFO] - Parsed category: Guitar Shop
+2025-05-21 23:29:37,880 [INFO] - Parsed location: Delhi
+2025-05-21 23:29:37,881 [INFO] - 
+Starting scraping process...
+2025-05-21 23:29:37,882 [INFO] - Scraping both platforms for Guitar Shop in Delhi
+2025-05-21 23:29:37,882 [INFO] - Starting scrape for query: guitar-shop in delhi
+2025-05-21 23:29:37,883 [INFO] - Fetching page 1: https://www.justdial.com/delhi/guitar-shop-in-delhi
+2025-05-21 23:29:40,052 [INFO] - Found 10 listings on page 1
+2025-05-21 23:29:42,099 [INFO] - Fetching page 2: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-2
+2025-05-21 23:29:43,984 [INFO] - Found 10 listings on page 2
+2025-05-21 23:29:46,028 [INFO] - Fetching page 3: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-3
+2025-05-21 23:29:46,773 [INFO] - Found 10 listings on page 3
+2025-05-21 23:29:48,816 [INFO] - Fetching page 4: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-4
+2025-05-21 23:29:49,101 [INFO] - Found 0 listings on page 4
+2025-05-21 23:29:49,102 [WARNING] - No data found on page 4
+2025-05-21 23:29:51,115 [INFO] - Fetching page 5: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-5
+2025-05-21 23:29:51,959 [INFO] - Found 10 listings on page 5
+2025-05-21 23:29:54,049 [INFO] - Fetching page 6: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-6
+2025-05-21 23:29:55,776 [INFO] - Found 10 listings on page 6
+2025-05-21 23:29:57,832 [INFO] - Fetching page 7: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-7
+2025-05-21 23:29:58,812 [INFO] - Found 10 listings on page 7
+2025-05-21 23:30:00,864 [INFO] - Fetching page 8: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-8
+2025-05-21 23:30:01,131 [INFO] - Found 0 listings on page 8
+2025-05-21 23:30:01,132 [WARNING] - No data found on page 8
+2025-05-21 23:30:03,133 [INFO] - Fetching page 9: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-9
+2025-05-21 23:30:04,044 [INFO] - Found 10 listings on page 9
+2025-05-21 23:30:06,083 [INFO] - Fetching page 10: https://www.justdial.com/delhi/guitar-shop-in-delhi/page-10
+2025-05-21 23:30:07,358 [INFO] - Found 10 listings on page 10
+2025-05-21 23:30:09,400 [INFO] - Generating scraping report...
+2025-05-21 23:30:09,401 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 80,
+  "session_duration": 31.517565,
+  "errors": []
+}
+2025-05-21 23:30:09,402 [INFO] - Function scrape_justdial took 31.52 seconds to execute
+2025-05-21 23:30:09,403 [INFO] - 
+Scraping completed. Found 80 results
+2025-05-21 23:30:09,448 [INFO] - Created Excel file: guitar_shop_delhi_both_20250521_233009.xlsx with 33 unique entries
+2025-05-21 23:34:06,484 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:34:06,485 [INFO] - Raw search query: Guitar Dealers in Delhi
+2025-05-21 23:34:06,486 [INFO] - Selected platform: both
+2025-05-21 23:34:06,486 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:34:06,487 [INFO] - Parsed location: Delhi
+2025-05-21 23:34:06,489 [INFO] - 
+Starting scraping process...
+2025-05-21 23:34:06,489 [INFO] - Scraping both platforms for Guitar Dealers in Delhi
+2025-05-21 23:34:06,490 [INFO] - Starting scrape for query: guitar-dealers in delhi
+2025-05-21 23:34:06,491 [INFO] - Fetching page 1: https://www.justdial.com/delhi/guitar-dealers-in-delhi
+2025-05-21 23:34:07,249 [INFO] - Found 0 listings on page 1
+2025-05-21 23:34:07,251 [WARNING] - No data found on page 1
+2025-05-21 23:34:09,255 [INFO] - Fetching page 2: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-2
+2025-05-21 23:34:10,690 [INFO] - Found 10 listings on page 2
+2025-05-21 23:34:12,749 [INFO] - Fetching page 3: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-3
+2025-05-21 23:34:13,707 [INFO] - Found 10 listings on page 3
+2025-05-21 23:34:15,766 [INFO] - Fetching page 4: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-4
+2025-05-21 23:34:16,512 [INFO] - Found 0 listings on page 4
+2025-05-21 23:34:16,512 [WARNING] - No data found on page 4
+2025-05-21 23:34:18,515 [INFO] - Fetching page 5: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-5
+2025-05-21 23:34:20,001 [INFO] - Found 10 listings on page 5
+2025-05-21 23:34:22,049 [INFO] - Fetching page 6: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-6
+2025-05-21 23:34:22,457 [INFO] - Found 0 listings on page 6
+2025-05-21 23:34:22,457 [WARNING] - No data found on page 6
+2025-05-21 23:34:24,466 [INFO] - Fetching page 7: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-7
+2025-05-21 23:34:25,395 [INFO] - Found 10 listings on page 7
+2025-05-21 23:34:27,457 [INFO] - Fetching page 8: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-8
+2025-05-21 23:34:28,357 [INFO] - Found 10 listings on page 8
+2025-05-21 23:34:30,406 [INFO] - Fetching page 9: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-9
+2025-05-21 23:34:31,637 [INFO] - Found 10 listings on page 9
+2025-05-21 23:34:33,696 [INFO] - Fetching page 10: https://www.justdial.com/delhi/guitar-dealers-in-delhi/page-10
+2025-05-21 23:34:34,960 [INFO] - Found 10 listings on page 10
+2025-05-21 23:34:37,012 [INFO] - Generating scraping report...
+2025-05-21 23:34:37,012 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 70,
+  "session_duration": 30.521417,
+  "errors": []
+}
+2025-05-21 23:34:37,013 [INFO] - Function scrape_justdial took 30.52 seconds to execute
+2025-05-21 23:34:37,014 [INFO] - 
+Scraping completed. Found 70 results
+2025-05-21 23:34:37,112 [INFO] - Created Excel file: guitar_dealers_delhi_both_20250521_233437.xlsx with 31 unique entries
+2025-05-21 23:39:35,648 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:39:35,649 [INFO] - Raw search query: Guitar Dealers in Mumbai
+2025-05-21 23:39:35,649 [INFO] - Selected platform: both
+2025-05-21 23:39:35,649 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:39:35,650 [INFO] - Parsed location: Mumbai
+2025-05-21 23:39:35,653 [INFO] - 
+Starting scraping process...
+2025-05-21 23:39:35,653 [INFO] - Scraping both platforms for Guitar Dealers in Mumbai
+2025-05-21 23:39:35,654 [INFO] - Starting scrape for query: guitar-dealers in mumbai
+2025-05-21 23:39:35,654 [INFO] - Fetching page 1: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai
+2025-05-21 23:39:37,233 [INFO] - Found 10 listings on page 1
+2025-05-21 23:39:37,307 [WARNING] - No data found on page 1
+2025-05-21 23:39:39,315 [INFO] - Fetching page 2: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-2
+2025-05-21 23:39:40,440 [INFO] - Found 10 listings on page 2
+2025-05-21 23:39:40,514 [WARNING] - No data found on page 2
+2025-05-21 23:39:42,514 [INFO] - Fetching page 3: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-3
+2025-05-21 23:39:43,293 [INFO] - Found 10 listings on page 3
+2025-05-21 23:39:43,366 [WARNING] - No data found on page 3
+2025-05-21 23:39:45,367 [INFO] - Generating scraping report...
+2025-05-21 23:39:45,367 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 3,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 0,
+  "session_duration": 9.712829,
+  "errors": []
+}
+2025-05-21 23:39:45,368 [INFO] - Function scrape_justdial took 9.71 seconds to execute
+2025-05-21 23:39:45,368 [INFO] - 
+Scraping completed. Found 0 results
+2025-05-21 23:39:54,444 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:39:54,445 [INFO] - Raw search query: Guitar Dealers in Ahmedabad
+2025-05-21 23:39:54,445 [INFO] - Selected platform: justdial
+2025-05-21 23:39:54,445 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:39:54,446 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:39:54,447 [INFO] - 
+Starting scraping process...
+2025-05-21 23:39:54,447 [INFO] - Scraping JustDial for Guitar Dealers in Ahmedabad
+2025-05-21 23:39:54,447 [INFO] - Starting scrape for query: guitar-dealers in ahmedabad
+2025-05-21 23:39:54,448 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad
+2025-05-21 23:39:54,909 [INFO] - Found 0 listings on page 1
+2025-05-21 23:39:54,909 [WARNING] - No data found on page 1
+2025-05-21 23:39:56,917 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-2
+2025-05-21 23:39:57,864 [INFO] - Found 10 listings on page 2
+2025-05-21 23:39:57,935 [WARNING] - No data found on page 2
+2025-05-21 23:39:59,950 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-3
+2025-05-21 23:40:01,179 [INFO] - Found 10 listings on page 3
+2025-05-21 23:40:01,257 [WARNING] - No data found on page 3
+2025-05-21 23:40:03,266 [INFO] - Generating scraping report...
+2025-05-21 23:40:03,268 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 3,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 0,
+  "session_duration": 8.818951,
+  "errors": []
+}
+2025-05-21 23:40:03,269 [INFO] - Function scrape_justdial took 8.82 seconds to execute
+2025-05-21 23:40:03,270 [INFO] - 
+Scraping completed. Found 0 results
+2025-05-21 23:43:53,425 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:43:53,426 [INFO] - Raw search query: Guitar Dealers in Ahmedabad
+2025-05-21 23:43:53,427 [INFO] - Selected platform: justdial
+2025-05-21 23:43:53,427 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:43:53,427 [INFO] - Parsed location: Ahmedabad
+2025-05-21 23:43:53,429 [INFO] - 
+Starting scraping process...
+2025-05-21 23:43:53,429 [INFO] - Scraping JustDial for Guitar Dealers in Ahmedabad
+2025-05-21 23:43:53,430 [INFO] - Starting scrape for query: guitar-dealers in ahmedabad
+2025-05-21 23:43:53,430 [INFO] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad
+2025-05-21 23:43:53,702 [INFO] - Found 0 listings on page 1
+2025-05-21 23:43:53,703 [WARNING] - No data found on page 1
+2025-05-21 23:43:55,716 [INFO] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-2
+2025-05-21 23:43:57,238 [INFO] - Found 10 listings on page 2
+2025-05-21 23:43:59,282 [INFO] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-3
+2025-05-21 23:43:59,947 [INFO] - Found 10 listings on page 3
+2025-05-21 23:44:01,982 [INFO] - Fetching page 4: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-4
+2025-05-21 23:44:02,895 [INFO] - Found 10 listings on page 4
+2025-05-21 23:44:04,933 [INFO] - Fetching page 5: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-5
+2025-05-21 23:44:05,728 [INFO] - Found 10 listings on page 5
+2025-05-21 23:44:07,776 [INFO] - Fetching page 6: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-6
+2025-05-21 23:44:08,597 [INFO] - Found 10 listings on page 6
+2025-05-21 23:44:10,632 [INFO] - Fetching page 7: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-7
+2025-05-21 23:44:11,520 [INFO] - Found 10 listings on page 7
+2025-05-21 23:44:13,553 [INFO] - Fetching page 8: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-8
+2025-05-21 23:44:14,627 [INFO] - Found 10 listings on page 8
+2025-05-21 23:44:16,732 [INFO] - Fetching page 9: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-9
+2025-05-21 23:44:17,747 [INFO] - Found 10 listings on page 9
+2025-05-21 23:44:19,780 [INFO] - Fetching page 10: https://www.justdial.com/ahmedabad/guitar-dealers-in-ahmedabad/page-10
+2025-05-21 23:44:20,012 [INFO] - Found 0 listings on page 10
+2025-05-21 23:44:20,012 [WARNING] - No data found on page 10
+2025-05-21 23:44:20,553 [INFO] - 
+=== Starting new scraping request ===
+2025-05-21 23:44:20,554 [INFO] - Raw search query: Guitar Dealers in Mumbai
+2025-05-21 23:44:20,554 [INFO] - Selected platform: justdial
+2025-05-21 23:44:20,555 [INFO] - Parsed category: Guitar Dealers
+2025-05-21 23:44:20,556 [INFO] - Parsed location: Mumbai
+2025-05-21 23:44:20,558 [INFO] - 
+Starting scraping process...
+2025-05-21 23:44:20,558 [INFO] - Scraping JustDial for Guitar Dealers in Mumbai
+2025-05-21 23:44:20,559 [INFO] - Starting scrape for query: guitar-dealers in mumbai
+2025-05-21 23:44:20,559 [INFO] - Fetching page 1: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai
+2025-05-21 23:44:21,719 [INFO] - Found 10 listings on page 1
+2025-05-21 23:44:22,017 [INFO] - Generating scraping report...
+2025-05-21 23:44:22,017 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 1,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 10,
+  "session_duration": 1.457936,
+  "errors": []
+}
+2025-05-21 23:44:22,018 [INFO] - Function scrape_justdial took 28.59 seconds to execute
+2025-05-21 23:44:22,018 [INFO] - 
+Scraping completed. Found 80 results
+2025-05-21 23:44:22,118 [INFO] - Created Excel file: guitar_dealers_ahmedabad_justdial_20250521_234422.xlsx with 10 unique entries
+2025-05-21 23:44:23,767 [INFO] - Fetching page 2: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-2
+2025-05-21 23:44:25,299 [INFO] - Found 10 listings on page 2
+2025-05-21 23:44:27,347 [INFO] - Fetching page 3: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-3
+2025-05-21 23:44:28,284 [INFO] - Found 10 listings on page 3
+2025-05-21 23:44:30,328 [INFO] - Fetching page 4: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-4
+2025-05-21 23:44:31,316 [INFO] - Found 10 listings on page 4
+2025-05-21 23:44:33,366 [INFO] - Fetching page 5: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-5
+2025-05-21 23:44:34,601 [INFO] - Found 10 listings on page 5
+2025-05-21 23:44:36,648 [INFO] - Fetching page 6: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-6
+2025-05-21 23:44:37,465 [INFO] - Found 10 listings on page 6
+2025-05-21 23:44:39,498 [INFO] - Fetching page 7: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-7
+2025-05-21 23:44:40,265 [INFO] - Found 10 listings on page 7
+2025-05-21 23:44:42,300 [INFO] - Fetching page 8: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-8
+2025-05-21 23:44:43,325 [INFO] - Found 10 listings on page 8
+2025-05-21 23:44:45,367 [INFO] - Fetching page 9: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-9
+2025-05-21 23:44:46,263 [INFO] - Found 10 listings on page 9
+2025-05-21 23:44:48,302 [INFO] - Fetching page 10: https://www.justdial.com/mumbai/guitar-dealers-in-mumbai/page-10
+2025-05-21 23:44:48,602 [INFO] - Found 0 listings on page 10
+2025-05-21 23:44:48,603 [WARNING] - No data found on page 10
+2025-05-21 23:44:50,604 [INFO] - Generating scraping report...
+2025-05-21 23:44:50,605 [INFO] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 90,
+  "session_duration": 30.044928,
+  "errors": []
+}
+2025-05-21 23:44:50,606 [INFO] - Function scrape_justdial took 30.05 seconds to execute
+2025-05-21 23:44:50,606 [INFO] - 
+Scraping completed. Found 90 results
+2025-05-21 23:44:50,653 [INFO] - Created Excel file: guitar_dealers_mumbai_justdial_20250521_234450.xlsx with 27 unique entries
