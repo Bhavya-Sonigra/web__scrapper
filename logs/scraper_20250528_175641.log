@@ -1,0 +1,34 @@
+2025-05-28 17:56:41,177 [INFO] [app.py:56] - === Starting new scraping session ===
+2025-05-28 17:56:41,177 [INFO] [app.py:57] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-28 17:56:41,178 [INFO] [app.py:58] - Operating System: win32
+2025-05-28 17:56:41,178 [INFO] [app.py:59] - Working Directory: C:\Users\bhavy\Music\web__scrapper
+2025-05-28 17:58:45,024 [INFO] [app.py:1370] - 
+=== Starting new scraping request ===
+2025-05-28 17:58:45,025 [INFO] [app.py:1371] - Raw search query: Restaurants in London
+2025-05-28 17:58:45,025 [INFO] [app.py:1372] - Selected platform: yell
+2025-05-28 17:58:45,025 [INFO] [app.py:1380] - Parsed category: Restaurants
+2025-05-28 17:58:45,025 [INFO] [app.py:1381] - Parsed location: London
+2025-05-28 17:58:45,026 [INFO] [app.py:1397] - 
+Starting scraping process...
+2025-05-28 17:58:45,027 [INFO] [app.py:1405] - Scraping Yell for Restaurants in London
+2025-05-28 17:58:45,027 [INFO] [app.py:1766] - Making request to: https://www.yell.com
+2025-05-28 17:58:45,028 [DEBUG] [app.py:1767] - Headers: {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8', 'Accept-Encoding': 'gzip, deflate, br', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-User': '?1', 'Upgrade-Insecure-Requests': '1', 'DNT': '1'}
+2025-05-28 17:58:45,028 [INFO] [app.py:1706] - Checking connection details...
+2025-05-28 17:58:45,028 [DEBUG] [app.py:1719] - Trying IP service: https://ipapi.co/json/
+2025-05-28 17:58:46,246 [INFO] [app.py:1732] - Connection Details:
+2025-05-28 17:58:46,246 [INFO] [app.py:1733] - IP Address: 2a00:c98:400a:3000:50d:4c4b:b4f2:45a2
+2025-05-28 17:58:46,246 [INFO] [app.py:1734] - Country: DE (Germany)
+2025-05-28 17:58:46,247 [INFO] [app.py:1735] - City: Frankfurt am Main
+2025-05-28 17:58:46,247 [INFO] [app.py:1736] - Region: Hesse
+2025-05-28 17:58:46,247 [INFO] [app.py:1737] - ISP: Leaseweb Deutschland GmbH
+2025-05-28 17:58:46,248 [WARNING] [app.py:1746] - No VPN detected - using direct connection
+2025-05-28 17:58:46,250 [DEBUG] [app.py:1774] - Updated headers with country: DE
+2025-05-28 17:58:46,250 [INFO] [app.py:1778] - Request attempt 1/3
+2025-05-28 17:58:46,250 [DEBUG] [app.py:1783] - Waiting 1.96 seconds before request
+2025-05-28 17:58:48,286 [DEBUG] [app.py:1789] - Using User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 18_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Mobile/15E148 Safari/604.1
+2025-05-28 17:58:48,870 [INFO] [app.py:1798] - Response status: 403
+2025-05-28 17:58:48,870 [DEBUG] [app.py:1799] - Response headers: <CIMultiDictProxy('Date': 'Wed, 28 May 2025 12:28:48 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'close', 'accept-ch': 'Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA', 'cf-mitigated': 'challenge', 'critical-ch': 'Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA', 'cross-origin-embedder-policy': 'require-corp', 'cross-origin-opener-policy': 'same-origin', 'cross-origin-resource-policy': 'same-origin', 'origin-agent-cluster': '?1', 'permissions-policy': 'accelerometer=(),autoplay=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()', 'referrer-policy': 'same-origin', 'server-timing': 'chlray;desc="946dc104cde0de38"', 'x-content-type-options': 'nosniff', 'x-frame-options': 'SAMEORIGIN', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Set-Cookie': '__cf_bm=aspNtT2IGcC0CgnQ1hnDkvYT3sTu3uGShT5d9Q3.RDs-1748435328-1.0.1.1-IVtI7eoVBGgd6ppESA6SDKuXaqhLK0IMLu45v_cYd15V8MKCoRI8OOD9VKOam5F2Pfax.ViQX9P2PE8WRmsuQDL_iSEhdxFXa_CCe0Hp0H4; path=/; expires=Wed, 28-May-25 12:58:48 GMT; domain=.yell.com; HttpOnly; Secure; SameSite=None', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '946dc104cde0de38-AMS', 'Content-Encoding': 'br')>
+2025-05-28 17:58:48,870 [ERROR] [app.py:1808] - Access forbidden. Current connection might be blocked.
+2025-05-28 17:58:48,871 [ERROR] [app.py:1810] - Try using a different VPN server or location (Current: Germany)
+2025-05-28 17:58:48,872 [INFO] [app.py:1426] - 
+Scraping completed. Found 0 results

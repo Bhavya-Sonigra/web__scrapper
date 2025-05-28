@@ -18,30 +18,49 @@ from logging.handlers import RotatingFileHandler
 import sys
 import traceback
 from functools import wraps
+import re
 
 app = Flask(__name__)
 
-# Setup logging
+# Setup logging with more detailed configuration
 def setup_logging():
-    log_formatter = logging.Formatter('%(asctime)s [%(levelname)s] - %(message)s')
-    log_file = 'scraper.log'
+    # Create logs directory if it doesn't exist
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
     
-    # File Handler
-    file_handler = RotatingFileHandler(log_file, maxBytes=1024*1024, backupCount=5)
-    file_handler.setFormatter(log_formatter)
+    # Create a timestamp for the log file
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    log_file = f'logs/scraper_{timestamp}.log'
     
-    # Console Handler
+    # Setup formatters
+    console_formatter = logging.Formatter('%(asctime)s [%(levelname)s] - %(message)s')
+    file_formatter = logging.Formatter('%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s')
+    
+    # Setup file handler with rotation
+    file_handler = RotatingFileHandler(log_file, maxBytes=10*1024*1024, backupCount=5)  # 10MB per file
+    file_handler.setFormatter(file_formatter)
+    file_handler.setLevel(logging.DEBUG)
+    
+    # Setup console handler
     console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setFormatter(log_formatter)
+    console_handler.setFormatter(console_formatter)
+    console_handler.setLevel(logging.INFO)
     
-    # Setup Logger
+    # Setup logger
     logger = logging.getLogger('scraper')
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
     
+    # Log system information
+    logger.info("=== Starting new scraping session ===")
+    logger.info(f"Python version: {sys.version}")
+    logger.info(f"Operating System: {sys.platform}")
+    logger.info(f"Working Directory: {os.getcwd()}")
+    
     return logger
 
+# Initialize logger
 logger = setup_logging()
 
 # Error handling decorator
@@ -293,6 +312,28 @@ def clean_search_query(query):
         'docteur': 'doctor',
         'enginear': 'engineer',
         'enginer': 'engineer',
+        # Add city name corrections
+        'vadodra': 'vadodara',
+        'bombay': 'mumbai',
+        'calcutta': 'kolkata',
+        'madras': 'chennai',
+        'bangalore': 'bengaluru',
+        'poona': 'pune',
+        'mysore': 'mysuru',
+        'cochin': 'kochi',
+        'cuttack': 'katak',
+        'trichur': 'thrissur',
+        'trivandrum': 'thiruvananthapuram',
+        'mangalore': 'mangaluru',
+        'simla': 'shimla',
+        'gauhati': 'guwahati',
+        'hubli': 'hubballi',
+        'ahmadabad': 'ahmedabad',
+        'allahabad': 'prayagraj',
+        'baroda': 'vadodara',
+        'benares': 'varanasi',
+        'benaras': 'varanasi',
+        'vizag': 'visakhapatnam'
     }
     
     # Split into words and correct each word
@@ -938,107 +979,227 @@ async def scrape_sulekha(search_query, location=None):
     }
     
     try:
-        # Format the search query for Sulekha's URL structure
-        search_query = search_query.replace(' ', '-').lower()
-        if location:
-            location = location.replace(' ', '-').lower()
-            # Updated URL structure to match Sulekha's current format
-            base_url = f"https://www.sulekha.com/{search_query}/{location}"
-        else:
-            base_url = f"https://www.sulekha.com/local-services/{search_query}"
+        # Clean and format the search query
+        search_query = search_query.strip().lower()
         
-        print(f"Scraping URL: {base_url}")  # Debug print
+        # Normalize common business categories
+        category_corrections = {
+            # Education
+            'college': 'colleges',
+            'colleges': 'colleges',
+            'university': 'colleges',
+            'universities': 'colleges',
+            'college & university': 'colleges',
+            'colleges & universities': 'colleges',
+            'engineering college': 'engineering-colleges',
+            'medical college': 'medical-colleges',
+            'business school': 'business-schools',
+            'mba college': 'business-schools',
+            
+            # Music related
+            'guitar shop': 'musical-instruments',
+            'guitar store': 'musical-instruments',
+            'music shop': 'musical-instruments',
+            'musical instruments': 'musical-instruments',
+            'musical store': 'musical-instruments',
+            'guitar class': 'guitar-classes',
+            'guitar classes': 'guitar-classes',
+            'guitar training': 'guitar-classes',
+            
+            # Other categories
+            'restaurant': 'restaurants',
+            'hotels': 'hotels-resorts',
+            'hospital': 'hospitals',
+            'school': 'schools',
+            'gym': 'gyms-fitness-centres',
+            'fitness': 'gyms-fitness-centres',
+            'salon': 'beauty-parlours',
+            'beauty parlour': 'beauty-parlours',
+            'beauty parlor': 'beauty-parlours',
+            'car repair': 'car-repair-services',
+            'bike repair': 'bike-repair-services',
+            'plumber': 'plumbers',
+            'electrician': 'electricians'
+        }
+        
+        # Check if the search query matches any category
+        normalized_category = None
+        search_query_clean = re.sub(r'[^a-z0-9\s&]', '', search_query)
+        for key, value in category_corrections.items():
+            if key in search_query_clean:
+                normalized_category = value
+                break
+        
+        if not normalized_category:
+            # If no direct match, use the cleaned search query
+            normalized_category = re.sub(r'[^a-z0-9\s-]', '', search_query)
+            normalized_category = re.sub(r'\s+', '-', normalized_category)
+        
+        # Clean and correct the location name
+        if location:
+            location = location.strip().lower()
+            location = re.sub(r'[^a-z0-9\s-]', '', location)
+            
+            # Check for common city name corrections
+            location_corrections = {
+                'vadodra': 'vadodara',
+                'bombay': 'mumbai',
+                'calcutta': 'kolkata',
+                'madras': 'chennai',
+                'bangalore': 'bengaluru',
+                'poona': 'pune',
+                'baroda': 'vadodara'
+            }
+            
+            # Clean location words
+            location_words = location.split()
+            corrected_location_words = [location_corrections.get(word, word) for word in location_words]
+            location = '-'.join(corrected_location_words)
+            
+            # Sulekha's search URLs
+            search_urls = [
+                # Education specific URLs
+                f"https://www.sulekha.com/education/{location}",
+                f"https://www.sulekha.com/{normalized_category}/{location}",
+                f"https://www.sulekha.com/{location}/{normalized_category}",
+                
+                # Search URLs
+                f"https://www.sulekha.com/search/{normalized_category}/{location}",
+                f"https://www.sulekha.com/search?q={normalized_category}+in+{location}",
+                
+                # Category specific URLs
+                f"https://www.sulekha.com/colleges-universities/{location}",
+                f"https://www.sulekha.com/engineering-colleges/{location}",
+                f"https://www.sulekha.com/medical-colleges/{location}",
+                f"https://www.sulekha.com/business-schools/{location}",
+                
+                # Local services URLs
+                f"https://www.sulekha.com/local-services/{location}",
+                f"https://www.sulekha.com/business-services/{location}"
+            ]
+        else:
+            search_urls = [
+                # Education specific URLs
+                f"https://www.sulekha.com/education",
+                f"https://www.sulekha.com/{normalized_category}",
+                
+                # Search URLs
+                f"https://www.sulekha.com/search/{normalized_category}",
+                f"https://www.sulekha.com/search?q={normalized_category}"
+            ]
+        
+        print(f"Attempting to scrape Sulekha with category: {normalized_category} in {location if location else 'all locations'}")
         
         async with aiohttp.ClientSession() as session:
-            async with session.get(base_url, headers=headers, timeout=30) as response:
-                if response.status == 200:
-                    content = await response.text()
-                    print(f"Successfully fetched main page (length: {len(content)})")
-                    
-                    # Parse the content
-                    soup = BeautifulSoup(content, 'html.parser')
-                    
-                    # Look for different types of listing containers
-                    listings = []
-                    possible_containers = [
-                        {'class': 'business-unit'},
-                        {'class': 'vendor-card'},
-                        {'class': 'business-info'},
-                        {'class': 'business-listing-unit'},
-                        {'class': 'listing-unit'},
-                        {'class': 'busi-blk'},
-                        {'itemtype': 'http://schema.org/LocalBusiness'},
-                        {'data-type': 'business'}
-                    ]
-                    
-                    for container in possible_containers:
-                        found = soup.find_all(['div', 'article', 'section'], container)
-                        if found:
-                            print(f"Found {len(found)} listings with {container}")
-                            listings.extend(found)
-                    
-                    if not listings:
-                        print("No listings found in standard containers, trying alternative selectors")
-                        # Try alternative selectors
-                        listings = soup.find_all(['div', 'article'], {
-                            'class': lambda x: x and any(term in str(x).lower() 
-                                for term in ['business', 'vendor', 'listing', 'result'])
-                        })
-                    
-                    print(f"Total listings found: {len(listings)}")
-                    
-                    # Process each listing
-                    for listing in listings:
-                        try:
-                            # Extract basic info
-                            name = listing.find(['h2', 'h3', 'a', 'div'], {
-                                'class': lambda x: x and any(term in str(x).lower() 
-                                    for term in ['name', 'title', 'heading', 'bname'])
-                            })
+            for search_url in search_urls:
+                try:
+                    print(f"Trying URL: {search_url}")
+                    async with session.get(search_url, headers=headers, timeout=30) as response:
+                        if response.status == 200:
+                            content = await response.text()
+                            print(f"Successfully fetched content from {search_url} (length: {len(content)})")
                             
-                            if name:
-                                business_data = {
-                                    'Company Name': name.text.strip(),
-                                    'Phone': '',
-                                    'Email': '',
-                                    'Website': '',
-                                    'About': '',
-                                    'Social Links': '',
-                                    'Address': ''
-                                }
-                                
-                                # Try to find phone number
-                                phone = listing.find(['p', 'span', 'div'], {
-                                    'class': lambda x: x and any(term in str(x).lower() 
-                                        for term in ['phone', 'mobile', 'contact', 'tel'])
-                                })
-                                if phone:
-                                    business_data['Phone'] = phone.text.strip()
-                                
-                                # Try to find address
-                                address = listing.find(['p', 'div', 'span'], {
-                                    'class': lambda x: x and any(term in str(x).lower() 
-                                        for term in ['address', 'location'])
-                                })
-                                if address:
-                                    business_data['Address'] = address.text.strip()
-                                
-                                # Try to find website
-                                website = listing.find('a', {'class': lambda x: x and 'website' in str(x).lower()})
-                                if website:
-                                    business_data['Website'] = website.get('href', '')
-                                
-                                print(f"Found business: {business_data['Company Name']}")
-                                data.append(business_data)
-                        except Exception as e:
-                            print(f"Error processing individual listing: {str(e)}")
-                            continue
-                    
-                else:
-                    print(f"Failed to fetch main page. Status: {response.status}")
-                    if response.status == 403:
-                        print("Access forbidden - might be blocked")
-                    
+                            # Parse the content
+                            soup = BeautifulSoup(content, 'html.parser')
+                            
+                            # Look for different types of listing containers
+                            listings = []
+                            
+                            # Try multiple container patterns
+                            possible_containers = [
+                                # Search results containers
+                                {'class': ['search-result', 'result-item', 'biz-list-item', 'search-list-item']},
+                                # Business listing containers
+                                {'class': ['business-unit', 'vendor-card', 'business-info', 'college-info']},
+                                # Education specific containers
+                                {'class': ['college-item', 'university-item', 'education-listing']},
+                                # Schema.org listings
+                                {'itemtype': ['http://schema.org/LocalBusiness', 'http://schema.org/CollegeOrUniversity']},
+                                # Generic listing containers
+                                {'class': lambda x: x and any(term in str(x).lower() 
+                                    for term in ['business', 'vendor', 'listing', 'result', 'college', 'university', 'education'])}
+                            ]
+                            
+                            for container in possible_containers:
+                                found = soup.find_all(['div', 'article', 'section', 'li'], container)
+                                if found:
+                                    print(f"Found {len(found)} listings with {container}")
+                                    listings.extend(found)
+                            
+                            # Also try finding links to institution pages
+                            institution_links = soup.find_all('a', href=lambda x: x and any(term in str(x).lower() 
+                                for term in ['/college', '/university', '/education', '/school', normalized_category]))
+                            
+                            if institution_links:
+                                print(f"Found {len(institution_links)} institution links")
+                                for link in institution_links:
+                                    try:
+                                        institution_url = link.get('href')
+                                        if not institution_url.startswith('http'):
+                                            institution_url = f"https://www.sulekha.com{institution_url}"
+                                        
+                                        print(f"Fetching institution details from: {institution_url}")
+                                        async with session.get(institution_url, headers=headers) as institution_response:
+                                            if institution_response.status == 200:
+                                                institution_content = await institution_response.text()
+                                                institution_soup = BeautifulSoup(institution_content, 'html.parser')
+                                                institution_data = await process_listing(institution_soup, 'sulekha')
+                                                if institution_data and institution_data['Company Name']:
+                                                    data.append(institution_data)
+                                                    print(f"Found institution: {institution_data['Company Name']}")
+                                    except Exception as e:
+                                        print(f"Error processing institution link: {str(e)}")
+                                        continue
+                            
+                            print(f"Total listings found on {search_url}: {len(listings)}")
+                            
+                            # Process each listing
+                            for listing in listings:
+                                try:
+                                    # For search results, try to find the main content div
+                                    main_content = listing.find(['div', 'article'], {'class': ['content', 'details', 'info']})
+                                    if main_content:
+                                        listing = main_content
+                                    
+                                    business_data = await process_listing(listing, 'sulekha')
+                                    if business_data and business_data['Company Name']:
+                                        # Check if this is a new entry
+                                        is_duplicate = False
+                                        for existing in data:
+                                            if existing['Company Name'] == business_data['Company Name']:
+                                                is_duplicate = True
+                                                break
+                                        
+                                        if not is_duplicate:
+                                            data.append(business_data)
+                                            print(f"Found business: {business_data['Company Name']}")
+                                except Exception as e:
+                                    print(f"Error processing individual listing: {str(e)}")
+                                    continue
+                            
+                            if data:
+                                print(f"Found {len(data)} businesses on {search_url}")
+                            else:
+                                print(f"No businesses found on {search_url}")
+                            
+                        else:
+                            print(f"Failed to fetch {search_url}. Status: {response.status}")
+                            if response.status == 403:
+                                print("Access forbidden - might be blocked")
+                            elif response.status == 404:
+                                print("Page not found - trying alternative URL pattern")
+                                continue
+                            
+                except aiohttp.ClientError as e:
+                    print(f"Network error for {search_url}: {str(e)}")
+                    continue
+                except Exception as e:
+                    print(f"Error processing {search_url}: {str(e)}")
+                    continue
+                
+                # Add delay between requests to avoid rate limiting
+                await asyncio.sleep(2)
+    
     except Exception as e:
         print(f"Error scraping Sulekha: {str(e)}")
         import traceback
@@ -1046,9 +1207,156 @@ async def scrape_sulekha(search_query, location=None):
     
     return data
 
+async def scrape_yell(search_query, location=None):
+    data = []
+    
+    base_headers = {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+        'Sec-Ch-Ua-Mobile': '?0',
+        'Sec-Ch-Ua-Platform': '"Windows"',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Upgrade-Insecure-Requests': '1',
+        'DNT': '1'
+    }
+    
+    try:
+        # Clean and format the search query
+        search_query = search_query.strip()
+        search_terms = quote(search_query.replace(' ', '-').lower())
+        
+        # Handle location
+        if location:
+            location = location.strip().lower()
+            # Remove UK if present as it's not needed for Yell
+            location = location.replace('uk', '').strip()
+            if not location:
+                location = None
+        
+        # Create session with cookie handling
+        timeout = aiohttp.ClientTimeout(total=60)
+        conn = aiohttp.TCPConnector(ssl=False)
+        async with aiohttp.ClientSession(cookie_jar=aiohttp.CookieJar(), 
+                                       timeout=timeout,
+                                       connector=conn) as session:
+            
+            # First visit the homepage to get cookies
+            print("Initializing session with homepage visit...")
+            homepage_content = await make_request_with_session(
+                session, 
+                'https://www.yell.com', 
+                base_headers
+            )
+            
+            if not homepage_content:
+                print("Failed to access Yell.com homepage")
+                return data
+            
+            # Add referrer for subsequent requests
+            base_headers['Referer'] = 'https://www.yell.com'
+            
+            # Construct search URL
+            if location:
+                search_url = f"https://www.yell.com/ucs/UcsSearchAction.do?keywords={quote(search_query)}&location={quote(location)}"
+            else:
+                search_url = f"https://www.yell.com/ucs/UcsSearchAction.do?keywords={quote(search_query)}"
+            
+            print(f"Attempting search with URL: {search_url}")
+            
+            # Make the search request
+            content = await make_request_with_session(session, search_url, base_headers)
+            
+            if content:
+                # Parse and extract data
+                soup = BeautifulSoup(content, 'html.parser')
+                
+                # Look for business listings
+                listings = []
+                
+                # Try multiple container patterns
+                possible_containers = [
+                    {'class': 'row businessCapsule--mainRow'},
+                    {'class': 'businessCapsule'},
+                    {'data-tracking': 'results'},
+                    {'class': 'results-item'}
+                ]
+                
+                for container in possible_containers:
+                    found = soup.find_all(['div', 'article'], container)
+                    if found:
+                        print(f"Found {len(found)} listings")
+                        listings.extend(found)
+                
+                # Process each listing
+                for listing in listings:
+                    try:
+                        business_data = {
+                            'Company Name': '',
+                            'Phone': '',
+                            'Website': '',
+                            'Address': '',
+                            'Rating': '',
+                            'Reviews Count': ''
+                        }
+                        
+                        # Company Name
+                        name_elem = listing.find('h2', {'class': 'businessCapsule--name'})
+                        if name_elem:
+                            business_data['Company Name'] = name_elem.text.strip()
+                        
+                        # Phone
+                        phone_elem = listing.find('span', {'class': 'business--telephone'})
+                        if phone_elem:
+                            business_data['Phone'] = phone_elem.text.strip()
+                        
+                        # Website
+                        website_elem = listing.find('a', {'rel': 'nofollow noopener'})
+                        if website_elem:
+                            business_data['Website'] = website_elem.get('href', '').strip()
+                        
+                        # Address
+                        address_elem = listing.find('span', {'itemprop': 'address'})
+                        if address_elem:
+                            business_data['Address'] = address_elem.text.strip()
+                        
+                        # Rating
+                        rating_elem = listing.find('span', {'class': 'starRating--average'})
+                        if rating_elem:
+                            business_data['Rating'] = rating_elem.text.strip()
+                        
+                        # Reviews
+                        reviews_elem = listing.find('span', {'class': 'businessCapsule--reviewCount'})
+                        if reviews_elem:
+                            business_data['Reviews Count'] = reviews_elem.text.strip()
+                        
+                        if business_data['Company Name']:  # Only add if we have at least a name
+                            data.append(business_data)
+                            print(f"Found business: {business_data['Company Name']}")
+                    
+                    except Exception as e:
+                        print(f"Error processing listing: {str(e)}")
+                        continue
+            
+            else:
+                print("Failed to fetch search results")
+    
+    except Exception as e:
+        print(f"Error in scrape_yell: {str(e)}")
+        traceback.print_exc()
+    
+    return data
+
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', vpn_required=True)
 
 @app.route('/scrape', methods=['POST'])
 def scrape():
@@ -1093,16 +1401,21 @@ def scrape():
             elif platform == 'sulekha':
                 logger.info(f"Scraping Sulekha for {category} in {location}")
                 data = loop.run_until_complete(scrape_sulekha(category, location))
-            elif platform == 'both':
-                logger.info(f"Scraping both platforms for {category} in {location}")
-                justdial_data, sulekha_data = loop.run_until_complete(asyncio.gather(
+            elif platform == 'yell':
+                logger.info(f"Scraping Yell for {category} in {location}")
+                data = loop.run_until_complete(scrape_yell(category, location))
+            elif platform == 'all':
+                logger.info(f"Scraping all platforms for {category} in {location}")
+                justdial_data, sulekha_data, yell_data = loop.run_until_complete(asyncio.gather(
                     scrape_justdial(category, location),
-                    scrape_sulekha(category, location)
+                    scrape_sulekha(category, location),
+                    scrape_yell(category, location)
                 ))
                 # Ensure we're working with lists
                 justdial_data = justdial_data or []
                 sulekha_data = sulekha_data or []
-                data = justdial_data + sulekha_data
+                yell_data = yell_data or []
+                data = justdial_data + sulekha_data + yell_data
         except Exception as e:
             logger.error(f"Error during scraping: {str(e)}")
             scraper_stats.add_error('scraping', str(e))
@@ -1114,10 +1427,10 @@ def scrape():
         
         if not data:
             suggestions = [
-                f"Try adding a location (e.g., {category} in Mumbai)",
+                f"Try adding a location (e.g., {category} in London)",
                 f"Try a different category (e.g., {category}s, {category} Services)",
                 "Check for spelling mistakes",
-                "Try searching on a single platform instead of both"
+                "Try searching on a single platform instead of all"
             ]
             return render_template('index.html', 
                                  error=f'No data found for "{search_query}" on {platform}.', 
@@ -1166,10 +1479,7 @@ def scrape():
                 'Rating',
                 'Reviews Count',
                 'Categories',
-                'Working Hours',
-                'Features',
-                'About',
-                'Social Links'
+                'About'
             ]
             
             # Add any additional columns that might exist
@@ -1248,23 +1558,273 @@ def scrape():
             
             logger.info(f"Created Excel file: {filename} with {len(df)} unique entries")
             
-            # Return success response with download URL and redirect
-            from flask import jsonify, make_response
-            response = make_response(send_file(filename, as_attachment=True, download_name=filename))
-            response.headers['X-Redirect-After-Download'] = url_for('index')
-            return response
+            # Return JSON response with file download URL and stats
+            from flask import jsonify
+            response_data = {
+                'status': 'success',
+                'message': f'Successfully scraped {len(df)} businesses',
+                'download_url': url_for('download_file', filename=filename),
+                'stats': {
+                    'total_results': len(df),
+                    'platform': platform,
+                    'query': search_query
+                }
+            }
+            return jsonify(response_data)
             
         except Exception as e:
             logger.error(f"Error creating Excel file: {str(e)}")
             scraper_stats.add_error('excel', str(e))
-            return render_template('index.html', 
-                                 error=f'Error creating Excel file: {str(e)}. Please try again.')
+            return jsonify({
+                'status': 'error',
+                'message': f'Error creating Excel file: {str(e)}. Please try again.'
+            })
     
     except Exception as e:
         logger.error(f"\nError during scraping: {str(e)}")
         logger.error(traceback.format_exc())
-        return render_template('index.html', 
-                             error=f'An error occurred while scraping: {str(e)}. Please try again.')
+        return jsonify({
+            'status': 'error',
+            'message': f'An error occurred while scraping: {str(e)}. Please try again.'
+        })
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    try:
+        return send_file(filename, as_attachment=True, download_name=filename)
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Error downloading file: {str(e)}'
+        })
+
+class ProxyManager:
+    def __init__(self):
+        self.proxies = []
+        self.last_update = None
+        self.update_interval = timedelta(minutes=10)
+
+    async def get_proxies(self):
+        """Fetch fresh proxies from multiple free proxy APIs"""
+        if (self.last_update and datetime.now() - self.last_update < self.update_interval 
+            and len(self.proxies) > 0):
+            return self.proxies
+
+        self.proxies = []
+        try:
+            # Try multiple proxy sources
+            async with aiohttp.ClientSession() as session:
+                # Source 1: ProxyScrape API
+                try:
+                    url = "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=GB&ssl=all&anonymity=all"
+                    async with session.get(url) as response:
+                        if response.status == 200:
+                            text = await response.text()
+                            self.proxies.extend([f"http://{proxy}" for proxy in text.split()])
+                except Exception as e:
+                    print(f"Error fetching from ProxyScrape: {str(e)}")
+
+                # Source 2: Free-Proxy-List API
+                try:
+                    url = "https://www.free-proxy-list.net/"
+                    async with session.get(url) as response:
+                        if response.status == 200:
+                            text = await response.text()
+                            soup = BeautifulSoup(text, 'html.parser')
+                            table = soup.find('table')
+                            if table:
+                                rows = table.find_all('tr')
+                                for row in rows[1:]:  # Skip header row
+                                    cols = row.find_all('td')
+                                    if len(cols) >= 7:
+                                        ip = cols[0].text.strip()
+                                        port = cols[1].text.strip()
+                                        country = cols[3].text.strip()
+                                        if country == 'United Kingdom':
+                                            self.proxies.append(f"http://{ip}:{port}")
+                except Exception as e:
+                    print(f"Error fetching from Free-Proxy-List: {str(e)}")
+
+                # Source 3: GeoNode API
+                try:
+                    url = "https://proxylist.geonode.com/api/proxy-list?limit=100&page=1&sort_by=lastChecked&sort_type=desc&protocols=http%2Chttps&country=GB"
+                    async with session.get(url) as response:
+                        if response.status == 200:
+                            data = await response.json()
+                            for proxy in data.get('data', []):
+                                ip = proxy.get('ip')
+                                port = proxy.get('port')
+                                if ip and port:
+                                    self.proxies.append(f"http://{ip}:{port}")
+                except Exception as e:
+                    print(f"Error fetching from GeoNode: {str(e)}")
+
+            print(f"Found {len(self.proxies)} proxies")
+            self.last_update = datetime.now()
+        except Exception as e:
+            print(f"Error updating proxies: {str(e)}")
+
+        return self.proxies
+
+    async def get_working_proxy(self, test_url="https://www.yell.com"):
+        """Test proxies and return a working one"""
+        if not self.proxies:
+            await self.get_proxies()
+
+        headers = {
+            'User-Agent': UserAgent().random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+        }
+
+        for proxy in self.proxies:
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(
+                        test_url,
+                        proxy=proxy,
+                        headers=headers,
+                        timeout=10,
+                        ssl=False
+                    ) as response:
+                        if response.status == 200:
+                            print(f"Found working proxy: {proxy}")
+                            return proxy
+            except Exception:
+                continue
+
+        print("No working proxy found, fetching new proxies...")
+        self.proxies = []  # Clear existing proxies
+        await self.get_proxies()
+        return None
+
+# Initialize the proxy manager
+proxy_manager = ProxyManager()
+
+async def check_connection_details():
+    """Check current connection details and log information"""
+    try:
+        logger.info("Checking connection details...")
+        async with aiohttp.ClientSession() as session:
+            # Try multiple IP checking services
+            services = [
+                'https://ipapi.co/json/',
+                'https://api.ipify.org?format=json',
+                'https://ip.seeip.org/json'
+            ]
+            
+            connection_info = {}
+            
+            for service in services:
+                try:
+                    logger.debug(f"Trying IP service: {service}")
+                    async with session.get(service, timeout=10) as response:
+                        if response.status == 200:
+                            data = await response.json()
+                            connection_info = {
+                                'ip': data.get('ip'),
+                                'country': data.get('country_code', '').upper(),
+                                'country_name': data.get('country_name', 'Unknown'),
+                                'city': data.get('city', 'Unknown'),
+                                'region': data.get('region', 'Unknown'),
+                                'isp': data.get('org', 'Unknown')
+                            }
+                            
+                            logger.info("Connection Details:")
+                            logger.info(f"IP Address: {connection_info['ip']}")
+                            logger.info(f"Country: {connection_info['country']} ({connection_info['country_name']})")
+                            logger.info(f"City: {connection_info['city']}")
+                            logger.info(f"Region: {connection_info['region']}")
+                            logger.info(f"ISP: {connection_info['isp']}")
+                            
+                            # Check if it's likely a VPN connection
+                            is_vpn = any(vpn_term.lower() in connection_info['isp'].lower() 
+                                       for vpn_term in ['vpn', 'proxy', 'hosting', 'cloud', 'data center'])
+                            
+                            if is_vpn:
+                                logger.info("VPN connection detected")
+                            else:
+                                logger.warning("No VPN detected - using direct connection")
+                            
+                            return connection_info
+                except Exception as e:
+                    logger.error(f"Error with IP service {service}: {str(e)}")
+                    continue
+            
+            logger.error("All IP checking services failed")
+            return None
+            
+    except Exception as e:
+        logger.error(f"Error checking connection details: {str(e)}")
+        logger.error(traceback.format_exc())
+        return None
+
+async def make_request_with_session(session, url, headers):
+    """Helper function to make requests with proper error handling and retries"""
+    max_retries = 3
+    retry_delay = 2
+    
+    logger.info(f"Making request to: {url}")
+    logger.debug(f"Headers: {headers}")
+    
+    # Check connection details
+    connection_info = await check_connection_details()
+    if connection_info:
+        # Add connection country to headers to help with geolocation
+        headers['Accept-Language'] = f"en-{connection_info['country']},en;q=0.9"
+        logger.debug(f"Updated headers with country: {connection_info['country']}")
+    
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"Request attempt {attempt + 1}/{max_retries}")
+            
+            # Add jitter to delay
+            jitter = random.uniform(0.5, 1.5)
+            delay = retry_delay * jitter
+            logger.debug(f"Waiting {delay:.2f} seconds before request")
+            await asyncio.sleep(delay)
+            
+            # Update headers with a new random user agent
+            headers = headers.copy()
+            headers['User-Agent'] = UserAgent().random
+            logger.debug(f"Using User-Agent: {headers['User-Agent']}")
+            
+            # Make the request using system network settings (VPN if connected)
+            async with session.get(
+                url, 
+                headers=headers, 
+                timeout=30, 
+                allow_redirects=True
+            ) as response:
+                logger.info(f"Response status: {response.status}")
+                logger.debug(f"Response headers: {response.headers}")
+                
+                if response.status == 200:
+                    content = await response.text()
+                    content_length = len(content)
+                    logger.info(f"Successfully fetched content (length: {content_length})")
+                    logger.debug(f"Content preview: {content[:200]}...")
+                    return content
+                elif response.status == 403:
+                    logger.error(f"Access forbidden. Current connection might be blocked.")
+                    if connection_info:
+                        logger.error(f"Try using a different VPN server or location (Current: {connection_info['country_name']})")
+                    return None
+                else:
+                    logger.error(f"Request failed with status {response.status}")
+                    if response.status == 429:
+                        logger.error("Rate limit detected - waiting longer before retry")
+                        await asyncio.sleep(retry_delay * (attempt + 2))
+                    
+            await asyncio.sleep(retry_delay * (attempt + 1))
+            
+        except Exception as e:
+            logger.error(f"Attempt {attempt + 1} failed: {str(e)}")
+            logger.error(traceback.format_exc())
+            if attempt < max_retries - 1:
+                await asyncio.sleep(retry_delay * (attempt + 1))
+            else:
+                return None
+    return None
 
 if __name__ == '__main__':
     app.run(debug=True)

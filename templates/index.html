@@ -11,7 +11,7 @@
             background-color: #f8f9fa;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin-top: 50px;
         }
         .card {
@@ -48,6 +48,34 @@
             width: 3rem;
             height: 3rem;
         }
+        #statusMessage {
+            display: none;
+            margin-top: 20px;
+        }
+        .platform-info {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        .vpn-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .vpn-notice h5 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .vpn-notice p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .vpn-notice ul {
+            color: #666;
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +91,54 @@
         <div class="card">
             <div class="card-body p-4">
                 <h2 class="text-center mb-4">Business Data Scraper</h2>
+                
+                {% if vpn_required %}
+                <div class="vpn-notice mb-4">
+                    <h5><i class="fas fa-shield-alt"></i> VPN Recommended</h5>
+                    <p>For better scraping results, especially for international websites:</p>
+                    <ul>
+                        <li>Using a VPN is recommended for better access</li>
+                        <li>The scraper will work with any VPN location</li>
+                        <li>For Yell.com, a UK-based VPN connection might give better results</li>
+                        <li>The scraper will automatically detect your connection type and location</li>
+                    </ul>
+                    <div class="mt-3">
+                        <h6><i class="fas fa-download"></i> Free VPN Options for Windows:</h6>
+                        <ol>
+                            <li>
+                                <strong>ProtonVPN</strong> (Recommended):
+                                <ul>
+                                    <li>Download from: <a href="https://protonvpn.com/download" target="_blank">protonvpn.com</a></li>
+                                    <li>Create a free account</li>
+                                    <li>Connect to any available server</li>
+                                    <li>Unlimited data, multiple locations</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Windscribe</strong>:
+                                <ul>
+                                    <li>Download from: <a href="https://windscribe.com/download" target="_blank">windscribe.com</a></li>
+                                    <li>Sign up for free (10GB monthly)</li>
+                                    <li>Multiple server locations available</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Hide.me</strong>:
+                                <ul>
+                                    <li>Download from: <a href="https://hide.me/en/software/windows" target="_blank">hide.me</a></li>
+                                    <li>Free tier with multiple locations</li>
+                                    <li>Easy to use interface</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <div class="alert alert-info mt-2">
+                            <strong>Tip:</strong> The scraper will automatically detect and use your VPN connection. Try different server locations if you encounter any access issues.
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div id="statusMessage" class="alert" role="alert"></div>
                 {% if error %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>{{ error }}</strong>
@@ -78,19 +154,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endif %}
-                <form action="/scrape" method="POST">
+                <form id="scrapeForm">
                     <div class="mb-3">
                         <label for="search_query" class="form-label">Search Query</label>
                         <input type="text" class="form-control" id="search_query" name="search_query" required 
-                               placeholder="E.g., Restaurants in Mumbai, Plumbers in Delhi">
+                               placeholder="E.g., Restaurants in London, Hotels in New York">
                     </div>
                     <div class="mb-3">
                         <label for="platform" class="form-label">Platform</label>
                         <select class="form-select" id="platform" name="platform" required>
-                            <option value="justdial">JustDial</option>
-                            <option value="sulekha">Sulekha</option>
-                            <option value="both">Both</option>
+                            <option value="justdial">JustDial (India)</option>
+                            <option value="sulekha">Sulekha (India)</option>
+                            <option value="yell">Yell (UK)</option>
+                            <option value="all">All Platforms</option>
                         </select>
+                        <div class="platform-info mt-2">
+                            <strong>Platform Coverage:</strong><br>
+                            - JustDial: Indian businesses<br>
+                            - Sulekha: Indian businesses<br>
+                            - Yell: International businesses (VPN recommended for better access)
+                        </div>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Start Scraping</button>
@@ -100,9 +183,62 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
-        document.querySelector('form').addEventListener('submit', function() {
-            document.getElementById('loadingIndicator').style.display = 'block';
+        document.getElementById('scrapeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading indicator
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const statusMessage = document.getElementById('statusMessage');
+            loadingIndicator.style.display = 'block';
+            statusMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Send AJAX request
+            fetch('/scrape', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success message
+                    statusMessage.className = 'alert alert-success';
+                    statusMessage.textContent = data.message;
+                    statusMessage.style.display = 'block';
+                    
+                    // Trigger file download
+                    window.location.href = data.download_url;
+                } else {
+                    // Show error message
+                    statusMessage.className = 'alert alert-danger';
+                    statusMessage.textContent = data.message;
+                    statusMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                // Show error message
+                statusMessage.className = 'alert alert-danger';
+                statusMessage.textContent = 'An error occurred. Please try again.';
+                statusMessage.style.display = 'block';
+            })
+            .finally(() => {
+                // Hide loading indicator
+                loadingIndicator.style.display = 'none';
+            });
+        });
+        
+        // Update platform info based on selection
+        document.getElementById('platform').addEventListener('change', function() {
+            const vpnNotice = document.querySelector('.vpn-notice');
+            if (this.value === 'yell' || this.value === 'all') {
+                vpnNotice.style.display = 'block';
+            } else {
+                vpnNotice.style.display = 'none';
+            }
         });
     </script>
 </body>

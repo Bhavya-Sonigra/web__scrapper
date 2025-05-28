@@ -1,0 +1,25 @@
+2025-05-28 17:53:50,777 [INFO] [app.py:56] - === Starting new scraping session ===
+2025-05-28 17:53:50,777 [INFO] [app.py:57] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-28 17:53:50,778 [INFO] [app.py:58] - Operating System: win32
+2025-05-28 17:53:50,778 [INFO] [app.py:59] - Working Directory: C:\Users\bhavy\Music\web__scrapper
+2025-05-28 17:53:51,720 [INFO] [app.py:1370] - 
+=== Starting new scraping request ===
+2025-05-28 17:53:51,721 [INFO] [app.py:1371] - Raw search query: Restaurants in UK
+2025-05-28 17:53:51,721 [INFO] [app.py:1372] - Selected platform: yell
+2025-05-28 17:53:51,721 [INFO] [app.py:1380] - Parsed category: Restaurants
+2025-05-28 17:53:51,724 [INFO] [app.py:1381] - Parsed location: Uk
+2025-05-28 17:53:51,725 [INFO] [app.py:1397] - 
+Starting scraping process...
+2025-05-28 17:53:51,725 [INFO] [app.py:1405] - Scraping Yell for Restaurants in Uk
+2025-05-28 17:53:51,726 [INFO] [app.py:1753] - Making request to: https://www.yell.com
+2025-05-28 17:53:51,727 [DEBUG] [app.py:1754] - Headers: {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8', 'Accept-Encoding': 'gzip, deflate, br', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-User': '?1', 'Upgrade-Insecure-Requests': '1', 'DNT': '1'}
+2025-05-28 17:53:51,727 [INFO] [app.py:1706] - Checking IP location...
+2025-05-28 17:53:51,727 [DEBUG] [app.py:1717] - Trying IP service: https://ipapi.co/json/
+2025-05-28 17:53:52,670 [INFO] [app.py:1725] - IP Check Results:
+2025-05-28 17:53:52,671 [INFO] [app.py:1726] - IP Address: 2a00:c98:400a:3000:50d:4c4b:b4f2:45a2
+2025-05-28 17:53:52,671 [INFO] [app.py:1727] - Country: DE
+2025-05-28 17:53:52,672 [INFO] [app.py:1728] - City: Frankfurt am Main
+2025-05-28 17:53:52,672 [WARNING] [app.py:1734] - Non-UK IP detected (Country: DE)
+2025-05-28 17:53:52,673 [WARNING] [app.py:1759] - No UK IP detected. Please ensure VPN is connected
+2025-05-28 17:53:52,674 [INFO] [app.py:1426] - 
+Scraping completed. Found 0 results
