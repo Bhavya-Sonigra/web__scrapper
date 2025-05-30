@@ -1,4 +1,0 @@
-2025-05-28 18:05:19,743 [INFO] [app.py:56] - === Starting new scraping session ===
-2025-05-28 18:05:19,744 [INFO] [app.py:57] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
-2025-05-28 18:05:19,744 [INFO] [app.py:58] - Operating System: win32
-2025-05-28 18:05:19,744 [INFO] [app.py:59] - Working Directory: C:\Users\bhavy\Music\web__scrapper

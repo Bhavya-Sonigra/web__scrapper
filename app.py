@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, url_for
+from flask import Flask, render_template, request, send_file, url_for, jsonify
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 import time
 import random
 from fake_useragent import UserAgent
@@ -19,8 +19,12 @@ import sys
 import traceback
 from functools import wraps
 import re
+from yellowpages_scraper import YellowPagesScraper
 
 app = Flask(__name__)
+
+# ScraperAPI configuration
+SCRAPER_API_KEY = os.getenv('SCRAPER_API_KEY', '')
 
 # Setup logging with more detailed configuration
 def setup_logging():
@@ -956,33 +960,33 @@ def extract_business_data(listing, platform):
         return None
 
 async def scrape_sulekha(search_query, location=None):
+    import re  # Import re for text cleaning
+    
     # Initialize empty data list
     data = []
     
+    # Use global SCRAPER_API_KEY
+    if not SCRAPER_API_KEY:
+        logger.error("SCRAPER_API_KEY not set in environment variables")
+        return data
+    
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Cache-Control': 'max-age=0',
-        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-        'Referer': 'https://www.sulekha.com/',
-        'DNT': '1'
+        'Accept-Encoding': 'gzip, deflate',
+        'Connection': 'keep-alive'
     }
     
     try:
-        # Clean and format the search query
-        search_query = search_query.strip().lower()
+        # Store original values for display
+        display_location = location
+        display_query = search_query
         
-        # Normalize common business categories
+        # Clean and format search terms
+        search_query = search_query.lower().strip()
+        
+        # Common category corrections
         category_corrections = {
             # Education
             'college': 'colleges',
@@ -1035,66 +1039,50 @@ async def scrape_sulekha(search_query, location=None):
             normalized_category = re.sub(r'[^a-z0-9\s-]', '', search_query)
             normalized_category = re.sub(r'\s+', '-', normalized_category)
         
-        # Clean and correct the location name
+        # Store original values for display
+        display_location = location
+        display_query = search_query
+        
+        # Clean and format search terms
+        search_query = search_query.lower().strip().replace(' ', '-')
+        
+        # Construct search URLs
         if location:
-            location = location.strip().lower()
-            location = re.sub(r'[^a-z0-9\s-]', '', location)
-            
-            # Check for common city name corrections
+            # Clean and correct the location name
             location_corrections = {
-                'vadodra': 'vadodara',
+                'banglore': 'bangalore',
+                'bengaluru': 'bangalore',
                 'bombay': 'mumbai',
                 'calcutta': 'kolkata',
-                'madras': 'chennai',
-                'bangalore': 'bengaluru',
-                'poona': 'pune',
-                'baroda': 'vadodara'
+                'madras': 'chennai'
             }
             
-            # Clean location words
+            location = location.lower().strip()
             location_words = location.split()
             corrected_location_words = [location_corrections.get(word, word) for word in location_words]
             location = '-'.join(corrected_location_words)
             
-            # Sulekha's search URLs
+            # Use Sulekha's location-specific URL pattern
             search_urls = [
-                # Education specific URLs
-                f"https://www.sulekha.com/education/{location}",
-                f"https://www.sulekha.com/{normalized_category}/{location}",
-                f"https://www.sulekha.com/{location}/{normalized_category}",
-                
-                # Search URLs
-                f"https://www.sulekha.com/search/{normalized_category}/{location}",
-                f"https://www.sulekha.com/search?q={normalized_category}+in+{location}",
-                
-                # Category specific URLs
-                f"https://www.sulekha.com/colleges-universities/{location}",
-                f"https://www.sulekha.com/engineering-colleges/{location}",
-                f"https://www.sulekha.com/medical-colleges/{location}",
-                f"https://www.sulekha.com/business-schools/{location}",
-                
-                # Local services URLs
-                f"https://www.sulekha.com/local-services/{location}",
-                f"https://www.sulekha.com/business-services/{location}"
+                f"https://www.sulekha.com/{location}/{search_query}"
             ]
+            # Add a delay between requests to avoid rate limiting
+            await asyncio.sleep(2)
         else:
             search_urls = [
-                # Education specific URLs
-                f"https://www.sulekha.com/education",
-                f"https://www.sulekha.com/{normalized_category}",
-                
-                # Search URLs
-                f"https://www.sulekha.com/search/{normalized_category}",
-                f"https://www.sulekha.com/search?q={normalized_category}"
+                f"https://www.sulekha.com/{search_query}"
             ]
-        
-        print(f"Attempting to scrape Sulekha with category: {normalized_category} in {location if location else 'all locations'}")
+            # Add a delay between requests to avoid rate limiting
+            await asyncio.sleep(2)      
+        print(f"Attempting to scrape Sulekha with category: {display_query} in {display_location if display_location else 'all locations'}")
         
         async with aiohttp.ClientSession() as session:
             for search_url in search_urls:
                 try:
                     print(f"Trying URL: {search_url}")
-                    async with session.get(search_url, headers=headers, timeout=30) as response:
+                    # Construct ScraperAPI URL
+                    scraper_url = f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={quote(search_url)}&render=true'
+                    async with session.get(scraper_url, headers=headers, timeout=60) as response:
                         if response.status == 200:
                             content = await response.text()
                             print(f"Successfully fetched content from {search_url} (length: {len(content)})")
@@ -1139,7 +1127,9 @@ async def scrape_sulekha(search_query, location=None):
                                             institution_url = f"https://www.sulekha.com{institution_url}"
                                         
                                         print(f"Fetching institution details from: {institution_url}")
-                                        async with session.get(institution_url, headers=headers) as institution_response:
+                                        # Construct ScraperAPI URL for institution
+                                        institution_scraper_url = f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={quote(institution_url)}&render=true'
+                                        async with session.get(institution_scraper_url, headers=headers) as institution_response:
                                             if institution_response.status == 200:
                                                 institution_content = await institution_response.text()
                                                 institution_soup = BeautifulSoup(institution_content, 'html.parser')
@@ -1151,7 +1141,32 @@ async def scrape_sulekha(search_query, location=None):
                                         print(f"Error processing institution link: {str(e)}")
                                         continue
                             
-                            print(f"Total listings found on {search_url}: {len(listings)}")
+                            # Find all business listings
+                            listings = soup.find_all('div', class_='list-item')
+                            print(f"Found {len(listings)} listings on {search_url}")
+                            
+                            if not listings:
+                                # Try alternative listing container
+                                listings = soup.find_all('div', class_='business-unit')
+                                print(f"Found {len(listings)} alternative listings on {search_url}")
+                            
+                            if not listings:
+                                print(f"No businesses found on {search_url}")
+                                continue
+                                
+                            # Verify location match more strictly
+                            page_location = soup.find('span', class_='location') or soup.find('div', class_='location')
+                            if page_location:
+                                page_loc_text = page_location.text.lower()
+                                if location and not any(loc in page_loc_text for loc in [location.lower(), display_location.lower()]):
+                                    print(f"Location mismatch. Expected: {display_location}, Found: {page_location.text}")
+                                    continue
+                            else:
+                                # If no location found on page, check the URL path
+                                current_url = str(response.url)
+                                if location and location.lower() not in current_url.lower():
+                                    print(f"URL location mismatch. Expected: {location} in {current_url}")
+                                    continue
                             
                             # Process each listing
                             for listing in listings:
@@ -1161,20 +1176,52 @@ async def scrape_sulekha(search_query, location=None):
                                     if main_content:
                                         listing = main_content
                                     
-                                    business_data = await process_listing(listing, 'sulekha')
-                                    if business_data and business_data['Company Name']:
+                                    # Extract address - try multiple possible classes
+                                    address_elem = listing.find('div', class_=['address', 'baddress'])
+                                    address = address_elem.text.strip() if address_elem else None
+                                    
+                                    # Extract phone number - try multiple possible classes
+                                    phone_elem = listing.find(['span', 'div'], class_=['contact-number', 'contact', 'phone'])
+                                    phone = phone_elem.text.strip() if phone_elem else None
+                                    
+                                    # Extract rating - try multiple possible classes
+                                    rating_elem = listing.find(['span', 'div'], class_=['rating', 'brating'])
+                                    if rating_elem:
+                                        rating_text = rating_elem.text.strip()
+                                        # Extract numeric rating if present
+                                        import re
+                                        rating_match = re.search(r'([0-9.]+)', rating_text)
+                                        rating = rating_match.group(1) if rating_match else rating_text
+                                    else:
+                                        rating = None
+                                    
+                                    # Create business data dictionary
+                                    business_data = {
+                                        'Name': business_name,
+                                        'URL': business_url,
+                                        'Address': address,
+                                        'Phone': phone,
+                                        'Rating': rating,
+                                        'Platform': 'Sulekha',
+                                        'Location': display_location if location else '',
+                                        'Category': search_query
+                                    }
+                                    # Clean up empty fields and add to data list if not duplicate
+                                    business_data = {k: v for k, v in business_data.items() if v}
+                                    
+                                    if business_data.get('Name'):
                                         # Check if this is a new entry
                                         is_duplicate = False
                                         for existing in data:
-                                            if existing['Company Name'] == business_data['Company Name']:
+                                            if existing.get('Name') == business_data['Name']:
                                                 is_duplicate = True
                                                 break
                                         
                                         if not is_duplicate:
                                             data.append(business_data)
-                                            print(f"Found business: {business_data['Company Name']}")
+                                            print(f"Added business: {business_data['Name']}")
                                 except Exception as e:
-                                    print(f"Error processing individual listing: {str(e)}")
+                                    print(f"Error processing listing: {str(e)}")
                                     continue
                             
                             if data:
@@ -1207,152 +1254,6 @@ async def scrape_sulekha(search_query, location=None):
     
     return data
 
-async def scrape_yell(search_query, location=None):
-    data = []
-    
-    base_headers = {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'Sec-Ch-Ua-Mobile': '?0',
-        'Sec-Ch-Ua-Platform': '"Windows"',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-        'DNT': '1'
-    }
-    
-    try:
-        # Clean and format the search query
-        search_query = search_query.strip()
-        search_terms = quote(search_query.replace(' ', '-').lower())
-        
-        # Handle location
-        if location:
-            location = location.strip().lower()
-            # Remove UK if present as it's not needed for Yell
-            location = location.replace('uk', '').strip()
-            if not location:
-                location = None
-        
-        # Create session with cookie handling
-        timeout = aiohttp.ClientTimeout(total=60)
-        conn = aiohttp.TCPConnector(ssl=False)
-        async with aiohttp.ClientSession(cookie_jar=aiohttp.CookieJar(), 
-                                       timeout=timeout,
-                                       connector=conn) as session:
-            
-            # First visit the homepage to get cookies
-            print("Initializing session with homepage visit...")
-            homepage_content = await make_request_with_session(
-                session, 
-                'https://www.yell.com', 
-                base_headers
-            )
-            
-            if not homepage_content:
-                print("Failed to access Yell.com homepage")
-                return data
-            
-            # Add referrer for subsequent requests
-            base_headers['Referer'] = 'https://www.yell.com'
-            
-            # Construct search URL
-            if location:
-                search_url = f"https://www.yell.com/ucs/UcsSearchAction.do?keywords={quote(search_query)}&location={quote(location)}"
-            else:
-                search_url = f"https://www.yell.com/ucs/UcsSearchAction.do?keywords={quote(search_query)}"
-            
-            print(f"Attempting search with URL: {search_url}")
-            
-            # Make the search request
-            content = await make_request_with_session(session, search_url, base_headers)
-            
-            if content:
-                # Parse and extract data
-                soup = BeautifulSoup(content, 'html.parser')
-                
-                # Look for business listings
-                listings = []
-                
-                # Try multiple container patterns
-                possible_containers = [
-                    {'class': 'row businessCapsule--mainRow'},
-                    {'class': 'businessCapsule'},
-                    {'data-tracking': 'results'},
-                    {'class': 'results-item'}
-                ]
-                
-                for container in possible_containers:
-                    found = soup.find_all(['div', 'article'], container)
-                    if found:
-                        print(f"Found {len(found)} listings")
-                        listings.extend(found)
-                
-                # Process each listing
-                for listing in listings:
-                    try:
-                        business_data = {
-                            'Company Name': '',
-                            'Phone': '',
-                            'Website': '',
-                            'Address': '',
-                            'Rating': '',
-                            'Reviews Count': ''
-                        }
-                        
-                        # Company Name
-                        name_elem = listing.find('h2', {'class': 'businessCapsule--name'})
-                        if name_elem:
-                            business_data['Company Name'] = name_elem.text.strip()
-                        
-                        # Phone
-                        phone_elem = listing.find('span', {'class': 'business--telephone'})
-                        if phone_elem:
-                            business_data['Phone'] = phone_elem.text.strip()
-                        
-                        # Website
-                        website_elem = listing.find('a', {'rel': 'nofollow noopener'})
-                        if website_elem:
-                            business_data['Website'] = website_elem.get('href', '').strip()
-                        
-                        # Address
-                        address_elem = listing.find('span', {'itemprop': 'address'})
-                        if address_elem:
-                            business_data['Address'] = address_elem.text.strip()
-                        
-                        # Rating
-                        rating_elem = listing.find('span', {'class': 'starRating--average'})
-                        if rating_elem:
-                            business_data['Rating'] = rating_elem.text.strip()
-                        
-                        # Reviews
-                        reviews_elem = listing.find('span', {'class': 'businessCapsule--reviewCount'})
-                        if reviews_elem:
-                            business_data['Reviews Count'] = reviews_elem.text.strip()
-                        
-                        if business_data['Company Name']:  # Only add if we have at least a name
-                            data.append(business_data)
-                            print(f"Found business: {business_data['Company Name']}")
-                    
-                    except Exception as e:
-                        print(f"Error processing listing: {str(e)}")
-                        continue
-            
-            else:
-                print("Failed to fetch search results")
-    
-    except Exception as e:
-        print(f"Error in scrape_yell: {str(e)}")
-        traceback.print_exc()
-    
-    return data
 
 @app.route('/', methods=['GET'])
 def index():
@@ -1401,21 +1302,15 @@ def scrape():
             elif platform == 'sulekha':
                 logger.info(f"Scraping Sulekha for {category} in {location}")
                 data = loop.run_until_complete(scrape_sulekha(category, location))
-            elif platform == 'yell':
-                logger.info(f"Scraping Yell for {category} in {location}")
-                data = loop.run_until_complete(scrape_yell(category, location))
             elif platform == 'all':
                 logger.info(f"Scraping all platforms for {category} in {location}")
-                justdial_data, sulekha_data, yell_data = loop.run_until_complete(asyncio.gather(
+                justdial_data, sulekha_data = loop.run_until_complete(asyncio.gather(
                     scrape_justdial(category, location),
-                    scrape_sulekha(category, location),
-                    scrape_yell(category, location)
+                    scrape_sulekha(category, location)
                 ))
-                # Ensure we're working with lists
                 justdial_data = justdial_data or []
                 sulekha_data = sulekha_data or []
-                yell_data = yell_data or []
-                data = justdial_data + sulekha_data + yell_data
+                data = justdial_data + sulekha_data
         except Exception as e:
             logger.error(f"Error during scraping: {str(e)}")
             scraper_stats.add_error('scraping', str(e))
@@ -1666,7 +1561,7 @@ class ProxyManager:
 
         return self.proxies
 
-    async def get_working_proxy(self, test_url="https://www.yell.com"):
+    async def get_working_proxy(self, test_url="https://www.justdial.com"):
         """Test proxies and return a working one"""
         if not self.proxies:
             await self.get_proxies()
@@ -1716,8 +1611,9 @@ async def check_connection_details():
             
             for service in services:
                 try:
-                    logger.debug(f"Trying IP service: {service}")
-                    async with session.get(service, timeout=10) as response:
+                    print(f"Trying URL: {search_url}")
+                    scraper_url = f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={quote(search_url)}&render=true'
+                    async with session.get(scraper_url, headers=headers, timeout=60) as response:
                         if response.status == 200:
                             data = await response.json()
                             connection_info = {
@@ -1825,6 +1721,97 @@ async def make_request_with_session(session, url, headers):
             else:
                 return None
     return None
+
+@app.route('/scrape_yellowpages')
+def scrape_yellowpages_route():
+    search_query = request.args.get('query', '')
+    location = request.args.get('location', '')
+    
+    logger.info(f"Received Yellow Pages scraping request - Query: {search_query}, Location: {location}")
+    
+    if not search_query or not location:
+        error_msg = 'Both query and location are required'
+        logger.error(f"Validation error: {error_msg}")
+        return jsonify({'error': error_msg}), 400
+        
+    try:
+        logger.info("Initializing Yellow Pages scraper...")
+        scraper = YellowPagesScraper()
+        
+        logger.info("Starting Yellow Pages scraping...")
+        results = scraper.scrape_yellowpages(search_query, location)
+        
+        logger.info("Cleaning up scraper resources...")
+        scraper.close()
+        
+        if results:
+            logger.info(f"Successfully found {len(results)} results")
+            
+            # Create Excel file
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = f"yellowpages_results_{timestamp}.xlsx"
+            filepath = os.path.join('downloads', filename)
+            
+            # Ensure downloads directory exists
+            os.makedirs('downloads', exist_ok=True)
+            
+            # Convert results to DataFrame and save as Excel
+            df = pd.DataFrame(results)
+            df.to_excel(filepath, index=False)
+            logger.info(f"Results saved to Excel file: {filepath}")
+            
+            return jsonify({
+                'success': True,
+                'data': results,
+                'count': len(results),
+                'excel_file': filename
+            })
+        else:
+            logger.warning("No results found in Yellow Pages scraping")
+            return jsonify({
+                'success': False,
+                'error': 'No results found'
+            })
+            
+    except Exception as e:
+        error_msg = str(e)
+        trace = traceback.format_exc()
+        logger.error(f"Error in Yellow Pages scraping: {error_msg}")
+        logger.error(f"Traceback: {trace}")
+        
+        # Return a more detailed error response
+        return jsonify({
+            'success': False,
+            'error': error_msg,
+            'details': {
+                'traceback': trace,
+                'query': search_query,
+                'location': location
+            }
+        }), 500
+
+@app.route('/download_excel/<filename>')
+def download_excel_file(filename):
+    try:
+        # Ensure the file is from the downloads directory and exists
+        if not filename.endswith('.xlsx'):
+            return jsonify({'error': 'Invalid file type'}), 400
+            
+        filepath = os.path.join('downloads', filename)
+        if not os.path.exists(filepath):
+            return jsonify({'error': 'File not found'}), 404
+            
+        logger.info(f"Sending Excel file: {filepath}")
+        return send_file(
+            filepath,
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            as_attachment=True,
+            download_name=filename
+        )
+        
+    except Exception as e:
+        logger.error(f"Error downloading Excel file: {str(e)}")
+        return jsonify({'error': 'Error downloading file'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

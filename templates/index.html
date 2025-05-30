@@ -5,28 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Data Scraper</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --success-color: #10b981;
+            --success-hover: #059669;
+            --info-color: #3b82f6;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --light-color: #f9fafb;
+            --dark-color: #111827;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f6f9fc, #edf2f7);
+            font-family: 'Poppins', sans-serif;
+            color: var(--gray-700);
+            min-height: 100vh;
         }
+        
         .container {
-            max-width: 800px;
-            margin-top: 50px;
+            max-width: 1100px;
+            margin-top: 30px;
+            margin-bottom: 50px;
         }
+        
         .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
         }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .card-body {
+            padding: 2.5rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.025em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .form-select {
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-hover), var(--secondary-color));
+            transition: all 0.4s ease-in-out;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:before {
+            left: 0;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.5);
+        }
+        
+        .alert {
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .alert-danger {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .alert-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
         .alert ul {
             padding-left: 20px;
         }
+        
         .alert li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
-        .alert li:last-child {
-            margin-bottom: 0;
-        }
+        
         .loading {
             display: none;
             position: fixed;
@@ -34,35 +188,196 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             z-index: 1000;
+            backdrop-filter: blur(8px);
         }
+        
         .loading-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            min-width: 320px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
         }
+        
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
         .spinner-border {
-            width: 3rem;
-            height: 3rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-width: 0.25rem;
+            color: var(--primary-color);
         }
+        
+        .progress {
+            height: 0.6rem;
+            border-radius: 1rem;
+            background-color: var(--gray-100);
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 1rem;
+        }
+        
         #statusMessage {
             display: none;
             margin-top: 20px;
+            padding: 1rem;
         }
+        
         .platform-info {
             font-size: 0.875rem;
             color: #6c757d;
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
         }
+        
         .vpn-notice {
             background-color: #fff3cd;
-            border: 1px solid #ffeeba;
+            border-left: 4px solid #ffc107;
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Table styling */
+        .table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            margin-top: 1.5rem;
+            background-color: white;
+        }
+        
+        .table thead th {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            padding: 14px 18px;
+            text-align: left;
+            border: none;
+            letter-spacing: 0.01em;
+            font-size: 0.95rem;
+        }
+        
+        .table thead th:first-child {
+            border-top-left-radius: 12px;
+        }
+        
+        .table thead th:last-child {
+            border-top-right-radius: 12px;
+        }
+        
+        .table tbody tr:nth-child(even) {
+            background-color: var(--gray-100);
+        }
+        
+        .table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .table tbody tr:hover {
+            background-color: var(--gray-200);
+            transform: scale(1.005);
+        }
+        
+        .table td {
+            padding: 14px 18px;
+            border-top: 1px solid var(--gray-200);
+            vertical-align: middle;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+        
+        .table a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        .table a:hover {
+            color: white;
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+        }
+        
+        .table a i {
+            margin-right: 6px;
+        }
+        
+        /* Download button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--success-color), var(--success-hover));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .download-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--success-hover), var(--info-color));
+            transition: all 0.4s ease-in-out;
+            z-index: -1;
+        }
+        
+        .download-btn:hover:before {
+            left: 0;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.1rem;
         }
         .vpn-notice h5 {
             color: #856404;
@@ -81,63 +396,19 @@
 <body>
     <div class="loading" id="loadingIndicator">
         <div class="loading-content">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div class="spinner-container">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
             <h5 class="mt-3">Scraping data, please wait...</h5>
+            <p class="text-muted">We're collecting business information for you</p>
+            <div class="progress mt-3">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+            </div>
         </div>
     </div>
-    <div class="container">
-        <div class="card">
-            <div class="card-body p-4">
-                <h2 class="text-center mb-4">Business Data Scraper</h2>
-                
-                {% if vpn_required %}
-                <div class="vpn-notice mb-4">
-                    <h5><i class="fas fa-shield-alt"></i> VPN Recommended</h5>
-                    <p>For better scraping results, especially for international websites:</p>
-                    <ul>
-                        <li>Using a VPN is recommended for better access</li>
-                        <li>The scraper will work with any VPN location</li>
-                        <li>For Yell.com, a UK-based VPN connection might give better results</li>
-                        <li>The scraper will automatically detect your connection type and location</li>
-                    </ul>
-                    <div class="mt-3">
-                        <h6><i class="fas fa-download"></i> Free VPN Options for Windows:</h6>
-                        <ol>
-                            <li>
-                                <strong>ProtonVPN</strong> (Recommended):
-                                <ul>
-                                    <li>Download from: <a href="https://protonvpn.com/download" target="_blank">protonvpn.com</a></li>
-                                    <li>Create a free account</li>
-                                    <li>Connect to any available server</li>
-                                    <li>Unlimited data, multiple locations</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Windscribe</strong>:
-                                <ul>
-                                    <li>Download from: <a href="https://windscribe.com/download" target="_blank">windscribe.com</a></li>
-                                    <li>Sign up for free (10GB monthly)</li>
-                                    <li>Multiple server locations available</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Hide.me</strong>:
-                                <ul>
-                                    <li>Download from: <a href="https://hide.me/en/software/windows" target="_blank">hide.me</a></li>
-                                    <li>Free tier with multiple locations</li>
-                                    <li>Easy to use interface</li>
-                                </ul>
-                            </li>
-                        </ol>
-                        <div class="alert alert-info mt-2">
-                            <strong>Tip:</strong> The scraper will automatically detect and use your VPN connection. Try different server locations if you encounter any access issues.
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                
+    
                 <div id="statusMessage" class="alert" role="alert"></div>
                 {% if error %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -165,26 +436,112 @@
                         <select class="form-select" id="platform" name="platform" required>
                             <option value="justdial">JustDial (India)</option>
                             <option value="sulekha">Sulekha (India)</option>
-                            <option value="yell">Yell (UK)</option>
+                            <option value="yellowpages">Yellow Pages (Global)</option>
                             <option value="all">All Platforms</option>
                         </select>
                         <div class="platform-info mt-2">
                             <strong>Platform Coverage:</strong><br>
                             - JustDial: Indian businesses<br>
                             - Sulekha: Indian businesses<br>
-                            - Yell: International businesses (VPN recommended for better access)
+                            - Yellow Pages: Global businesses (US, UK, Canada, etc.)<br>
                         </div>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Start Scraping</button>
                     </div>
                 </form>
+                
+                <!-- Results container -->
+                <div id="results" class="mt-4"></div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results') || document.createElement('div');
+            resultsDiv.id = 'results';
+            resultsDiv.className = 'mt-4';
+            resultsDiv.innerHTML = '';
+            
+            // Append to status message if it doesn't exist in DOM
+            if (!document.getElementById('results')) {
+                document.getElementById('statusMessage').after(resultsDiv);
+            }
+
+            if (data.success && data.data && data.data.length > 0) {
+                const count = data.count || data.data.length;
+                const resultHeader = document.createElement('h4');
+                resultHeader.textContent = `Found ${count} businesses`;
+                resultsDiv.appendChild(resultHeader);
+
+                // Create table
+                const table = document.createElement('table');
+                table.className = 'table table-striped table-hover';
+
+                // Create header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                const columns = ['Name', 'Phone', 'Address', 'Categories', 'Website'];
+                
+                columns.forEach(col => {
+                    const th = document.createElement('th');
+                    th.textContent = col;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Create table body
+                const tbody = document.createElement('tbody');
+                data.data.forEach(item => {
+                    const row = document.createElement('tr');
+                    
+                    // Name cell
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = item.name || '';
+                    row.appendChild(nameCell);
+                    
+                    // Phone cell
+                    const phoneCell = document.createElement('td');
+                    phoneCell.textContent = item.phone || '';
+                    row.appendChild(phoneCell);
+                    
+                    // Address cell
+                    const addressCell = document.createElement('td');
+                    addressCell.textContent = item.address || '';
+                    row.appendChild(addressCell);
+                    
+                    // Categories cell
+                    const categoriesCell = document.createElement('td');
+                    categoriesCell.textContent = item.categories || '';
+                    row.appendChild(categoriesCell);
+                    
+                    // Website cell
+                    const websiteCell = document.createElement('td');
+                    if (item.website) {
+                        const link = document.createElement('a');
+                        link.href = item.website;
+                        link.innerHTML = '<i class="fas fa-external-link-alt"></i> Visit';
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        websiteCell.appendChild(link);
+                    }
+                    row.appendChild(websiteCell);
+                    
+                    tbody.appendChild(row);
+                });
+                
+                table.appendChild(tbody);
+                resultsDiv.appendChild(table);
+            } else {
+                const noResults = document.createElement('p');
+                noResults.className = 'alert alert-warning';
+                noResults.textContent = 'No results found';
+                resultsDiv.appendChild(noResults);
+            }
+        }
         document.getElementById('scrapeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -197,25 +554,80 @@
             // Get form data
             const formData = new FormData(this);
             
+            // Get form data values
+            const platform = formData.get('platform');
+            const query = formData.get('search_query');
+            
+            // Prepare the request based on platform
+            let fetchUrl, fetchOptions;
+            if (platform === 'yellowpages') {
+                // Extract location from query (e.g., "restaurants in New York" -> "New York")
+                const locationMatch = query.match(/\s+in\s+([^,]+)(?:,|$)/);
+                const location = locationMatch ? locationMatch[1].trim() : '';
+                const searchTerms = query.replace(/\s+in\s+[^,]+(?:,|$)/, '').trim();
+                
+                fetchUrl = `/scrape_yellowpages?query=${encodeURIComponent(searchTerms)}&location=${encodeURIComponent(location)}`;
+                fetchOptions = { method: 'GET' };
+            } else {
+                fetchUrl = '/scrape';
+                fetchOptions = { method: 'POST', body: formData };
+            }
+            
             // Send AJAX request
-            fetch('/scrape', {
-                method: 'POST',
-                body: formData
-            })
+            fetch(fetchUrl, fetchOptions)
             .then(response => response.json())
             .then(data => {
-                if (data.status === 'success') {
+                // Hide loading indicator
+                loadingIndicator.style.display = 'none';
+                
+                // Handle success for both JustDial and Yellow Pages
+                if ((data.success || data.status === 'success') && 
+                    ((data.data && data.data.length > 0) || data.count > 0)) {
+                    
                     // Show success message
                     statusMessage.className = 'alert alert-success';
-                    statusMessage.textContent = data.message;
+                    const count = data.count || (data.data ? data.data.length : 0);
+                    statusMessage.textContent = `Successfully found ${count} businesses`;
                     statusMessage.style.display = 'block';
                     
-                    // Trigger file download
-                    window.location.href = data.download_url;
+                    // Display results
+                    displayResults(data);
+                    
+                    // Create results div if it doesn't exist
+                    const resultsDiv = document.getElementById('results');
+                    
+                    // Handle Excel download for Yellow Pages
+                    if (platform === 'yellowpages' && data.excel_file) {
+                        const downloadUrl = `/download_excel/${data.excel_file}`;
+                        // Add download button
+                        const downloadBtn = document.createElement('a');
+                        downloadBtn.href = downloadUrl;
+                        downloadBtn.className = 'download-btn';
+                        downloadBtn.innerHTML = '<i class="fas fa-file-excel"></i> Download Excel File';
+                        downloadBtn.setAttribute('download', '');
+                        resultsDiv.insertBefore(downloadBtn, resultsDiv.firstChild);
+                    }
+                    
+                    // Handle Excel download for JustDial
+                    if (platform !== 'yellowpages' && data.download_url) {
+                        const downloadUrl = data.download_url;
+                        // Add download button
+                        const downloadBtn = document.createElement('a');
+                        downloadBtn.href = downloadUrl;
+                        downloadBtn.className = 'download-btn';
+                        downloadBtn.innerHTML = '<i class="fas fa-file-excel"></i> Download Excel File';
+                        downloadBtn.setAttribute('download', '');
+                        resultsDiv.insertBefore(downloadBtn, resultsDiv.firstChild);
+                        
+                        // Automatically trigger download
+                        setTimeout(() => {
+                            window.location.href = downloadUrl;
+                        }, 1000);
+                    }
                 } else {
                     // Show error message
                     statusMessage.className = 'alert alert-danger';
-                    statusMessage.textContent = data.message;
+                    statusMessage.textContent = data.error || data.message || 'An error occurred';
                     statusMessage.style.display = 'block';
                 }
             })
@@ -234,7 +646,7 @@
         // Update platform info based on selection
         document.getElementById('platform').addEventListener('change', function() {
             const vpnNotice = document.querySelector('.vpn-notice');
-            if (this.value === 'yell' || this.value === 'all') {
+            if (this.value === 'all') {
                 vpnNotice.style.display = 'block';
             } else {
                 vpnNotice.style.display = 'none';
