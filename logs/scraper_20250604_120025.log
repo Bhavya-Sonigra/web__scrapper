@@ -1,0 +1,15 @@
+2025-06-04 12:00:25,098 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-04 12:00:25,099 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-04 12:00:25,099 [INFO] [app.py:63] - Operating System: win32
+2025-06-04 12:00:25,100 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-04 12:00:27,692 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: Music store, Location: UK
+2025-06-04 12:00:27,693 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-06-04 12:00:27,695 [INFO] [yellowpages_scraper.py:55] - Setting up Chrome WebDriver...
+2025-06-04 12:00:34,428 [INFO] [yellowpages_scraper.py:74] - Chrome WebDriver is ready.
+2025-06-04 12:00:34,429 [INFO] [app.py:1462] - Starting Yellow Pages scraping...
+2025-06-04 12:00:34,429 [INFO] [yellowpages_scraper.py:175] - Navigating to page 1: https://www.yellowpages.com/uk/Music store
+2025-06-04 12:00:48,249 [WARNING] [yellowpages_scraper.py:185] - No results found
+2025-06-04 12:00:48,250 [INFO] [yellowpages_scraper.py:242] - Scraping session ended.
+2025-06-04 12:00:49,251 [INFO] [app.py:1465] - Cleaning up scraper resources...
+2025-06-04 12:00:51,356 [INFO] [yellowpages_scraper.py:248] - WebDriver closed.
+2025-06-04 12:00:51,356 [WARNING] [app.py:1469] - No results found in Yellow Pages scraping

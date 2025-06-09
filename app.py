@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, send_file, url_for, jsonify
+from flask import Flask, render_template, request, jsonify, send_file, url_for, jsonify
+from flask_cors import CORS  # Add CORS import
 from bs4 import BeautifulSoup
-import requests
 import pandas as pd
 import os
 import asyncio
@@ -18,10 +18,20 @@ from logging.handlers import RotatingFileHandler
 import sys
 import traceback
 from functools import wraps
-import re
-from yellowpages_scraper import YellowPagesScraper
+from scrapers.yellowpages_scraper import YellowPagesScraper
+from scrapers.sulekha_scraper import SulekhaScraper
+from scrapers.justdial_scraper import JustDialScraper
+
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
+# Add configuration for timeouts and other settings
+app.config.update(
+    SEND_FILE_MAX_AGE_DEFAULT=0,
+    MAX_CONTENT_LENGTH=16 * 1024 * 1024,  # 16MB max file size
+    CORS_HEADERS='Content-Type'
+)
 
 # ScraperAPI configuration
 SCRAPER_API_KEY = os.getenv('SCRAPER_API_KEY', '')
@@ -960,300 +970,12 @@ def extract_business_data(listing, platform):
         return None
 
 async def scrape_sulekha(search_query, location=None):
-    import re  # Import re for text cleaning
-    
-    # Initialize empty data list
-    data = []
-    
-    # Use global SCRAPER_API_KEY
-    if not SCRAPER_API_KEY:
-        logger.error("SCRAPER_API_KEY not set in environment variables")
-        return data
-    
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Encoding': 'gzip, deflate',
-        'Connection': 'keep-alive'
-    }
-    
-    try:
-        # Store original values for display
-        display_location = location
-        display_query = search_query
-        
-        # Clean and format search terms
-        search_query = search_query.lower().strip()
-        
-        # Common category corrections
-        category_corrections = {
-            # Education
-            'college': 'colleges',
-            'colleges': 'colleges',
-            'university': 'colleges',
-            'universities': 'colleges',
-            'college & university': 'colleges',
-            'colleges & universities': 'colleges',
-            'engineering college': 'engineering-colleges',
-            'medical college': 'medical-colleges',
-            'business school': 'business-schools',
-            'mba college': 'business-schools',
-            
-            # Music related
-            'guitar shop': 'musical-instruments',
-            'guitar store': 'musical-instruments',
-            'music shop': 'musical-instruments',
-            'musical instruments': 'musical-instruments',
-            'musical store': 'musical-instruments',
-            'guitar class': 'guitar-classes',
-            'guitar classes': 'guitar-classes',
-            'guitar training': 'guitar-classes',
-            
-            # Other categories
-            'restaurant': 'restaurants',
-            'hotels': 'hotels-resorts',
-            'hospital': 'hospitals',
-            'school': 'schools',
-            'gym': 'gyms-fitness-centres',
-            'fitness': 'gyms-fitness-centres',
-            'salon': 'beauty-parlours',
-            'beauty parlour': 'beauty-parlours',
-            'beauty parlor': 'beauty-parlours',
-            'car repair': 'car-repair-services',
-            'bike repair': 'bike-repair-services',
-            'plumber': 'plumbers',
-            'electrician': 'electricians'
-        }
-        
-        # Check if the search query matches any category
-        normalized_category = None
-        search_query_clean = re.sub(r'[^a-z0-9\s&]', '', search_query)
-        for key, value in category_corrections.items():
-            if key in search_query_clean:
-                normalized_category = value
-                break
-        
-        if not normalized_category:
-            # If no direct match, use the cleaned search query
-            normalized_category = re.sub(r'[^a-z0-9\s-]', '', search_query)
-            normalized_category = re.sub(r'\s+', '-', normalized_category)
-        
-        # Store original values for display
-        display_location = location
-        display_query = search_query
-        
-        # Clean and format search terms
-        search_query = search_query.lower().strip().replace(' ', '-')
-        
-        # Construct search URLs
-        if location:
-            # Clean and correct the location name
-            location_corrections = {
-                'banglore': 'bangalore',
-                'bengaluru': 'bangalore',
-                'bombay': 'mumbai',
-                'calcutta': 'kolkata',
-                'madras': 'chennai'
-            }
-            
-            location = location.lower().strip()
-            location_words = location.split()
-            corrected_location_words = [location_corrections.get(word, word) for word in location_words]
-            location = '-'.join(corrected_location_words)
-            
-            # Use Sulekha's location-specific URL pattern
-            search_urls = [
-                f"https://www.sulekha.com/{location}/{search_query}"
-            ]
-            # Add a delay between requests to avoid rate limiting
-            await asyncio.sleep(2)
-        else:
-            search_urls = [
-                f"https://www.sulekha.com/{search_query}"
-            ]
-            # Add a delay between requests to avoid rate limiting
-            await asyncio.sleep(2)      
-        print(f"Attempting to scrape Sulekha with category: {display_query} in {display_location if display_location else 'all locations'}")
-        
-        async with aiohttp.ClientSession() as session:
-            for search_url in search_urls:
-                try:
-                    print(f"Trying URL: {search_url}")
-                    # Construct ScraperAPI URL
-                    scraper_url = f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={quote(search_url)}&render=true'
-                    async with session.get(scraper_url, headers=headers, timeout=60) as response:
-                        if response.status == 200:
-                            content = await response.text()
-                            print(f"Successfully fetched content from {search_url} (length: {len(content)})")
-                            
-                            # Parse the content
-                            soup = BeautifulSoup(content, 'html.parser')
-                            
-                            # Look for different types of listing containers
-                            listings = []
-                            
-                            # Try multiple container patterns
-                            possible_containers = [
-                                # Search results containers
-                                {'class': ['search-result', 'result-item', 'biz-list-item', 'search-list-item']},
-                                # Business listing containers
-                                {'class': ['business-unit', 'vendor-card', 'business-info', 'college-info']},
-                                # Education specific containers
-                                {'class': ['college-item', 'university-item', 'education-listing']},
-                                # Schema.org listings
-                                {'itemtype': ['http://schema.org/LocalBusiness', 'http://schema.org/CollegeOrUniversity']},
-                                # Generic listing containers
-                                {'class': lambda x: x and any(term in str(x).lower() 
-                                    for term in ['business', 'vendor', 'listing', 'result', 'college', 'university', 'education'])}
-                            ]
-                            
-                            for container in possible_containers:
-                                found = soup.find_all(['div', 'article', 'section', 'li'], container)
-                                if found:
-                                    print(f"Found {len(found)} listings with {container}")
-                                    listings.extend(found)
-                            
-                            # Also try finding links to institution pages
-                            institution_links = soup.find_all('a', href=lambda x: x and any(term in str(x).lower() 
-                                for term in ['/college', '/university', '/education', '/school', normalized_category]))
-                            
-                            if institution_links:
-                                print(f"Found {len(institution_links)} institution links")
-                                for link in institution_links:
-                                    try:
-                                        institution_url = link.get('href')
-                                        if not institution_url.startswith('http'):
-                                            institution_url = f"https://www.sulekha.com{institution_url}"
-                                        
-                                        print(f"Fetching institution details from: {institution_url}")
-                                        # Construct ScraperAPI URL for institution
-                                        institution_scraper_url = f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={quote(institution_url)}&render=true'
-                                        async with session.get(institution_scraper_url, headers=headers) as institution_response:
-                                            if institution_response.status == 200:
-                                                institution_content = await institution_response.text()
-                                                institution_soup = BeautifulSoup(institution_content, 'html.parser')
-                                                institution_data = await process_listing(institution_soup, 'sulekha')
-                                                if institution_data and institution_data['Company Name']:
-                                                    data.append(institution_data)
-                                                    print(f"Found institution: {institution_data['Company Name']}")
-                                    except Exception as e:
-                                        print(f"Error processing institution link: {str(e)}")
-                                        continue
-                            
-                            # Find all business listings
-                            listings = soup.find_all('div', class_='list-item')
-                            print(f"Found {len(listings)} listings on {search_url}")
-                            
-                            if not listings:
-                                # Try alternative listing container
-                                listings = soup.find_all('div', class_='business-unit')
-                                print(f"Found {len(listings)} alternative listings on {search_url}")
-                            
-                            if not listings:
-                                print(f"No businesses found on {search_url}")
-                                continue
-                                
-                            # Verify location match more strictly
-                            page_location = soup.find('span', class_='location') or soup.find('div', class_='location')
-                            if page_location:
-                                page_loc_text = page_location.text.lower()
-                                if location and not any(loc in page_loc_text for loc in [location.lower(), display_location.lower()]):
-                                    print(f"Location mismatch. Expected: {display_location}, Found: {page_location.text}")
-                                    continue
-                            else:
-                                # If no location found on page, check the URL path
-                                current_url = str(response.url)
-                                if location and location.lower() not in current_url.lower():
-                                    print(f"URL location mismatch. Expected: {location} in {current_url}")
-                                    continue
-                            
-                            # Process each listing
-                            for listing in listings:
-                                try:
-                                    # For search results, try to find the main content div
-                                    main_content = listing.find(['div', 'article'], {'class': ['content', 'details', 'info']})
-                                    if main_content:
-                                        listing = main_content
-                                    
-                                    # Extract address - try multiple possible classes
-                                    address_elem = listing.find('div', class_=['address', 'baddress'])
-                                    address = address_elem.text.strip() if address_elem else None
-                                    
-                                    # Extract phone number - try multiple possible classes
-                                    phone_elem = listing.find(['span', 'div'], class_=['contact-number', 'contact', 'phone'])
-                                    phone = phone_elem.text.strip() if phone_elem else None
-                                    
-                                    # Extract rating - try multiple possible classes
-                                    rating_elem = listing.find(['span', 'div'], class_=['rating', 'brating'])
-                                    if rating_elem:
-                                        rating_text = rating_elem.text.strip()
-                                        # Extract numeric rating if present
-                                        import re
-                                        rating_match = re.search(r'([0-9.]+)', rating_text)
-                                        rating = rating_match.group(1) if rating_match else rating_text
-                                    else:
-                                        rating = None
-                                    
-                                    # Create business data dictionary
-                                    business_data = {
-                                        'Name': business_name,
-                                        'URL': business_url,
-                                        'Address': address,
-                                        'Phone': phone,
-                                        'Rating': rating,
-                                        'Platform': 'Sulekha',
-                                        'Location': display_location if location else '',
-                                        'Category': search_query
-                                    }
-                                    # Clean up empty fields and add to data list if not duplicate
-                                    business_data = {k: v for k, v in business_data.items() if v}
-                                    
-                                    if business_data.get('Name'):
-                                        # Check if this is a new entry
-                                        is_duplicate = False
-                                        for existing in data:
-                                            if existing.get('Name') == business_data['Name']:
-                                                is_duplicate = True
-                                                break
-                                        
-                                        if not is_duplicate:
-                                            data.append(business_data)
-                                            print(f"Added business: {business_data['Name']}")
-                                except Exception as e:
-                                    print(f"Error processing listing: {str(e)}")
-                                    continue
-                            
-                            if data:
-                                print(f"Found {len(data)} businesses on {search_url}")
-                            else:
-                                print(f"No businesses found on {search_url}")
-                            
-                        else:
-                            print(f"Failed to fetch {search_url}. Status: {response.status}")
-                            if response.status == 403:
-                                print("Access forbidden - might be blocked")
-                            elif response.status == 404:
-                                print("Page not found - trying alternative URL pattern")
-                                continue
-                            
-                except aiohttp.ClientError as e:
-                    print(f"Network error for {search_url}: {str(e)}")
-                    continue
-                except Exception as e:
-                    print(f"Error processing {search_url}: {str(e)}")
-                    continue
-                
-                # Add delay between requests to avoid rate limiting
-                await asyncio.sleep(2)
-    
-    except Exception as e:
-        print(f"Error scraping Sulekha: {str(e)}")
-        import traceback
-        print(traceback.format_exc())
-    
-    return data
+    # Initialize the scraper with the API key
+    scraper = SulekhaScraper(SCRAPER_API_KEY)
 
+    # Just call the internal scraper logic and return the data
+    data = await scraper.scrape(search_query, location)
+    return data
 
 @app.route('/', methods=['GET'])
 def index():
@@ -1343,12 +1065,16 @@ def scrape():
             
             filename = f"{safe_category}_{safe_location}_{safe_platform}_{timestamp}.xlsx"
             
+            # Ensure downloads directory exists
+            os.makedirs('downloads', exist_ok=True)
+            filepath = os.path.join('downloads', filename)
+            
             # Clean up old files before creating new one
             try:
                 current_time = datetime.now()
-                for f in os.listdir('.'):
+                for f in os.listdir('downloads'):
                     if f.endswith('.xlsx'):
-                        file_path = os.path.join('.', f)
+                        file_path = os.path.join('downloads', f)
                         # Remove files older than 1 hour
                         if current_time - datetime.fromtimestamp(os.path.getctime(file_path)) > timedelta(hours=1):
                             try:
@@ -1362,31 +1088,46 @@ def scrape():
             # Create DataFrame with all possible columns
             all_columns = set()
             for item in data:
-                all_columns.update(item.keys())
+                if isinstance(item, dict):  # Ensure item is a dictionary
+                    all_columns.update(item.keys())
             
             # Sort columns in a logical order
             column_order = [
-                'Company Name',
+                'Name',
                 'Phone',
                 'Email',
                 'Website',
-                'Address',
+                'Address Line 1',
+                'Address Line 2',
+                'Owner Name',
                 'Rating',
                 'Reviews Count',
-                'Categories',
-                'About'
+                'Category',
+                'Categories',  # For YellowPages
+                'Description',
+                'Company Name',
+                'Source'  # For YellowPages
             ]
             
             # Add any additional columns that might exist
             remaining_columns = sorted(list(all_columns - set(column_order)))
             column_order.extend(remaining_columns)
             
-            # Create DataFrame with ordered columns
-            df = pd.DataFrame(data)
+            # Create DataFrame with ordered columns, handle empty data case
+            if not data:
+                df = pd.DataFrame(columns=['Name'])  # Create empty DataFrame with at least Name column
+            else:
+                df = pd.DataFrame(data)
+                
+                # Ensure all expected columns exist
+                for col in column_order:
+                    if col not in df.columns:
+                        df[col] = ''
             
             # Reorder columns (only include columns that exist in the data)
             existing_columns = [col for col in column_order if col in df.columns]
-            df = df[existing_columns]
+            if existing_columns:  # Only reorder if there are columns
+                df = df[existing_columns]
             
             # Clean up the data
             for col in df.columns:
@@ -1402,7 +1143,7 @@ def scrape():
                     df[col] = df[col].str.replace('  ', ' ')
             
             # Remove duplicates
-            duplicate_subset = ['Company Name']
+            duplicate_subset = ['Name']
             if 'Phone' in df.columns:
                 duplicate_subset.append('Phone')
             if 'Address' in df.columns:
@@ -1411,7 +1152,7 @@ def scrape():
             df = df.drop_duplicates(subset=duplicate_subset, keep='first')
             
             # Create Excel writer object with xlsxwriter engine
-            writer = pd.ExcelWriter(filename, engine='xlsxwriter')
+            writer = pd.ExcelWriter(filepath, engine='xlsxwriter')
             
             # Write the dataframe to Excel
             df.to_excel(writer, index=False, sheet_name='Business Data')
@@ -1454,10 +1195,11 @@ def scrape():
             logger.info(f"Created Excel file: {filename} with {len(df)} unique entries")
             
             # Return JSON response with file download URL and stats
-            from flask import jsonify
             response_data = {
-                'status': 'success',
-                'message': f'Successfully scraped {len(df)} businesses',
+                'success': True,
+                'data': data,
+                'count': len(df),
+                'excel_file': filename,
                 'download_url': url_for('download_file', filename=filename),
                 'stats': {
                     'total_results': len(df),
@@ -1486,12 +1228,28 @@ def scrape():
 @app.route('/download/<filename>')
 def download_file(filename):
     try:
-        return send_file(filename, as_attachment=True, download_name=filename)
+        # Ensure the file is from the downloads directory and exists
+        if not filename.endswith('.xlsx'):
+            return jsonify({'error': 'Invalid file type'}), 400
+            
+        filepath = os.path.join('downloads', filename)
+        if not os.path.exists(filepath):
+            return jsonify({'error': f'File not found: {filepath}'}), 404
+            
+        logger.info(f"Sending Excel file: {filepath}")
+        return send_file(
+            filepath,
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            as_attachment=True,
+            download_name=filename
+        )
     except Exception as e:
+        logger.error(f"Error downloading file: {str(e)}")
         return jsonify({
             'status': 'error',
-            'message': f'Error downloading file: {str(e)}'
-        })
+            'message': f'Error downloading file: {str(e)}',
+            'filepath': filepath
+        }), 500
 
 class ProxyManager:
     def __init__(self):
@@ -1724,94 +1482,114 @@ async def make_request_with_session(session, url, headers):
 
 @app.route('/scrape_yellowpages')
 def scrape_yellowpages_route():
-    search_query = request.args.get('query', '')
-    location = request.args.get('location', '')
-    
-    logger.info(f"Received Yellow Pages scraping request - Query: {search_query}, Location: {location}")
-    
-    if not search_query or not location:
-        error_msg = 'Both query and location are required'
-        logger.error(f"Validation error: {error_msg}")
-        return jsonify({'error': error_msg}), 400
-        
     try:
-        logger.info("Initializing Yellow Pages scraper...")
+        query = request.args.get('query')
+        location = request.args.get('location')
+        
+        if not query or not location:
+            return jsonify({
+                'status': 'error',
+                'message': 'Both query and location parameters are required'
+            }), 400
+
+        logger.info(f"Starting Yellow Pages scraping...")
         scraper = YellowPagesScraper()
         
-        logger.info("Starting Yellow Pages scraping...")
-        results = scraper.scrape_yellowpages(search_query, location)
-        
-        logger.info("Cleaning up scraper resources...")
-        scraper.close()
-        
-        if results:
-            logger.info(f"Successfully found {len(results)} results")
+        try:
+            data = scraper.scrape_yellowpages(query, location)
             
-            # Create Excel file
+            if not data:
+                return jsonify({
+                    'status': 'error',
+                    'message': 'No results found'
+                }), 404
+
+            # Create downloads directory if it doesn't exist
+            if not os.path.exists('downloads'):
+                os.makedirs('downloads')
+
+            # Generate Excel file
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = f"yellowpages_results_{timestamp}.xlsx"
+            filename = f'yellowpages_results_{timestamp}.xlsx'
             filepath = os.path.join('downloads', filename)
+
+            # Create DataFrame with all possible columns
+            all_columns = set()
+            for item in data:
+                if isinstance(item, dict):  # Ensure item is a dictionary
+                    all_columns.update(item.keys())
+
+            # Sort columns in a logical order
+            column_order = [
+                'Name',
+                'Phone',
+                'Email',
+                'Website',
+                'Address Line 1',
+                'Address Line 2',
+                'Owner Name',
+                'Rating',
+                'Reviews Count',
+                'Category',
+                'Categories',
+                'Description',
+                'Company Name',
+                'Source'
+            ]
+
+            # Add any additional columns that might exist
+            remaining_columns = sorted(list(all_columns - set(column_order)))
+            column_order.extend(remaining_columns)
+
+            # Create DataFrame with ordered columns
+            df = pd.DataFrame(data)
             
-            # Ensure downloads directory exists
-            os.makedirs('downloads', exist_ok=True)
-            
-            # Convert results to DataFrame and save as Excel
-            df = pd.DataFrame(results)
-            df.to_excel(filepath, index=False)
+            # Reorder columns (only include columns that exist in the DataFrame)
+            existing_columns = [col for col in column_order if col in df.columns]
+            df = df.reindex(columns=existing_columns)
+
+            # Save to Excel
+            df.to_excel(filepath, index=False, engine='openpyxl')
             logger.info(f"Results saved to Excel file: {filepath}")
-            
+
             return jsonify({
-                'success': True,
-                'data': results,
-                'count': len(results),
-                'excel_file': filename
+                'status': 'success',
+                'message': f'Successfully found {len(data)} results',
+                'filename': filename
             })
-        else:
-            logger.warning("No results found in Yellow Pages scraping")
+
+        except Exception as e:
+            logger.error(f"Error during scraping: {str(e)}")
+            logger.error(traceback.format_exc())
             return jsonify({
-                'success': False,
-                'error': 'No results found'
-            })
+                'status': 'error',
+                'message': f'Error during scraping: {str(e)}'
+            }), 500
             
+        finally:
+            scraper.cleanup()
+
     except Exception as e:
-        error_msg = str(e)
-        trace = traceback.format_exc()
-        logger.error(f"Error in Yellow Pages scraping: {error_msg}")
-        logger.error(f"Traceback: {trace}")
-        
-        # Return a more detailed error response
+        logger.error(f"Error in route handler: {str(e)}")
+        logger.error(traceback.format_exc())
         return jsonify({
-            'success': False,
-            'error': error_msg,
-            'details': {
-                'traceback': trace,
-                'query': search_query,
-                'location': location
-            }
+            'status': 'error',
+            'message': f'Server error: {str(e)}'
         }), 500
 
-@app.route('/download_excel/<filename>')
-def download_excel_file(filename):
-    try:
-        # Ensure the file is from the downloads directory and exists
-        if not filename.endswith('.xlsx'):
-            return jsonify({'error': 'Invalid file type'}), 400
-            
-        filepath = os.path.join('downloads', filename)
-        if not os.path.exists(filepath):
-            return jsonify({'error': 'File not found'}), 404
-            
-        logger.info(f"Sending Excel file: {filepath}")
-        return send_file(
-            filepath,
-            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            as_attachment=True,
-            download_name=filename
-        )
-        
-    except Exception as e:
-        logger.error(f"Error downloading Excel file: {str(e)}")
-        return jsonify({'error': 'Error downloading file'}), 500
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({'error': 'Not Found', 'message': str(error)}), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({'error': 'Internal Server Error', 'message': str(error)}), 500
+
+@app.errorhandler(Exception)
+def handle_exception(error):
+    logger.error(f"Unhandled exception: {str(error)}")
+    logger.error(traceback.format_exc())
+    return jsonify({'error': 'Server Error', 'message': 'An unexpected error occurred'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

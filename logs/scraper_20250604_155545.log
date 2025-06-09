@@ -1,0 +1,9 @@
+2025-06-04 15:55:45,811 [INFO] [app.py:60] - === Starting new scraping session ===
+2025-06-04 15:55:45,812 [INFO] [app.py:61] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-04 15:55:45,812 [INFO] [app.py:62] - Operating System: win32
+2025-06-04 15:55:45,812 [INFO] [app.py:63] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-04 15:56:03,672 [INFO] [yellowpages_scraper.py:58] - Setting up Chrome WebDriver...
+2025-06-04 15:56:04,907 [INFO] [yellowpages_scraper.py:80] - Chrome WebDriver is ready.
+2025-06-04 15:56:04,923 [INFO] [yellowpages_scraper.py:181] - Navigating to page 1: https://www.yellowpages.com/guajrat/hotels
+2025-06-04 15:56:18,722 [WARNING] [yellowpages_scraper.py:191] - No results found
+2025-06-04 15:56:18,723 [INFO] [yellowpages_scraper.py:248] - Scraping session ended.

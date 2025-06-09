@@ -483,7 +483,17 @@
                 // Create header
                 const thead = document.createElement('thead');
                 const headerRow = document.createElement('tr');
-                const columns = ['Name', 'Phone', 'Address', 'Categories', 'Website'];
+                
+                // Determine columns based on platform
+                let columns;
+                const platform = document.getElementById('platform').value;
+                if (platform === 'justdial') {
+                    columns = ['Name', 'Phone', 'Address', 'Rating', 'Reviews', 'Category'];
+                } else if (platform === 'yellowpages') {
+                    columns = ['Name', 'Phone', 'Address', 'Categories', 'Website'];
+                } else {
+                    columns = ['Name', 'Phone', 'Address', 'Description', 'Category'];
+                }
                 
                 columns.forEach(col => {
                     const th = document.createElement('th');
@@ -500,35 +510,52 @@
                     
                     // Name cell
                     const nameCell = document.createElement('td');
-                    nameCell.textContent = item.name || '';
+                    nameCell.textContent = item.Name || '';
                     row.appendChild(nameCell);
                     
                     // Phone cell
                     const phoneCell = document.createElement('td');
-                    phoneCell.textContent = item.phone || '';
+                    phoneCell.textContent = item.Phone || '';
                     row.appendChild(phoneCell);
                     
                     // Address cell
                     const addressCell = document.createElement('td');
-                    addressCell.textContent = item.address || '';
+                    addressCell.textContent = item.Address || '';
                     row.appendChild(addressCell);
                     
-                    // Categories cell
-                    const categoriesCell = document.createElement('td');
-                    categoriesCell.textContent = item.categories || '';
-                    row.appendChild(categoriesCell);
+                    // Fourth column (Rating/Description/Categories)
+                    const fourthCell = document.createElement('td');
+                    if (platform === 'justdial') {
+                        fourthCell.textContent = item.Rating || '';
+                    } else if (platform === 'yellowpages') {
+                        fourthCell.textContent = item.Categories || '';
+                    } else {
+                        fourthCell.textContent = item.Description || '';
+                    }
+                    row.appendChild(fourthCell);
                     
-                    // Website cell
-                    const websiteCell = document.createElement('td');
-                    if (item.website) {
+                    // Fifth column (Reviews/Website/Category)
+                    const fifthCell = document.createElement('td');
+                    if (platform === 'justdial') {
+                        fifthCell.textContent = item.Reviews || '';
+                    } else if (platform === 'yellowpages' && item.Website) {
                         const link = document.createElement('a');
-                        link.href = item.website;
+                        link.href = item.Website;
                         link.innerHTML = '<i class="fas fa-external-link-alt"></i> Visit';
                         link.target = '_blank';
                         link.rel = 'noopener noreferrer';
-                        websiteCell.appendChild(link);
+                        fifthCell.appendChild(link);
+                    } else {
+                        fifthCell.textContent = item.Category || '';
                     }
-                    row.appendChild(websiteCell);
+                    row.appendChild(fifthCell);
+                    
+                    // Sixth column (Category for JustDial)
+                    if (platform === 'justdial') {
+                        const sixthCell = document.createElement('td');
+                        sixthCell.textContent = item.Category || '';
+                        row.appendChild(sixthCell);
+                    }
                     
                     tbody.appendChild(row);
                 });
@@ -596,21 +623,9 @@
                     // Create results div if it doesn't exist
                     const resultsDiv = document.getElementById('results');
                     
-                    // Handle Excel download for Yellow Pages
-                    if (platform === 'yellowpages' && data.excel_file) {
-                        const downloadUrl = `/download_excel/${data.excel_file}`;
-                        // Add download button
-                        const downloadBtn = document.createElement('a');
-                        downloadBtn.href = downloadUrl;
-                        downloadBtn.className = 'download-btn';
-                        downloadBtn.innerHTML = '<i class="fas fa-file-excel"></i> Download Excel File';
-                        downloadBtn.setAttribute('download', '');
-                        resultsDiv.insertBefore(downloadBtn, resultsDiv.firstChild);
-                    }
-                    
-                    // Handle Excel download for JustDial
-                    if (platform !== 'yellowpages' && data.download_url) {
-                        const downloadUrl = data.download_url;
+                    // Handle Excel download for any platform
+                    if (data.download_url || (data.excel_file && platform === 'yellowpages')) {
+                        const downloadUrl = data.download_url || `/download_excel/${data.excel_file}`;
                         // Add download button
                         const downloadBtn = document.createElement('a');
                         downloadBtn.href = downloadUrl;

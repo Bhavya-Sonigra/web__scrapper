@@ -1,0 +1,54 @@
+2025-06-09 13:08:36,594 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-09 13:08:36,595 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 13:08:36,595 [INFO] [app.py:63] - Operating System: win32
+2025-06-09 13:08:36,596 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 13:08:51,930 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-09 13:08:51,932 [INFO] [app.py:988] - Raw search query: hotels in baroda
+2025-06-09 13:08:51,933 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-09 13:08:51,934 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-09 13:08:51,935 [INFO] [app.py:998] - Parsed location: Baroda
+2025-06-09 13:08:51,937 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-09 13:08:51,938 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Baroda
+2025-06-09 13:08:51,939 [INFO] [app.py:572] - Starting scrape for query: hotels in baroda
+2025-06-09 13:08:51,940 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/baroda/hotels-in-baroda
+2025-06-09 13:08:52,992 [INFO] [app.py:612] - Found 10 listings on page 1
+2025-06-09 13:08:55,042 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/baroda/hotels-in-baroda/page-2
+2025-06-09 13:08:55,308 [INFO] [app.py:612] - Found 0 listings on page 2
+2025-06-09 13:08:55,308 [WARNING] [app.py:631] - No data found on page 2
+2025-06-09 13:08:57,312 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/baroda/hotels-in-baroda/page-3
+2025-06-09 13:08:58,421 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-09 13:09:00,456 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/baroda/hotels-in-baroda/page-4
+2025-06-09 13:09:01,958 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-09 13:09:03,996 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/baroda/hotels-in-baroda/page-5
+2025-06-09 13:09:04,298 [INFO] [app.py:612] - Found 0 listings on page 5
+2025-06-09 13:09:04,299 [WARNING] [app.py:631] - No data found on page 5
+2025-06-09 13:09:06,316 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/baroda/hotels-in-baroda/page-6
+2025-06-09 13:09:06,580 [INFO] [app.py:612] - Found 0 listings on page 6
+2025-06-09 13:09:06,580 [WARNING] [app.py:631] - No data found on page 6
+2025-06-09 13:09:08,589 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/baroda/hotels-in-baroda/page-7
+2025-06-09 13:09:10,155 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-09 13:09:12,194 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/baroda/hotels-in-baroda/page-8
+2025-06-09 13:09:13,637 [INFO] [app.py:612] - Found 10 listings on page 8
+2025-06-09 13:09:15,679 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/baroda/hotels-in-baroda/page-9
+2025-06-09 13:09:17,076 [INFO] [app.py:612] - Found 10 listings on page 9
+2025-06-09 13:09:19,112 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/baroda/hotels-in-baroda/page-10
+2025-06-09 13:09:20,403 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-09 13:09:22,497 [INFO] [app.py:659] - Generating scraping report...
+2025-06-09 13:09:22,504 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 70,
+  "session_duration": 30.557933,
+  "errors": []
+}
+2025-06-09 13:09:22,508 [INFO] [app.py:85] - Function scrape_justdial took 30.57 seconds to execute
+2025-06-09 13:09:22,510 [INFO] [app.py:1037] - 
+Scraping completed. Found 70 results
+2025-06-09 13:09:22,784 [INFO] [app.py:1184] - Created Excel file: hotels_baroda_justdial_20250609_130922.xlsx with 11 unique entries
+2025-06-09 13:09:23,818 [INFO] [app.py:1228] - Sending Excel file: downloads\hotels_baroda_justdial_20250609_130922.xlsx

@@ -1,0 +1,10 @@
+2025-06-09 13:13:12,258 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-09 13:13:12,259 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 13:13:12,260 [INFO] [app.py:63] - Operating System: win32
+2025-06-09 13:13:12,260 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 13:13:13,251 [INFO] [app.py:1478] - Received Yellow Pages scraping request - Query: hotels, Location: london
+2025-06-09 13:13:13,252 [INFO] [app.py:1486] - Initializing Yellow Pages scraper...
+2025-06-09 13:13:13,254 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-06-09 13:13:16,014 [INFO] [yellowpages_scraper.py:76] - Chrome WebDriver is ready.
+2025-06-09 13:13:16,017 [INFO] [app.py:1489] - Starting Yellow Pages scraping...
+2025-06-09 13:13:16,022 [INFO] [yellowpages_scraper.py:177] - Navigating to page 1: https://www.yellowpages.com/london/hotels

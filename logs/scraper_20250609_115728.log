@@ -1,0 +1,144 @@
+2025-06-09 11:57:28,292 [INFO] [app.py:62] - === Starting new scraping session ===
+2025-06-09 11:57:28,292 [INFO] [app.py:63] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 11:57:28,293 [INFO] [app.py:64] - Operating System: win32
+2025-06-09 11:57:28,293 [INFO] [app.py:65] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 12:10:45,504 [INFO] [app.py:988] - 
+=== Starting new scraping request ===
+2025-06-09 12:10:45,505 [INFO] [app.py:989] - Raw search query: hotels in nathdwara
+2025-06-09 12:10:45,508 [INFO] [app.py:990] - Selected platform: justdial
+2025-06-09 12:10:45,508 [INFO] [app.py:998] - Parsed category: Hotels
+2025-06-09 12:10:45,509 [INFO] [app.py:999] - Parsed location: Nathdwara
+2025-06-09 12:10:45,510 [INFO] [app.py:1015] - 
+Starting scraping process...
+2025-06-09 12:10:45,511 [INFO] [app.py:1017] - Scraping JustDial for Hotels in Nathdwara
+2025-06-09 12:10:45,513 [INFO] [app.py:573] - Starting scrape for query: hotels in nathdwara
+2025-06-09 12:10:45,514 [INFO] [app.py:583] - Fetching page 1: https://www.justdial.com/nathdwara/hotels-in-nathdwara
+2025-06-09 12:10:45,924 [INFO] [app.py:613] - Found 0 listings on page 1
+2025-06-09 12:10:45,925 [WARNING] [app.py:632] - No data found on page 1
+2025-06-09 12:10:47,927 [INFO] [app.py:583] - Fetching page 2: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-2
+2025-06-09 12:10:49,289 [INFO] [app.py:613] - Found 10 listings on page 2
+2025-06-09 12:10:51,322 [INFO] [app.py:583] - Fetching page 3: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-3
+2025-06-09 12:10:52,866 [INFO] [app.py:613] - Found 10 listings on page 3
+2025-06-09 12:10:54,927 [INFO] [app.py:583] - Fetching page 4: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-4
+2025-06-09 12:10:56,169 [INFO] [app.py:613] - Found 10 listings on page 4
+2025-06-09 12:10:58,210 [INFO] [app.py:583] - Fetching page 5: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-5
+2025-06-09 12:10:58,465 [INFO] [app.py:613] - Found 0 listings on page 5
+2025-06-09 12:10:58,465 [WARNING] [app.py:632] - No data found on page 5
+2025-06-09 12:11:00,478 [INFO] [app.py:583] - Fetching page 6: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-6
+2025-06-09 12:11:02,140 [INFO] [app.py:613] - Found 10 listings on page 6
+2025-06-09 12:11:04,193 [INFO] [app.py:583] - Fetching page 7: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-7
+2025-06-09 12:11:04,528 [INFO] [app.py:613] - Found 0 listings on page 7
+2025-06-09 12:11:04,529 [WARNING] [app.py:632] - No data found on page 7
+2025-06-09 12:11:06,534 [INFO] [app.py:583] - Fetching page 8: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-8
+2025-06-09 12:11:08,115 [INFO] [app.py:613] - Found 10 listings on page 8
+2025-06-09 12:11:10,162 [INFO] [app.py:583] - Fetching page 9: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-9
+2025-06-09 12:11:10,429 [INFO] [app.py:613] - Found 0 listings on page 9
+2025-06-09 12:11:10,430 [WARNING] [app.py:632] - No data found on page 9
+2025-06-09 12:11:12,438 [INFO] [app.py:583] - Fetching page 10: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-10
+2025-06-09 12:11:13,557 [INFO] [app.py:613] - Found 10 listings on page 10
+2025-06-09 12:11:15,608 [INFO] [app.py:660] - Generating scraping report...
+2025-06-09 12:11:15,609 [INFO] [app.py:662] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 60,
+  "session_duration": 30.095288,
+  "errors": []
+}
+2025-06-09 12:11:15,613 [INFO] [app.py:86] - Function scrape_justdial took 30.10 seconds to execute
+2025-06-09 12:11:15,615 [INFO] [app.py:1038] - 
+Scraping completed. Found 60 results
+2025-06-09 12:11:15,619 [INFO] [app.py:1077] - Removed old file: hotels_banglore_justdial_20250608_124008.xlsx
+2025-06-09 12:12:47,158 [INFO] [app.py:988] - 
+=== Starting new scraping request ===
+2025-06-09 12:12:47,159 [INFO] [app.py:989] - Raw search query: hotels in nathdwara
+2025-06-09 12:12:47,159 [INFO] [app.py:990] - Selected platform: justdial
+2025-06-09 12:12:47,160 [INFO] [app.py:998] - Parsed category: Hotels
+2025-06-09 12:12:47,161 [INFO] [app.py:999] - Parsed location: Nathdwara
+2025-06-09 12:12:47,162 [INFO] [app.py:1015] - 
+Starting scraping process...
+2025-06-09 12:12:47,163 [INFO] [app.py:1017] - Scraping JustDial for Hotels in Nathdwara
+2025-06-09 12:12:47,164 [INFO] [app.py:573] - Starting scrape for query: hotels in nathdwara
+2025-06-09 12:12:47,164 [INFO] [app.py:583] - Fetching page 1: https://www.justdial.com/nathdwara/hotels-in-nathdwara
+2025-06-09 12:12:48,180 [INFO] [app.py:613] - Found 10 listings on page 1
+2025-06-09 12:12:50,241 [INFO] [app.py:583] - Fetching page 2: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-2
+2025-06-09 12:12:51,117 [INFO] [app.py:613] - Found 10 listings on page 2
+2025-06-09 12:12:53,193 [INFO] [app.py:583] - Fetching page 3: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-3
+2025-06-09 12:12:54,542 [INFO] [app.py:613] - Found 10 listings on page 3
+2025-06-09 12:12:56,592 [INFO] [app.py:583] - Fetching page 4: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-4
+2025-06-09 12:12:57,651 [INFO] [app.py:613] - Found 10 listings on page 4
+2025-06-09 12:12:59,710 [INFO] [app.py:583] - Fetching page 5: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-5
+2025-06-09 12:13:00,849 [INFO] [app.py:613] - Found 10 listings on page 5
+2025-06-09 12:13:02,893 [INFO] [app.py:583] - Fetching page 6: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-6
+2025-06-09 12:13:04,436 [INFO] [app.py:613] - Found 10 listings on page 6
+2025-06-09 12:13:06,492 [INFO] [app.py:583] - Fetching page 7: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-7
+2025-06-09 12:13:07,666 [INFO] [app.py:613] - Found 10 listings on page 7
+2025-06-09 12:13:09,710 [INFO] [app.py:583] - Fetching page 8: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-8
+2025-06-09 12:13:11,099 [INFO] [app.py:613] - Found 10 listings on page 8
+2025-06-09 12:13:13,142 [INFO] [app.py:583] - Fetching page 9: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-9
+2025-06-09 12:13:14,595 [INFO] [app.py:613] - Found 10 listings on page 9
+2025-06-09 12:13:16,626 [INFO] [app.py:583] - Fetching page 10: https://www.justdial.com/nathdwara/hotels-in-nathdwara/page-10
+2025-06-09 12:13:17,596 [INFO] [app.py:613] - Found 10 listings on page 10
+2025-06-09 12:13:19,625 [INFO] [app.py:660] - Generating scraping report...
+2025-06-09 12:13:19,626 [INFO] [app.py:662] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 100,
+  "session_duration": 32.461388,
+  "errors": []
+}
+2025-06-09 12:13:19,629 [INFO] [app.py:86] - Function scrape_justdial took 32.47 seconds to execute
+2025-06-09 12:13:19,630 [INFO] [app.py:1038] - 
+Scraping completed. Found 100 results
+2025-06-09 12:14:33,435 [INFO] [app.py:988] - 
+=== Starting new scraping request ===
+2025-06-09 12:14:33,436 [INFO] [app.py:989] - Raw search query: hotels in ahmedabad
+2025-06-09 12:14:33,437 [INFO] [app.py:990] - Selected platform: justdial
+2025-06-09 12:14:33,438 [INFO] [app.py:998] - Parsed category: Hotels
+2025-06-09 12:14:33,438 [INFO] [app.py:999] - Parsed location: Ahmedabad
+2025-06-09 12:14:33,440 [INFO] [app.py:1015] - 
+Starting scraping process...
+2025-06-09 12:14:33,441 [INFO] [app.py:1017] - Scraping JustDial for Hotels in Ahmedabad
+2025-06-09 12:14:33,442 [INFO] [app.py:573] - Starting scrape for query: hotels in ahmedabad
+2025-06-09 12:14:33,443 [INFO] [app.py:583] - Fetching page 1: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad
+2025-06-09 12:14:34,946 [INFO] [app.py:613] - Found 10 listings on page 1
+2025-06-09 12:14:37,065 [INFO] [app.py:583] - Fetching page 2: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-2
+2025-06-09 12:14:38,131 [INFO] [app.py:613] - Found 10 listings on page 2
+2025-06-09 12:14:40,177 [INFO] [app.py:583] - Fetching page 3: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-3
+2025-06-09 12:14:41,237 [INFO] [app.py:613] - Found 10 listings on page 3
+2025-06-09 12:14:43,267 [INFO] [app.py:583] - Fetching page 4: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-4
+2025-06-09 12:14:44,375 [INFO] [app.py:613] - Found 10 listings on page 4
+2025-06-09 12:14:46,420 [INFO] [app.py:583] - Fetching page 5: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-5
+2025-06-09 12:14:47,518 [INFO] [app.py:613] - Found 10 listings on page 5
+2025-06-09 12:14:49,561 [INFO] [app.py:583] - Fetching page 6: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-6
+2025-06-09 12:14:51,234 [INFO] [app.py:613] - Found 10 listings on page 6
+2025-06-09 12:14:53,294 [INFO] [app.py:583] - Fetching page 7: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-7
+2025-06-09 12:14:54,368 [INFO] [app.py:613] - Found 10 listings on page 7
+2025-06-09 12:14:56,439 [INFO] [app.py:583] - Fetching page 8: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-8
+2025-06-09 12:14:57,747 [INFO] [app.py:613] - Found 10 listings on page 8
+2025-06-09 12:14:59,779 [INFO] [app.py:583] - Fetching page 9: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-9
+2025-06-09 12:15:00,805 [INFO] [app.py:613] - Found 10 listings on page 9
+2025-06-09 12:15:02,867 [INFO] [app.py:583] - Fetching page 10: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-10
+2025-06-09 12:15:03,905 [INFO] [app.py:613] - Found 10 listings on page 10
+2025-06-09 12:15:05,944 [INFO] [app.py:660] - Generating scraping report...
+2025-06-09 12:15:05,945 [INFO] [app.py:662] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 100,
+  "session_duration": 32.502155,
+  "errors": []
+}
+2025-06-09 12:15:05,948 [INFO] [app.py:86] - Function scrape_justdial took 32.51 seconds to execute
+2025-06-09 12:15:05,949 [INFO] [app.py:1038] - 
+Scraping completed. Found 100 results

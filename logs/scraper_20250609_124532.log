@@ -1,0 +1,4 @@
+2025-06-09 12:45:32,679 [INFO] [app.py:65] - === Starting new scraping session ===
+2025-06-09 12:45:32,683 [INFO] [app.py:66] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 12:45:32,684 [INFO] [app.py:67] - Operating System: win32
+2025-06-09 12:45:32,685 [INFO] [app.py:68] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper

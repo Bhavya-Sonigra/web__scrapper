@@ -1,0 +1,54 @@
+2025-06-09 13:11:03,523 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-09 13:11:03,523 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 13:11:03,524 [INFO] [app.py:63] - Operating System: win32
+2025-06-09 13:11:03,524 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 13:11:07,490 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-09 13:11:07,490 [INFO] [app.py:988] - Raw search query: hotels in baroda
+2025-06-09 13:11:07,491 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-09 13:11:07,491 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-09 13:11:07,492 [INFO] [app.py:998] - Parsed location: Baroda
+2025-06-09 13:11:07,493 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-09 13:11:07,493 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Baroda
+2025-06-09 13:11:07,494 [INFO] [app.py:572] - Starting scrape for query: hotels in baroda
+2025-06-09 13:11:07,494 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/baroda/hotels-in-baroda
+2025-06-09 13:11:08,858 [INFO] [app.py:612] - Found 10 listings on page 1
+2025-06-09 13:11:10,996 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/baroda/hotels-in-baroda/page-2
+2025-06-09 13:11:12,005 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-09 13:11:14,049 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/baroda/hotels-in-baroda/page-3
+2025-06-09 13:11:14,600 [INFO] [app.py:612] - Found 0 listings on page 3
+2025-06-09 13:11:14,602 [WARNING] [app.py:631] - No data found on page 3
+2025-06-09 13:11:16,617 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/baroda/hotels-in-baroda/page-4
+2025-06-09 13:11:17,981 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-09 13:11:20,016 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/baroda/hotels-in-baroda/page-5
+2025-06-09 13:11:21,115 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-09 13:11:23,163 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/baroda/hotels-in-baroda/page-6
+2025-06-09 13:11:24,815 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-09 13:11:26,856 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/baroda/hotels-in-baroda/page-7
+2025-06-09 13:11:28,019 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-09 13:11:30,051 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/baroda/hotels-in-baroda/page-8
+2025-06-09 13:11:31,060 [INFO] [app.py:612] - Found 10 listings on page 8
+2025-06-09 13:11:33,129 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/baroda/hotels-in-baroda/page-9
+2025-06-09 13:11:33,531 [INFO] [app.py:612] - Found 0 listings on page 9
+2025-06-09 13:11:33,532 [WARNING] [app.py:631] - No data found on page 9
+2025-06-09 13:11:35,535 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/baroda/hotels-in-baroda/page-10
+2025-06-09 13:11:36,671 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-09 13:11:38,721 [INFO] [app.py:659] - Generating scraping report...
+2025-06-09 13:11:38,723 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 80,
+  "session_duration": 31.226739,
+  "errors": []
+}
+2025-06-09 13:11:38,732 [INFO] [app.py:85] - Function scrape_justdial took 31.24 seconds to execute
+2025-06-09 13:11:38,772 [INFO] [app.py:1037] - 
+Scraping completed. Found 80 results
+2025-06-09 13:11:38,790 [INFO] [app.py:1076] - Removed old file: hotels_in_nathdwara_justdial_20250609_121115.xlsx
+2025-06-09 13:11:39,016 [INFO] [app.py:1185] - Created Excel file: hotels_baroda_justdial_20250609_131138.xlsx with 13 unique entries
+2025-06-09 13:11:40,058 [INFO] [app.py:1229] - Sending Excel file: downloads\hotels_baroda_justdial_20250609_131138.xlsx

@@ -1,0 +1,13 @@
+2025-05-30 16:02:01,288 [INFO] [app.py:58] - === Starting new scraping session ===
+2025-05-30 16:02:01,288 [INFO] [app.py:59] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 16:02:01,288 [INFO] [app.py:60] - Operating System: win32
+2025-05-30 16:02:01,289 [INFO] [app.py:61] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 16:02:18,384 [INFO] [app.py:1444] - Received Yellow Pages scraping request - Query: hotel, Location: ahmedabad
+2025-05-30 16:02:18,385 [INFO] [app.py:1452] - Initializing Yellow Pages scraper...
+2025-05-30 16:02:18,390 [ERROR] [app.py:1493] - Error in Yellow Pages scraping: name 'YellowPagesScraper' is not defined
+2025-05-30 16:02:18,393 [ERROR] [app.py:1494] - Traceback: Traceback (most recent call last):
+  File "C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper\app.py", line 1453, in scrape_yellowpages_route
+    scraper = YellowPagesScraper()
+              ^^^^^^^^^^^^^^^^^^
+NameError: name 'YellowPagesScraper' is not defined
+

@@ -1,0 +1,54 @@
+2025-06-06 10:42:10,793 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-06 10:42:10,794 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-06 10:42:10,794 [INFO] [app.py:63] - Operating System: win32
+2025-06-06 10:42:10,795 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-06 10:42:14,019 [INFO] [app.py:1228] - Sending Excel file: downloads\hotels_gota_justdial_20250606_104138.xlsx
+2025-06-06 10:42:16,885 [INFO] [app.py:1228] - Sending Excel file: downloads\hotels_gota_justdial_20250606_104138.xlsx
+2025-06-06 10:43:14,471 [INFO] [app.py:1228] - Sending Excel file: downloads\hotels_gota_justdial_20250606_104138.xlsx
+2025-06-06 10:43:29,637 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-06 10:43:29,638 [INFO] [app.py:988] - Raw search query: hotels in mumbai
+2025-06-06 10:43:29,638 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-06 10:43:29,638 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-06 10:43:29,639 [INFO] [app.py:998] - Parsed location: Mumbai
+2025-06-06 10:43:29,640 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-06 10:43:29,640 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Mumbai
+2025-06-06 10:43:29,641 [INFO] [app.py:572] - Starting scrape for query: hotels in mumbai
+2025-06-06 10:43:29,641 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/mumbai/hotels-in-mumbai
+2025-06-06 10:43:31,220 [INFO] [app.py:612] - Found 10 listings on page 1
+2025-06-06 10:43:33,258 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/mumbai/hotels-in-mumbai/page-2
+2025-06-06 10:43:34,167 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-06 10:43:36,192 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/mumbai/hotels-in-mumbai/page-3
+2025-06-06 10:43:37,135 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-06 10:43:39,189 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/mumbai/hotels-in-mumbai/page-4
+2025-06-06 10:43:40,198 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-06 10:43:42,258 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/mumbai/hotels-in-mumbai/page-5
+2025-06-06 10:43:43,254 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-06 10:43:45,305 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/mumbai/hotels-in-mumbai/page-6
+2025-06-06 10:43:46,516 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-06 10:43:48,548 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/mumbai/hotels-in-mumbai/page-7
+2025-06-06 10:43:49,562 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-06 10:43:51,600 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/mumbai/hotels-in-mumbai/page-8
+2025-06-06 10:43:52,643 [INFO] [app.py:612] - Found 10 listings on page 8
+2025-06-06 10:43:54,668 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/mumbai/hotels-in-mumbai/page-9
+2025-06-06 10:43:55,572 [INFO] [app.py:612] - Found 10 listings on page 9
+2025-06-06 10:43:57,614 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/mumbai/hotels-in-mumbai/page-10
+2025-06-06 10:43:59,098 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-06 10:44:01,124 [INFO] [app.py:659] - Generating scraping report...
+2025-06-06 10:44:01,124 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 100,
+  "session_duration": 31.483096,
+  "errors": []
+}
+2025-06-06 10:44:01,127 [INFO] [app.py:85] - Function scrape_justdial took 31.49 seconds to execute
+2025-06-06 10:44:01,128 [INFO] [app.py:1037] - 
+Scraping completed. Found 100 results
+2025-06-06 10:44:01,222 [INFO] [app.py:1184] - Created Excel file: hotels_mumbai_justdial_20250606_104401.xlsx with 75 unique entries
+2025-06-06 10:44:03,067 [INFO] [app.py:1228] - Sending Excel file: downloads\hotels_mumbai_justdial_20250606_104401.xlsx

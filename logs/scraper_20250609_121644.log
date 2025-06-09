@@ -1,0 +1,8 @@
+2025-06-09 12:16:44,380 [INFO] [app.py:62] - === Starting new scraping session ===
+2025-06-09 12:16:44,380 [INFO] [app.py:63] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 12:16:44,381 [INFO] [app.py:64] - Operating System: win32
+2025-06-09 12:16:44,381 [INFO] [app.py:65] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 12:17:29,466 [INFO] [app.py:1152] - Download requested for file: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\downloads\hotels_ahmedabad_justdial_20250609_121505.xlsx
+2025-06-09 12:17:29,467 [ERROR] [app.py:1155] - File not found: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\downloads\hotels_ahmedabad_justdial_20250609_121505.xlsx
+2025-06-09 12:17:30,560 [INFO] [app.py:1152] - Download requested for file: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\downloads\hotels_ahmedabad_justdial_20250609_121505.xlsx
+2025-06-09 12:17:30,561 [ERROR] [app.py:1155] - File not found: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\downloads\hotels_ahmedabad_justdial_20250609_121505.xlsx

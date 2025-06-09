@@ -1,0 +1,7 @@
+2025-06-04 13:24:11,048 [INFO] [app.py:63] - === Starting new scraping session ===
+2025-06-04 13:24:11,048 [INFO] [app.py:64] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-04 13:24:11,049 [INFO] [app.py:65] - Operating System: win32
+2025-06-04 13:24:11,049 [INFO] [app.py:66] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-04 13:24:14,165 [ERROR] [app.py:1015] - Search error: 'JustDialScraper' object has no attribute 'search'
+2025-06-04 13:25:44,929 [ERROR] [app.py:1015] - Search error: 'JustDialScraper' object has no attribute 'search'
+2025-06-04 13:25:45,808 [ERROR] [app.py:1015] - Search error: 'JustDialScraper' object has no attribute 'search'

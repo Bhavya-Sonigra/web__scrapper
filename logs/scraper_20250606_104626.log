@@ -1,0 +1,13 @@
+2025-06-06 10:46:26,587 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-06 10:46:26,588 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-06 10:46:26,588 [INFO] [app.py:63] - Operating System: win32
+2025-06-06 10:46:26,589 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-06 10:46:26,977 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-06 10:46:26,978 [INFO] [app.py:988] - Raw search query: hotels in mumbai
+2025-06-06 10:46:26,980 [INFO] [app.py:989] - Selected platform: sulekha
+2025-06-06 10:46:26,981 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-06 10:46:26,982 [INFO] [app.py:998] - Parsed location: Mumbai
+2025-06-06 10:46:26,983 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-06 10:46:26,984 [INFO] [app.py:1019] - Scraping Sulekha for Hotels in Mumbai

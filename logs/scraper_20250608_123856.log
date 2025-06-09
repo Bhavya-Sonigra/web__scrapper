@@ -1,0 +1,57 @@
+2025-06-08 12:38:56,527 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-08 12:38:56,528 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-08 12:38:56,528 [INFO] [app.py:63] - Operating System: win32
+2025-06-08 12:38:56,529 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-08 12:39:36,185 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-08 12:39:36,186 [INFO] [app.py:988] - Raw search query: hotels in banglore
+2025-06-08 12:39:36,188 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-08 12:39:36,189 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-08 12:39:36,189 [INFO] [app.py:998] - Parsed location: Banglore
+2025-06-08 12:39:36,191 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-08 12:39:36,191 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Banglore
+2025-06-08 12:39:36,193 [INFO] [app.py:572] - Starting scrape for query: hotels in banglore
+2025-06-08 12:39:36,193 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/banglore/hotels-in-banglore
+2025-06-08 12:39:36,837 [INFO] [app.py:612] - Found 0 listings on page 1
+2025-06-08 12:39:36,838 [WARNING] [app.py:631] - No data found on page 1
+2025-06-08 12:39:38,847 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/banglore/hotels-in-banglore/page-2
+2025-06-08 12:39:40,891 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-08 12:39:42,964 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/banglore/hotels-in-banglore/page-3
+2025-06-08 12:39:43,857 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-08 12:39:45,890 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/banglore/hotels-in-banglore/page-4
+2025-06-08 12:39:46,675 [INFO] [app.py:612] - Found 0 listings on page 4
+2025-06-08 12:39:46,676 [WARNING] [app.py:631] - No data found on page 4
+2025-06-08 12:39:48,678 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/banglore/hotels-in-banglore/page-5
+2025-06-08 12:39:49,395 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-08 12:39:51,432 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/banglore/hotels-in-banglore/page-6
+2025-06-08 12:39:52,378 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-08 12:39:54,414 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/banglore/hotels-in-banglore/page-7
+2025-06-08 12:39:56,709 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-08 12:39:58,748 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/banglore/hotels-in-banglore/page-8
+2025-06-08 12:39:59,673 [INFO] [app.py:612] - Found 10 listings on page 8
+2025-06-08 12:40:01,746 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/banglore/hotels-in-banglore/page-9
+2025-06-08 12:40:02,627 [INFO] [app.py:612] - Found 10 listings on page 9
+2025-06-08 12:40:04,663 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/banglore/hotels-in-banglore/page-10
+2025-06-08 12:40:06,210 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-08 12:40:08,262 [INFO] [app.py:659] - Generating scraping report...
+2025-06-08 12:40:08,272 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 80,
+  "session_duration": 32.068783,
+  "errors": []
+}
+2025-06-08 12:40:08,275 [INFO] [app.py:85] - Function scrape_justdial took 32.08 seconds to execute
+2025-06-08 12:40:08,276 [INFO] [app.py:1037] - 
+Scraping completed. Found 80 results
+2025-06-08 12:40:08,279 [INFO] [app.py:1076] - Removed old file: hotels_ahmedabad_justdial_20250606_104007.xlsx
+2025-06-08 12:40:08,281 [INFO] [app.py:1076] - Removed old file: hotels_gota_justdial_20250606_104138.xlsx
+2025-06-08 12:40:08,284 [INFO] [app.py:1076] - Removed old file: hotels_mumbai_justdial_20250606_104401.xlsx
+2025-06-08 12:40:08,288 [INFO] [app.py:1076] - Removed old file: hotels_mumbai_justdial_20250606_110439.xlsx
+2025-06-08 12:40:08,530 [INFO] [app.py:1215] - Created Excel file: hotels_banglore_justdial_20250608_124008.xlsx with 67 unique entries
+2025-06-08 12:40:10,308 [INFO] [app.py:1259] - Sending Excel file: downloads\hotels_banglore_justdial_20250608_124008.xlsx

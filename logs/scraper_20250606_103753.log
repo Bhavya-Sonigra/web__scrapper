@@ -1,0 +1,98 @@
+2025-06-06 10:37:53,612 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-06 10:37:53,613 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-06 10:37:53,613 [INFO] [app.py:63] - Operating System: win32
+2025-06-06 10:37:53,614 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-06 10:37:56,844 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-06 10:37:56,845 [INFO] [app.py:988] - Raw search query: hotels in ahmedabad
+2025-06-06 10:37:56,848 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-06 10:37:56,849 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-06 10:37:56,849 [INFO] [app.py:998] - Parsed location: Ahmedabad
+2025-06-06 10:37:56,851 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-06 10:37:56,852 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Ahmedabad
+2025-06-06 10:37:56,853 [INFO] [app.py:572] - Starting scrape for query: hotels in ahmedabad
+2025-06-06 10:37:56,854 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad
+2025-06-06 10:37:58,929 [INFO] [app.py:612] - Found 10 listings on page 1
+2025-06-06 10:38:00,957 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-2
+2025-06-06 10:38:01,718 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-06 10:38:03,757 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-3
+2025-06-06 10:38:05,134 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-06 10:38:07,158 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-4
+2025-06-06 10:38:08,765 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-06 10:38:10,793 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-5
+2025-06-06 10:38:12,271 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-06 10:38:14,307 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-6
+2025-06-06 10:38:15,214 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-06 10:38:17,255 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-7
+2025-06-06 10:38:18,302 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-06 10:38:20,330 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-8
+2025-06-06 10:38:20,607 [INFO] [app.py:612] - Found 0 listings on page 8
+2025-06-06 10:38:20,607 [WARNING] [app.py:631] - No data found on page 8
+2025-06-06 10:38:22,620 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-9
+2025-06-06 10:38:24,245 [INFO] [app.py:612] - Found 10 listings on page 9
+2025-06-06 10:38:26,274 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-10
+2025-06-06 10:38:27,985 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-06 10:38:30,017 [INFO] [app.py:659] - Generating scraping report...
+2025-06-06 10:38:30,018 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 90,
+  "session_duration": 33.164034,
+  "errors": []
+}
+2025-06-06 10:38:30,020 [INFO] [app.py:85] - Function scrape_justdial took 33.17 seconds to execute
+2025-06-06 10:38:30,020 [INFO] [app.py:1037] - 
+Scraping completed. Found 90 results
+2025-06-06 10:38:30,050 [ERROR] [app.py:1202] - Error creating Excel file: No module named 'xlsxwriter'
+2025-06-06 10:39:35,648 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-06 10:39:35,649 [INFO] [app.py:988] - Raw search query: hotels in ahmedabad
+2025-06-06 10:39:35,650 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-06 10:39:35,651 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-06 10:39:35,651 [INFO] [app.py:998] - Parsed location: Ahmedabad
+2025-06-06 10:39:35,653 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-06 10:39:35,654 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Ahmedabad
+2025-06-06 10:39:35,655 [INFO] [app.py:572] - Starting scrape for query: hotels in ahmedabad
+2025-06-06 10:39:35,656 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad
+2025-06-06 10:39:36,569 [INFO] [app.py:612] - Found 10 listings on page 1
+2025-06-06 10:39:38,604 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-2
+2025-06-06 10:39:40,287 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-06 10:39:42,317 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-3
+2025-06-06 10:39:43,745 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-06 10:39:45,771 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-4
+2025-06-06 10:39:46,880 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-06 10:39:48,923 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-5
+2025-06-06 10:39:49,906 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-06 10:39:51,940 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-6
+2025-06-06 10:39:53,247 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-06 10:39:55,289 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-7
+2025-06-06 10:39:56,250 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-06 10:39:58,325 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-8
+2025-06-06 10:39:58,932 [INFO] [app.py:612] - Found 0 listings on page 8
+2025-06-06 10:39:58,933 [WARNING] [app.py:631] - No data found on page 8
+2025-06-06 10:40:00,936 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-9
+2025-06-06 10:40:02,131 [INFO] [app.py:612] - Found 10 listings on page 9
+2025-06-06 10:40:04,171 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-10
+2025-06-06 10:40:05,266 [INFO] [app.py:612] - Found 10 listings on page 10
+2025-06-06 10:40:07,315 [INFO] [app.py:659] - Generating scraping report...
+2025-06-06 10:40:07,315 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 90,
+  "session_duration": 31.659689,
+  "errors": []
+}
+2025-06-06 10:40:07,319 [INFO] [app.py:85] - Function scrape_justdial took 31.66 seconds to execute
+2025-06-06 10:40:07,320 [INFO] [app.py:1037] - 
+Scraping completed. Found 90 results
+2025-06-06 10:40:07,431 [INFO] [app.py:1184] - Created Excel file: hotels_ahmedabad_justdial_20250606_104007.xlsx with 34 unique entries

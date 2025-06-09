@@ -1,0 +1,5 @@
+2025-06-09 12:39:58,939 [INFO] [app.py:62] - === Starting new scraping session ===
+2025-06-09 12:39:58,940 [INFO] [app.py:63] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 12:39:58,941 [INFO] [app.py:64] - Operating System: win32
+2025-06-09 12:39:58,942 [INFO] [app.py:65] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 12:39:59,580 [ERROR] [app.py:1128] - Error during scraping: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.

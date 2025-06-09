@@ -1,0 +1,15 @@
+2025-06-04 16:00:03,000 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-04 16:00:03,001 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-04 16:00:03,001 [INFO] [app.py:63] - Operating System: win32
+2025-06-04 16:00:03,001 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-04 16:00:14,155 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-04 16:00:14,157 [INFO] [app.py:988] - Raw search query: hotels in ahmedabad
+2025-06-04 16:00:14,159 [INFO] [app.py:989] - Selected platform: sulekha
+2025-06-04 16:00:14,160 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-04 16:00:14,161 [INFO] [app.py:998] - Parsed location: Ahmedabad
+2025-06-04 16:00:14,162 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-04 16:00:14,163 [INFO] [app.py:1019] - Scraping Sulekha for Hotels in Ahmedabad
+2025-06-04 16:02:56,671 [INFO] [app.py:1037] - 
+Scraping completed. Found 0 results

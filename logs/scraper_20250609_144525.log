@@ -1,0 +1,38 @@
+2025-06-09 14:45:25,056 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-09 14:45:25,058 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 14:45:25,059 [INFO] [app.py:63] - Operating System: win32
+2025-06-09 14:45:25,059 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 14:46:22,311 [INFO] [app.py:1482] - Received Yellow Pages scraping request - Query: hotels, Location: london
+2025-06-09 14:46:22,312 [INFO] [app.py:1490] - Initializing Yellow Pages scraper...
+2025-06-09 14:46:22,313 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-06-09 14:46:24,153 [INFO] [yellowpages_scraper.py:76] - Chrome WebDriver is ready.
+2025-06-09 14:46:24,154 [INFO] [app.py:1493] - Starting Yellow Pages scraping...
+2025-06-09 14:46:24,154 [INFO] [yellowpages_scraper.py:192] - Navigating to page 1: https://www.yellowpages.com/london/hotels
+2025-06-09 14:46:31,508 [INFO] [yellowpages_scraper.py:216] - Found 18 business listings on page 1
+2025-06-09 14:46:31,509 [INFO] [yellowpages_scraper.py:220] - Scraping business 1/18 on page 1
+2025-06-09 14:46:31,629 [INFO] [yellowpages_scraper.py:220] - Scraping business 2/18 on page 1
+2025-06-09 14:46:31,721 [INFO] [yellowpages_scraper.py:220] - Scraping business 3/18 on page 1
+2025-06-09 14:46:31,828 [INFO] [yellowpages_scraper.py:220] - Scraping business 4/18 on page 1
+2025-06-09 14:46:31,920 [INFO] [yellowpages_scraper.py:220] - Scraping business 5/18 on page 1
+2025-06-09 14:46:32,015 [INFO] [yellowpages_scraper.py:220] - Scraping business 6/18 on page 1
+2025-06-09 14:46:32,107 [INFO] [yellowpages_scraper.py:220] - Scraping business 7/18 on page 1
+2025-06-09 14:46:32,283 [INFO] [yellowpages_scraper.py:220] - Scraping business 8/18 on page 1
+2025-06-09 14:46:32,382 [INFO] [yellowpages_scraper.py:220] - Scraping business 9/18 on page 1
+2025-06-09 14:46:32,475 [INFO] [yellowpages_scraper.py:220] - Scraping business 10/18 on page 1
+2025-06-09 14:46:32,571 [INFO] [yellowpages_scraper.py:220] - Scraping business 11/18 on page 1
+2025-06-09 14:46:32,656 [INFO] [yellowpages_scraper.py:220] - Scraping business 12/18 on page 1
+2025-06-09 14:46:32,737 [INFO] [yellowpages_scraper.py:220] - Scraping business 13/18 on page 1
+2025-06-09 14:46:32,822 [INFO] [yellowpages_scraper.py:220] - Scraping business 14/18 on page 1
+2025-06-09 14:46:32,907 [INFO] [yellowpages_scraper.py:220] - Scraping business 15/18 on page 1
+2025-06-09 14:46:32,994 [INFO] [yellowpages_scraper.py:220] - Scraping business 16/18 on page 1
+2025-06-09 14:46:33,078 [INFO] [yellowpages_scraper.py:220] - Scraping business 17/18 on page 1
+2025-06-09 14:46:33,166 [INFO] [yellowpages_scraper.py:220] - Scraping business 18/18 on page 1
+2025-06-09 14:46:33,248 [INFO] [yellowpages_scraper.py:230] - Total results so far: 18
+2025-06-09 14:46:33,272 [INFO] [yellowpages_scraper.py:242] - No pagination found - reached last page
+2025-06-09 14:46:33,273 [INFO] [yellowpages_scraper.py:245] - Scraping completed with 18 total results across 1 pages.
+2025-06-09 14:46:33,273 [INFO] [yellowpages_scraper.py:259] - Scraping session ended.
+2025-06-09 14:46:34,274 [INFO] [app.py:1496] - Cleaning up scraper resources...
+2025-06-09 14:46:37,962 [INFO] [yellowpages_scraper.py:265] - WebDriver closed.
+2025-06-09 14:46:37,963 [INFO] [app.py:1507] - Successfully found 18 results
+2025-06-09 14:46:38,404 [INFO] [app.py:1520] - Results saved to Excel file: downloads\yellowpages_results_20250609_144637.xlsx
+2025-06-09 14:46:39,422 [INFO] [app.py:1562] - Sending Excel file: downloads\yellowpages_results_20250609_144637.xlsx

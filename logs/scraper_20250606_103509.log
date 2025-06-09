@@ -1,0 +1,62 @@
+2025-06-06 10:35:09,385 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-06 10:35:09,385 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-06 10:35:09,386 [INFO] [app.py:63] - Operating System: win32
+2025-06-06 10:35:09,386 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-06 10:35:44,647 [INFO] [app.py:987] - 
+=== Starting new scraping request ===
+2025-06-06 10:35:44,648 [INFO] [app.py:988] - Raw search query: hotels in ahmedabad
+2025-06-06 10:35:44,649 [INFO] [app.py:989] - Selected platform: justdial
+2025-06-06 10:35:44,649 [INFO] [app.py:997] - Parsed category: Hotels
+2025-06-06 10:35:44,650 [INFO] [app.py:998] - Parsed location: Ahmedabad
+2025-06-06 10:35:44,651 [INFO] [app.py:1014] - 
+Starting scraping process...
+2025-06-06 10:35:44,651 [INFO] [app.py:1016] - Scraping JustDial for Hotels in Ahmedabad
+2025-06-06 10:35:44,652 [INFO] [app.py:572] - Starting scrape for query: hotels in ahmedabad
+2025-06-06 10:35:44,652 [INFO] [app.py:582] - Fetching page 1: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad
+2025-06-06 10:35:45,074 [INFO] [app.py:612] - Found 0 listings on page 1
+2025-06-06 10:35:45,075 [WARNING] [app.py:631] - No data found on page 1
+2025-06-06 10:35:47,089 [INFO] [app.py:582] - Fetching page 2: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-2
+2025-06-06 10:35:48,679 [INFO] [app.py:612] - Found 10 listings on page 2
+2025-06-06 10:35:50,711 [INFO] [app.py:582] - Fetching page 3: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-3
+2025-06-06 10:35:52,041 [INFO] [app.py:612] - Found 10 listings on page 3
+2025-06-06 10:35:54,067 [INFO] [app.py:582] - Fetching page 4: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-4
+2025-06-06 10:35:55,684 [INFO] [app.py:612] - Found 10 listings on page 4
+2025-06-06 10:35:57,716 [INFO] [app.py:582] - Fetching page 5: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-5
+2025-06-06 10:35:58,966 [INFO] [app.py:612] - Found 10 listings on page 5
+2025-06-06 10:36:00,997 [INFO] [app.py:582] - Fetching page 6: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-6
+2025-06-06 10:36:02,897 [INFO] [app.py:612] - Found 10 listings on page 6
+2025-06-06 10:36:04,921 [INFO] [app.py:582] - Fetching page 7: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-7
+2025-06-06 10:36:06,067 [INFO] [app.py:612] - Found 10 listings on page 7
+2025-06-06 10:36:08,101 [INFO] [app.py:582] - Fetching page 8: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-8
+2025-06-06 10:36:09,266 [INFO] [app.py:612] - Found 10 listings on page 8
+2025-06-06 10:36:11,300 [INFO] [app.py:582] - Fetching page 9: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-9
+2025-06-06 10:36:11,772 [INFO] [app.py:612] - Found 0 listings on page 9
+2025-06-06 10:36:11,773 [WARNING] [app.py:631] - No data found on page 9
+2025-06-06 10:36:13,776 [INFO] [app.py:582] - Fetching page 10: https://www.justdial.com/ahmedabad/hotels-in-ahmedabad/page-10
+2025-06-06 10:36:14,140 [INFO] [app.py:612] - Found 0 listings on page 10
+2025-06-06 10:36:14,140 [WARNING] [app.py:631] - No data found on page 10
+2025-06-06 10:36:16,145 [INFO] [app.py:659] - Generating scraping report...
+2025-06-06 10:36:16,145 [INFO] [app.py:661] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 70,
+  "session_duration": 31.492636,
+  "errors": []
+}
+2025-06-06 10:36:16,148 [INFO] [app.py:85] - Function scrape_justdial took 31.50 seconds to execute
+2025-06-06 10:36:16,148 [INFO] [app.py:1037] - 
+Scraping completed. Found 70 results
+2025-06-06 10:36:16,151 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_161313.xlsx
+2025-06-06 10:36:16,153 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_161650.xlsx
+2025-06-06 10:36:16,154 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_162233.xlsx
+2025-06-06 10:36:16,155 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_162410.xlsx
+2025-06-06 10:36:16,156 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_162711.xlsx
+2025-06-06 10:36:16,157 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_162958.xlsx
+2025-06-06 10:36:16,158 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250530_163434.xlsx
+2025-06-06 10:36:16,159 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250604_122002.xlsx
+2025-06-06 10:36:16,160 [INFO] [app.py:1076] - Removed old file: yellowpages_results_20250604_122023.xlsx
+2025-06-06 10:36:16,176 [ERROR] [app.py:1192] - Error creating Excel file: Index(['Name'], dtype='object')

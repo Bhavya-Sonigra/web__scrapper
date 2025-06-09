@@ -1,0 +1,10 @@
+2025-05-30 16:07:30,074 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-05-30 16:07:30,075 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 16:07:30,075 [INFO] [app.py:63] - Operating System: win32
+2025-05-30 16:07:30,076 [INFO] [app.py:64] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 16:07:43,457 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: hotel, Location: ahmedabad
+2025-05-30 16:07:43,458 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-05-30 16:07:43,458 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-05-30 16:07:46,338 [INFO] [yellowpages_scraper.py:75] - Chrome WebDriver is ready.
+2025-05-30 16:07:46,339 [INFO] [app.py:1462] - Starting Yellow Pages scraping...
+2025-05-30 16:07:46,340 [INFO] [yellowpages_scraper.py:133] - Navigating to: https://www.yellowpages.com/search?search_terms=hotel&geo_location_terms=ahmedabad

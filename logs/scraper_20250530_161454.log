@@ -1,0 +1,10 @@
+2025-05-30 16:14:54,438 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-05-30 16:14:54,440 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 16:14:54,441 [INFO] [app.py:63] - Operating System: win32
+2025-05-30 16:14:54,441 [INFO] [app.py:64] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 16:15:05,424 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: clothing store, Location: nyc
+2025-05-30 16:15:05,425 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-05-30 16:15:05,426 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-05-30 16:15:08,025 [INFO] [yellowpages_scraper.py:75] - Chrome WebDriver is ready.
+2025-05-30 16:15:08,030 [INFO] [app.py:1462] - Starting Yellow Pages scraping...
+2025-05-30 16:15:08,031 [INFO] [yellowpages_scraper.py:133] - Navigating to: https://www.yellowpages.com/search?search_terms=clothing store&geo_location_terms=nyc

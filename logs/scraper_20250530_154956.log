@@ -1,0 +1,15 @@
+2025-05-30 15:49:56,621 [INFO] [app.py:59] - === Starting new scraping session ===
+2025-05-30 15:49:56,623 [INFO] [app.py:60] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 15:49:56,624 [INFO] [app.py:61] - Operating System: win32
+2025-05-30 15:49:56,625 [INFO] [app.py:62] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 15:49:57,107 [INFO] [app.py:985] - 
+=== Starting new scraping request ===
+2025-05-30 15:49:57,107 [INFO] [app.py:986] - Raw search query: guitar class in ahmedabad
+2025-05-30 15:49:57,108 [INFO] [app.py:987] - Selected platform: sulekha
+2025-05-30 15:49:57,109 [INFO] [app.py:995] - Parsed category: Guitar Class
+2025-05-30 15:49:57,109 [INFO] [app.py:996] - Parsed location: Ahmedabad
+2025-05-30 15:49:57,113 [INFO] [app.py:1012] - 
+Starting scraping process...
+2025-05-30 15:49:57,115 [INFO] [app.py:1017] - Scraping Sulekha for Guitar Class in Ahmedabad
+2025-05-30 15:50:12,434 [INFO] [app.py:1035] - 
+Scraping completed. Found 0 results

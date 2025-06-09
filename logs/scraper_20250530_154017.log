@@ -1,0 +1,61 @@
+2025-05-30 15:40:17,878 [INFO] [app.py:59] - === Starting new scraping session ===
+2025-05-30 15:40:17,879 [INFO] [app.py:60] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 15:40:17,884 [INFO] [app.py:61] - Operating System: win32
+2025-05-30 15:40:17,887 [INFO] [app.py:62] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 15:40:20,507 [INFO] [app.py:985] - 
+=== Starting new scraping request ===
+2025-05-30 15:40:20,508 [INFO] [app.py:986] - Raw search query: guitar class in ahmedabad
+2025-05-30 15:40:20,508 [INFO] [app.py:987] - Selected platform: justdial
+2025-05-30 15:40:20,509 [INFO] [app.py:995] - Parsed category: Guitar Class
+2025-05-30 15:40:20,511 [INFO] [app.py:996] - Parsed location: Ahmedabad
+2025-05-30 15:40:20,517 [INFO] [app.py:1012] - 
+Starting scraping process...
+2025-05-30 15:40:20,523 [INFO] [app.py:1014] - Scraping JustDial for Guitar Class in Ahmedabad
+2025-05-30 15:40:20,529 [INFO] [app.py:570] - Starting scrape for query: guitar-class in ahmedabad
+2025-05-30 15:40:20,534 [INFO] [app.py:580] - Fetching page 1: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad
+2025-05-30 15:40:22,895 [INFO] [app.py:610] - Found 10 listings on page 1
+2025-05-30 15:40:24,994 [INFO] [app.py:580] - Fetching page 2: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-2
+2025-05-30 15:40:25,416 [INFO] [app.py:610] - Found 0 listings on page 2
+2025-05-30 15:40:25,421 [WARNING] [app.py:629] - No data found on page 2
+2025-05-30 15:40:27,437 [INFO] [app.py:580] - Fetching page 3: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-3
+2025-05-30 15:40:28,520 [INFO] [app.py:610] - Found 10 listings on page 3
+2025-05-30 15:40:30,612 [INFO] [app.py:580] - Fetching page 4: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-4
+2025-05-30 15:40:31,846 [INFO] [app.py:610] - Found 10 listings on page 4
+2025-05-30 15:40:33,914 [INFO] [app.py:580] - Fetching page 5: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-5
+2025-05-30 15:40:35,518 [INFO] [app.py:610] - Found 10 listings on page 5
+2025-05-30 15:40:37,590 [INFO] [app.py:580] - Fetching page 6: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-6
+2025-05-30 15:40:39,142 [INFO] [app.py:610] - Found 10 listings on page 6
+2025-05-30 15:40:41,267 [INFO] [app.py:580] - Fetching page 7: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-7
+2025-05-30 15:40:42,589 [INFO] [app.py:610] - Found 10 listings on page 7
+2025-05-30 15:40:44,793 [INFO] [app.py:580] - Fetching page 8: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-8
+2025-05-30 15:40:46,724 [INFO] [app.py:610] - Found 10 listings on page 8
+2025-05-30 15:40:48,810 [INFO] [app.py:580] - Fetching page 9: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-9
+2025-05-30 15:40:50,177 [INFO] [app.py:610] - Found 10 listings on page 9
+2025-05-30 15:40:52,350 [INFO] [app.py:580] - Fetching page 10: https://www.justdial.com/ahmedabad/guitar-class-in-ahmedabad/page-10
+2025-05-30 15:40:53,043 [INFO] [app.py:610] - Found 0 listings on page 10
+2025-05-30 15:40:53,061 [WARNING] [app.py:629] - No data found on page 10
+2025-05-30 15:40:55,120 [INFO] [app.py:657] - Generating scraping report...
+2025-05-30 15:40:55,128 [INFO] [app.py:659] - Scraping Report: {
+  "total_requests": 0,
+  "successful_requests": 10,
+  "failed_requests": 0,
+  "blocked_requests": 0,
+  "cache_hits": 0,
+  "success_rate": "0.00%",
+  "total_businesses_found": 80,
+  "session_duration": 34.591205,
+  "errors": []
+}
+2025-05-30 15:40:55,144 [INFO] [app.py:83] - Function scrape_justdial took 34.61 seconds to execute
+2025-05-30 15:40:55,183 [INFO] [app.py:1035] - 
+Scraping completed. Found 80 results
+2025-05-30 15:40:55,393 [ERROR] [app.py:1186] - Error creating Excel file: Index(['Name'], dtype='object')
+2025-05-30 15:41:01,324 [INFO] [app.py:985] - 
+=== Starting new scraping request ===
+2025-05-30 15:41:01,334 [INFO] [app.py:986] - Raw search query: guitar class in ahmedabad
+2025-05-30 15:41:01,344 [INFO] [app.py:987] - Selected platform: sulekha
+2025-05-30 15:41:01,357 [INFO] [app.py:995] - Parsed category: Guitar Class
+2025-05-30 15:41:01,381 [INFO] [app.py:996] - Parsed location: Ahmedabad
+2025-05-30 15:41:01,420 [INFO] [app.py:1012] - 
+Starting scraping process...
+2025-05-30 15:41:01,548 [INFO] [app.py:1017] - Scraping Sulekha for Guitar Class in Ahmedabad

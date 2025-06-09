@@ -1,0 +1,51 @@
+2025-06-09 14:56:43,372 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-09 14:56:43,372 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 14:56:43,373 [INFO] [app.py:63] - Operating System: win32
+2025-06-09 14:56:43,373 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 14:57:08,922 [INFO] [app.py:1482] - Received Yellow Pages scraping request - Query: architect, Location: Miami
+2025-06-09 14:57:08,923 [INFO] [app.py:1490] - Initializing Yellow Pages scraper...
+2025-06-09 14:57:08,925 [INFO] [yellowpages_scraper.py:55] - Setting up Chrome WebDriver...
+2025-06-09 14:57:10,140 [INFO] [yellowpages_scraper.py:77] - Chrome WebDriver is ready.
+2025-06-09 14:57:10,142 [INFO] [app.py:1493] - Starting Yellow Pages scraping...
+2025-06-09 14:57:16,481 [INFO] [yellowpages_scraper.py:280] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=architect&geo_location_terms=Miami
+2025-06-09 14:57:27,719 [INFO] [yellowpages_scraper.py:304] - Found 30 business listings on page 1
+2025-06-09 14:57:29,090 [INFO] [yellowpages_scraper.py:311] - Scraping business 1/30 on page 1
+2025-06-09 14:57:31,078 [INFO] [yellowpages_scraper.py:311] - Scraping business 2/30 on page 1
+2025-06-09 14:57:33,613 [INFO] [yellowpages_scraper.py:311] - Scraping business 3/30 on page 1
+2025-06-09 14:57:35,844 [INFO] [yellowpages_scraper.py:311] - Scraping business 4/30 on page 1
+2025-06-09 14:57:37,268 [INFO] [yellowpages_scraper.py:311] - Scraping business 5/30 on page 1
+2025-06-09 14:57:39,465 [INFO] [yellowpages_scraper.py:311] - Scraping business 6/30 on page 1
+2025-06-09 14:57:42,050 [INFO] [yellowpages_scraper.py:311] - Scraping business 7/30 on page 1
+2025-06-09 14:57:43,869 [INFO] [yellowpages_scraper.py:311] - Scraping business 8/30 on page 1
+2025-06-09 14:57:45,800 [INFO] [yellowpages_scraper.py:311] - Scraping business 9/30 on page 1
+2025-06-09 14:57:47,992 [INFO] [yellowpages_scraper.py:311] - Scraping business 10/30 on page 1
+2025-06-09 14:57:49,367 [INFO] [yellowpages_scraper.py:311] - Scraping business 11/30 on page 1
+2025-06-09 14:57:52,458 [INFO] [yellowpages_scraper.py:311] - Scraping business 12/30 on page 1
+2025-06-09 14:57:55,278 [INFO] [yellowpages_scraper.py:311] - Scraping business 13/30 on page 1
+2025-06-09 14:57:57,798 [INFO] [yellowpages_scraper.py:311] - Scraping business 14/30 on page 1
+2025-06-09 14:57:59,560 [INFO] [yellowpages_scraper.py:311] - Scraping business 15/30 on page 1
+2025-06-09 14:58:02,341 [INFO] [yellowpages_scraper.py:311] - Scraping business 16/30 on page 1
+2025-06-09 14:58:05,156 [INFO] [yellowpages_scraper.py:311] - Scraping business 17/30 on page 1
+2025-06-09 14:58:08,371 [INFO] [yellowpages_scraper.py:311] - Scraping business 18/30 on page 1
+2025-06-09 14:58:10,678 [INFO] [yellowpages_scraper.py:311] - Scraping business 19/30 on page 1
+2025-06-09 14:58:12,518 [INFO] [yellowpages_scraper.py:311] - Scraping business 20/30 on page 1
+2025-06-09 14:58:15,234 [INFO] [yellowpages_scraper.py:311] - Scraping business 21/30 on page 1
+2025-06-09 14:58:16,973 [INFO] [yellowpages_scraper.py:311] - Scraping business 22/30 on page 1
+2025-06-09 14:58:19,225 [INFO] [yellowpages_scraper.py:311] - Scraping business 23/30 on page 1
+2025-06-09 14:58:21,418 [INFO] [yellowpages_scraper.py:311] - Scraping business 24/30 on page 1
+2025-06-09 14:58:23,735 [INFO] [yellowpages_scraper.py:311] - Scraping business 25/30 on page 1
+2025-06-09 14:58:25,507 [INFO] [yellowpages_scraper.py:311] - Scraping business 26/30 on page 1
+2025-06-09 14:58:28,409 [INFO] [yellowpages_scraper.py:311] - Scraping business 27/30 on page 1
+2025-06-09 14:58:31,642 [INFO] [yellowpages_scraper.py:311] - Scraping business 28/30 on page 1
+2025-06-09 14:58:33,229 [INFO] [yellowpages_scraper.py:311] - Scraping business 29/30 on page 1
+2025-06-09 14:58:35,030 [INFO] [yellowpages_scraper.py:311] - Scraping business 30/30 on page 1
+2025-06-09 14:58:35,288 [INFO] [yellowpages_scraper.py:321] - Total results so far: 30
+2025-06-09 14:58:45,450 [INFO] [yellowpages_scraper.py:280] - Navigating to page 2: https://www.yellowpages.com/search?search_terms=architect&geo_location_terms=Miami&page=2
+2025-06-09 14:59:07,503 [WARNING] [yellowpages_scraper.py:296] - No more results found on page 2
+2025-06-09 14:59:07,504 [INFO] [yellowpages_scraper.py:337] - Scraping completed with 30 total results across 2 pages.
+2025-06-09 14:59:07,505 [INFO] [yellowpages_scraper.py:351] - Scraping session ended.
+2025-06-09 14:59:08,506 [INFO] [app.py:1496] - Cleaning up scraper resources...
+2025-06-09 14:59:10,763 [INFO] [yellowpages_scraper.py:357] - WebDriver closed.
+2025-06-09 14:59:10,763 [INFO] [app.py:1507] - Successfully found 30 results
+2025-06-09 14:59:10,858 [INFO] [app.py:1520] - Results saved to Excel file: downloads\yellowpages_results_20250609_145910.xlsx
+2025-06-09 14:59:12,269 [INFO] [app.py:1562] - Sending Excel file: downloads\yellowpages_results_20250609_145910.xlsx

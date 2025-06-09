@@ -1,0 +1,104 @@
+2025-06-04 12:13:42,409 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-06-04 12:13:42,410 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-04 12:13:42,411 [INFO] [app.py:63] - Operating System: win32
+2025-06-04 12:13:42,411 [INFO] [app.py:64] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-04 12:13:43,769 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: Architect, Location: us
+2025-06-04 12:13:43,770 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-06-04 12:13:43,770 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-06-04 12:13:43,771 [ERROR] [yellowpages_scraper.py:79] - WebDriver setup failed: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-06-04 12:13:43,777 [ERROR] [app.py:1507] - Error in Yellow Pages scraping: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-06-04 12:13:43,779 [ERROR] [app.py:1508] - Traceback: Traceback (most recent call last):
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 64, in _binary_paths
+    raise ValueError(f"The path is not a valid file: {path}")
+ValueError: The path is not a valid file: C:\Users\Bhavya\Downloads\chrome-win64\chromedriver.exe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\app.py", line 1460, in scrape_yellowpages_route
+    scraper = YellowPagesScraper()
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\scrapers\yellowpages_scraper.py", line 19, in __init__
+    self.setup_driver()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\scrapers\yellowpages_scraper.py", line 70, in setup_driver
+    self.driver = webdriver.Chrome(
+                  ~~~~~~~~~~~~~~~~^
+        service=Service(driver_path),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        options=chrome_options
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\chrome\webdriver.py", line 47, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\chromium\webdriver.py", line 53, in __init__
+    if finder.get_browser_path():
+       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 47, in get_browser_path
+    return self._binary_paths()["browser_path"]
+           ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 78, in _binary_paths
+    raise NoSuchDriverException(msg) from err
+selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+
+2025-06-04 12:13:44,503 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: Architect, Location: us
+2025-06-04 12:13:44,503 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-06-04 12:13:44,504 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-06-04 12:13:44,504 [ERROR] [yellowpages_scraper.py:79] - WebDriver setup failed: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-06-04 12:13:44,507 [ERROR] [app.py:1507] - Error in Yellow Pages scraping: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-06-04 12:13:44,509 [ERROR] [app.py:1508] - Traceback: Traceback (most recent call last):
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 64, in _binary_paths
+    raise ValueError(f"The path is not a valid file: {path}")
+ValueError: The path is not a valid file: C:\Users\Bhavya\Downloads\chrome-win64\chromedriver.exe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\app.py", line 1460, in scrape_yellowpages_route
+    scraper = YellowPagesScraper()
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\scrapers\yellowpages_scraper.py", line 19, in __init__
+    self.setup_driver()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\scrapers\yellowpages_scraper.py", line 70, in setup_driver
+    self.driver = webdriver.Chrome(
+                  ~~~~~~~~~~~~~~~~^
+        service=Service(driver_path),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        options=chrome_options
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\chrome\webdriver.py", line 47, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\chromium\webdriver.py", line 53, in __init__
+    if finder.get_browser_path():
+       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 47, in get_browser_path
+    return self._binary_paths()["browser_path"]
+           ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Bhavya\AppData\Roaming\Python\Python313\site-packages\selenium\webdriver\common\driver_finder.py", line 78, in _binary_paths
+    raise NoSuchDriverException(msg) from err
+selenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+

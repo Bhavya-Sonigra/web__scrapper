@@ -1,0 +1,63 @@
+2025-05-30 16:20:26,459 [INFO] [app.py:61] - === Starting new scraping session ===
+2025-05-30 16:20:26,459 [INFO] [app.py:62] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-05-30 16:20:26,459 [INFO] [app.py:63] - Operating System: win32
+2025-05-30 16:20:26,460 [INFO] [app.py:64] - Working Directory: C:\Users\bhavy\Desktop\Buisness_scraper\web__scrapper
+2025-05-30 16:20:43,132 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: hotels, Location: new york
+2025-05-30 16:20:43,132 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-05-30 16:20:43,133 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-05-30 16:20:45,309 [INFO] [yellowpages_scraper.py:75] - Chrome WebDriver is ready.
+2025-05-30 16:20:45,310 [INFO] [app.py:1462] - Starting Yellow Pages scraping...
+2025-05-30 16:20:45,311 [INFO] [yellowpages_scraper.py:168] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=hotels&geo_location_terms=new york&page=1
+2025-05-30 16:21:16,212 [WARNING] [yellowpages_scraper.py:176] - No more results found on page 1
+2025-05-30 16:21:16,213 [INFO] [yellowpages_scraper.py:213] - Scraping completed with 0 total results across 1 pages.
+2025-05-30 16:21:16,213 [INFO] [yellowpages_scraper.py:227] - Scraping session ended.
+2025-05-30 16:21:17,214 [INFO] [app.py:1465] - Cleaning up scraper resources...
+2025-05-30 16:21:19,791 [INFO] [yellowpages_scraper.py:233] - WebDriver closed.
+2025-05-30 16:21:19,794 [WARNING] [app.py:1469] - No results found in Yellow Pages scraping
+2025-05-30 16:21:25,335 [INFO] [app.py:1451] - Received Yellow Pages scraping request - Query: hotels, Location: new york
+2025-05-30 16:21:25,335 [INFO] [app.py:1459] - Initializing Yellow Pages scraper...
+2025-05-30 16:21:25,340 [INFO] [yellowpages_scraper.py:54] - Setting up Chrome WebDriver...
+2025-05-30 16:21:27,081 [INFO] [yellowpages_scraper.py:75] - Chrome WebDriver is ready.
+2025-05-30 16:21:27,082 [INFO] [app.py:1462] - Starting Yellow Pages scraping...
+2025-05-30 16:21:27,083 [INFO] [yellowpages_scraper.py:168] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=hotels&geo_location_terms=new york&page=1
+2025-05-30 16:22:11,932 [INFO] [yellowpages_scraper.py:184] - Found 30 business listings on page 1
+2025-05-30 16:22:11,933 [INFO] [yellowpages_scraper.py:188] - Scraping business 1/30 on page 1
+2025-05-30 16:22:12,235 [INFO] [yellowpages_scraper.py:188] - Scraping business 2/30 on page 1
+2025-05-30 16:22:12,587 [INFO] [yellowpages_scraper.py:188] - Scraping business 3/30 on page 1
+2025-05-30 16:22:12,758 [INFO] [yellowpages_scraper.py:188] - Scraping business 4/30 on page 1
+2025-05-30 16:22:12,936 [INFO] [yellowpages_scraper.py:188] - Scraping business 5/30 on page 1
+2025-05-30 16:22:13,148 [INFO] [yellowpages_scraper.py:188] - Scraping business 6/30 on page 1
+2025-05-30 16:22:13,330 [INFO] [yellowpages_scraper.py:188] - Scraping business 7/30 on page 1
+2025-05-30 16:22:13,506 [INFO] [yellowpages_scraper.py:188] - Scraping business 8/30 on page 1
+2025-05-30 16:22:13,770 [INFO] [yellowpages_scraper.py:188] - Scraping business 9/30 on page 1
+2025-05-30 16:22:13,930 [INFO] [yellowpages_scraper.py:188] - Scraping business 10/30 on page 1
+2025-05-30 16:22:14,089 [INFO] [yellowpages_scraper.py:188] - Scraping business 11/30 on page 1
+2025-05-30 16:22:14,231 [INFO] [yellowpages_scraper.py:188] - Scraping business 12/30 on page 1
+2025-05-30 16:22:14,360 [INFO] [yellowpages_scraper.py:188] - Scraping business 13/30 on page 1
+2025-05-30 16:22:14,500 [INFO] [yellowpages_scraper.py:188] - Scraping business 14/30 on page 1
+2025-05-30 16:22:14,629 [INFO] [yellowpages_scraper.py:188] - Scraping business 15/30 on page 1
+2025-05-30 16:22:14,769 [INFO] [yellowpages_scraper.py:188] - Scraping business 16/30 on page 1
+2025-05-30 16:22:14,921 [INFO] [yellowpages_scraper.py:188] - Scraping business 17/30 on page 1
+2025-05-30 16:22:15,055 [INFO] [yellowpages_scraper.py:188] - Scraping business 18/30 on page 1
+2025-05-30 16:22:15,209 [INFO] [yellowpages_scraper.py:188] - Scraping business 19/30 on page 1
+2025-05-30 16:22:15,366 [INFO] [yellowpages_scraper.py:188] - Scraping business 20/30 on page 1
+2025-05-30 16:22:15,514 [INFO] [yellowpages_scraper.py:188] - Scraping business 21/30 on page 1
+2025-05-30 16:22:15,669 [INFO] [yellowpages_scraper.py:188] - Scraping business 22/30 on page 1
+2025-05-30 16:22:15,859 [INFO] [yellowpages_scraper.py:188] - Scraping business 23/30 on page 1
+2025-05-30 16:22:16,045 [INFO] [yellowpages_scraper.py:188] - Scraping business 24/30 on page 1
+2025-05-30 16:22:16,243 [INFO] [yellowpages_scraper.py:188] - Scraping business 25/30 on page 1
+2025-05-30 16:22:16,418 [INFO] [yellowpages_scraper.py:188] - Scraping business 26/30 on page 1
+2025-05-30 16:22:16,657 [INFO] [yellowpages_scraper.py:188] - Scraping business 27/30 on page 1
+2025-05-30 16:22:16,868 [INFO] [yellowpages_scraper.py:188] - Scraping business 28/30 on page 1
+2025-05-30 16:22:17,110 [INFO] [yellowpages_scraper.py:188] - Scraping business 29/30 on page 1
+2025-05-30 16:22:17,306 [INFO] [yellowpages_scraper.py:188] - Scraping business 30/30 on page 1
+2025-05-30 16:22:17,474 [INFO] [yellowpages_scraper.py:198] - Total results so far: 30
+2025-05-30 16:22:19,533 [INFO] [yellowpages_scraper.py:168] - Navigating to page 2: https://www.yellowpages.com/search?search_terms=hotels&geo_location_terms=new york&page=2
+2025-05-30 16:22:30,114 [WARNING] [yellowpages_scraper.py:176] - No more results found on page 2
+2025-05-30 16:22:30,115 [INFO] [yellowpages_scraper.py:213] - Scraping completed with 30 total results across 2 pages.
+2025-05-30 16:22:30,115 [INFO] [yellowpages_scraper.py:227] - Scraping session ended.
+2025-05-30 16:22:31,116 [INFO] [app.py:1465] - Cleaning up scraper resources...
+2025-05-30 16:22:33,357 [INFO] [yellowpages_scraper.py:233] - WebDriver closed.
+2025-05-30 16:22:33,358 [INFO] [app.py:1476] - Successfully found 30 results
+2025-05-30 16:22:33,491 [INFO] [app.py:1489] - Results saved to Excel file: downloads\yellowpages_results_20250530_162233.xlsx
+2025-05-30 16:22:39,077 [INFO] [app.py:1531] - Sending Excel file: downloads\yellowpages_results_20250530_162233.xlsx
