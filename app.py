@@ -21,6 +21,7 @@ from functools import wraps
 from scrapers.yellowpages_scraper import YellowPagesScraper
 from scrapers.sulekha_scraper import SulekhaScraper
 from scrapers.justdial_scraper import JustDialScraper
+import re
 
 
 app = Flask(__name__)
@@ -1485,6 +1486,14 @@ def scrape_yellowpages_route():
     try:
         query = request.args.get('query')
         location = request.args.get('location')
+        min_rating = request.args.get('min_rating', '0')  # Default to 0 if not provided
+        
+        try:
+            min_rating = float(min_rating)
+            if min_rating < 0 or min_rating > 5:
+                min_rating = 0  # Reset to 0 if invalid range
+        except ValueError:
+            min_rating = 0  # Reset to 0 if invalid format
         
         if not query or not location:
             return jsonify({
@@ -1492,7 +1501,7 @@ def scrape_yellowpages_route():
                 'message': 'Both query and location parameters are required'
             }), 400
 
-        logger.info(f"Starting Yellow Pages scraping...")
+        logger.info(f"Starting Yellow Pages scraping with minimum rating: {min_rating}...")
         scraper = YellowPagesScraper()
         
         try:
@@ -1513,68 +1522,212 @@ def scrape_yellowpages_route():
             filename = f'yellowpages_results_{timestamp}.xlsx'
             filepath = os.path.join('downloads', filename)
 
-            # Create DataFrame with all possible columns
-            all_columns = set()
+            # Process the data to split address and handle categories
+            processed_data = []
             for item in data:
-                if isinstance(item, dict):  # Ensure item is a dictionary
-                    all_columns.update(item.keys())
+                if isinstance(item, dict):
+                    # Parse the address into components
+                    address = item.get('Address', '')
+                    address_parts = {
+                        'Address Line 1': '',
+                        'Address Line 2': '',
+                        'City': '',
+                        'State': '',
+                        'ZIP Code': ''
+                    }
+                    
+                    if address:
+                        # Split address by commas
+                        parts = [p.strip() for p in address.split(',')]
+                        if len(parts) >= 1:
+                            # Split street address into two lines if it contains apartment/suite info
+                            street = parts[0]
+                            addr_split = re.split(r'\s+(?:Ste|Suite|Apt|Unit|#)\s*', street, flags=re.IGNORECASE)
+                            if len(addr_split) > 1:
+                                address_parts['Address Line 1'] = addr_split[0].strip()
+                                address_parts['Address Line 2'] = f"Suite {addr_split[1].strip()}"
+                            else:
+                                # Also try to split on floor indicators
+                                addr_split = re.split(r'\s+(?:Fl|Floor|Level)\s*', street, flags=re.IGNORECASE)
+                                if len(addr_split) > 1:
+                                    address_parts['Address Line 1'] = addr_split[0].strip()
+                                    address_parts['Address Line 2'] = f"Floor {addr_split[1].strip()}"
+                                else:
+                                    address_parts['Address Line 1'] = street
+                        
+                        if len(parts) >= 2:
+                            # Last part usually contains state and ZIP
+                            last_part = parts[-1].strip()
+                            # Try to extract ZIP code
+                            zip_match = re.search(r'(\d{5}(?:-\d{4})?)', last_part)
+                            if zip_match:
+                                address_parts['ZIP Code'] = zip_match.group(1)
+                                last_part = last_part[:zip_match.start()].strip()
+                            
+                            # Extract state (assuming it's the last 2 characters before ZIP)
+                            state_match = re.search(r'([A-Z]{2})\s*$', last_part)
+                            if state_match:
+                                address_parts['State'] = state_match.group(1)
+                                last_part = last_part[:state_match.start()].strip()
+                            
+                            # If there are parts between street and state/zip, it's the city
+                            if len(parts) == 3:
+                                address_parts['City'] = parts[1].strip()
+                            elif len(parts) == 2:
+                                address_parts['City'] = last_part
+                    
+                    # Get and validate rating
+                    rating = item.get('Rating', '')
+                    try:
+                        rating = float(rating) if rating else 0
+                    except (ValueError, TypeError):
+                        rating = 0
+                    
+                    # Skip businesses below minimum rating
+                    if rating < min_rating:
+                        continue
+                    
+                    # Create new item with processed data
+                    new_item = {
+                        'Name': item.get('Name', ''),
+                        'Rating': rating,  # Use the converted float rating
+                        'Reviews Count': item.get('Reviews Count', ''),
+                        'Phone': item.get('Phone', ''),
+                        'Email': item.get('Email', ''),
+                        'Website': item.get('Website', ''),
+                        'Address Line 1': address_parts['Address Line 1'],
+                        'Address Line 2': address_parts['Address Line 2'],
+                        'City': address_parts['City'],
+                        'State': address_parts['State'],
+                        'ZIP Code': address_parts['ZIP Code'],
+                        'Owner Name': item.get('Owner Name', ''),
+                        'Category': item.get('Categories', ''),  # Use Categories as the single category field
+                        'Description': item.get('Description', ''),
+                        'Source': item.get('Source', 'yellowpages')
+                    }
+                    
+                    # Add any additional fields that weren't explicitly handled
+                    for key, value in item.items():
+                        if key not in new_item and key not in ['Address', 'Categories', 'Category']:
+                            new_item[key] = value
+                    
+                    processed_data.append(new_item)
 
-            # Sort columns in a logical order
-            column_order = [
-                'Name',
-                'Phone',
-                'Email',
-                'Website',
-                'Address Line 1',
-                'Address Line 2',
-                'Owner Name',
-                'Rating',
-                'Reviews Count',
-                'Category',
-                'Categories',
-                'Description',
-                'Company Name',
-                'Source'
-            ]
+            # Create DataFrame with processed data
+            df = pd.DataFrame(processed_data)
 
-            # Add any additional columns that might exist
-            remaining_columns = sorted(list(all_columns - set(column_order)))
-            column_order.extend(remaining_columns)
+            # Clean up the data
+            for col in df.columns:
+                # Replace empty strings and None with NaN
+                df[col] = df[col].replace(['', None], pd.NA)
+                
+                # Clean up text fields
+                if df[col].dtype == 'object':
+                    df[col] = df[col].str.strip()
+                    df[col] = df[col].str.replace('\n', ' ')
+                    df[col] = df[col].str.replace('\r', ' ')
+                    df[col] = df[col].str.replace('\t', ' ')
+                    df[col] = df[col].str.replace('  ', ' ')
 
-            # Create DataFrame with ordered columns
-            df = pd.DataFrame(data)
+            # Remove duplicates
+            duplicate_subset = ['Name', 'Phone', 'Address Line 1']
+            df = df.drop_duplicates(subset=duplicate_subset, keep='first')
+
+            # Sort by rating (descending) and reviews count (descending)
+            df['Reviews Count'] = pd.to_numeric(df['Reviews Count'], errors='coerce').fillna(0)
+            df = df.sort_values(by=['Rating', 'Reviews Count'], ascending=[False, False])
+
+            # Create Excel writer with xlsxwriter engine for formatting
+            writer = pd.ExcelWriter(filepath, engine='xlsxwriter')
             
-            # Reorder columns (only include columns that exist in the DataFrame)
-            existing_columns = [col for col in column_order if col in df.columns]
-            df = df.reindex(columns=existing_columns)
-
-            # Save to Excel
-            df.to_excel(filepath, index=False, engine='openpyxl')
+            # Write the DataFrame to Excel
+            df.to_excel(writer, index=False, sheet_name='Sheet1')
+            
+            # Get the xlsxwriter workbook and worksheet objects
+            workbook = writer.book
+            worksheet = writer.sheets['Sheet1']
+            
+            # Define column widths based on content type
+            column_widths = {
+                'Name': 30,
+                'Rating': 10,
+                'Reviews Count': 12,
+                'Phone': 15,
+                'Email': 25,
+                'Website': 35,
+                'Address Line 1': 35,
+                'Address Line 2': 20,
+                'City': 20,
+                'State': 8,
+                'ZIP Code': 12,
+                'Owner Name': 25,
+                'Category': 30,
+                'Description': 50,
+                'Source': 12
+            }
+            
+            # Set column widths and add a bit of padding
+            for idx, col in enumerate(df.columns):
+                max_length = max(
+                    df[col].astype(str).apply(len).max(),  # max length of values
+                    len(col)  # length of column name
+                ) + 2  # add padding
+                
+                # Use predefined width if available, otherwise use calculated width
+                width = column_widths.get(col, max_length)
+                worksheet.set_column(idx, idx, width)
+            
+            # Add basic formatting
+            header_format = workbook.add_format({
+                'bold': True,
+                'text_wrap': True,
+                'valign': 'top',
+                'fg_color': '#D9D9D9',
+                'border': 1
+            })
+            
+            # Add number format for Rating column
+            rating_format = workbook.add_format({'num_format': '0.0'})
+            rating_col = df.columns.get_loc('Rating')
+            worksheet.set_column(rating_col, rating_col, 10, rating_format)
+            
+            # Write the column headers with the header format
+            for col_num, value in enumerate(df.columns.values):
+                worksheet.write(0, col_num, value, header_format)
+            
+            # Save the Excel file
+            writer.close()
+            
             logger.info(f"Results saved to Excel file: {filepath}")
 
+            # Return success response with file info
             return jsonify({
-                'status': 'success',
-                'message': f'Successfully found {len(data)} results',
-                'filename': filename
+                'success': True,
+                'data': processed_data,
+                'count': len(df),
+                'excel_file': filename,
+                'download_url': url_for('download_file', filename=filename),
+                'stats': {
+                    'total_results': len(df),
+                    'min_rating_filter': min_rating,
+                    'platform': 'yellowpages',
+                    'query': query,
+                    'location': location
+                }
             })
 
         except Exception as e:
-            logger.error(f"Error during scraping: {str(e)}")
-            logger.error(traceback.format_exc())
+            logger.error(f"Error during YellowPages scraping: {str(e)}")
             return jsonify({
                 'status': 'error',
                 'message': f'Error during scraping: {str(e)}'
             }), 500
-            
-        finally:
-            scraper.cleanup()
 
     except Exception as e:
-        logger.error(f"Error in route handler: {str(e)}")
-        logger.error(traceback.format_exc())
+        logger.error(f"Error in YellowPages route: {str(e)}")
         return jsonify({
             'status': 'error',
-            'message': f'Server error: {str(e)}'
+            'message': f'An error occurred: {str(e)}'
         }), 500
 
 @app.errorhandler(404)

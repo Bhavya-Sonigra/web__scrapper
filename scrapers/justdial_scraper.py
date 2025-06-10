@@ -105,10 +105,10 @@ class JustDialScraper:
                             
                             for tag, attrs in address_selectors:
                                 address_elem = listing.find(tag, attrs)
-                                if address_elem:
-                                    address = address_elem.text.strip()
-                                    if address:  # If we found a non-empty address
-                                        break
+                            if address_elem:
+                                address = address_elem.text.strip()
+                                if address:  # If we found a non-empty address
+                                    break
                             
                             # If still no address, try looking for any element containing location keywords
                             if not address:
@@ -142,14 +142,14 @@ class JustDialScraper:
                             ]
                             for tag, attrs in rating_selectors:
                                 rating_elem = listing.find(tag, attrs)
-                                if rating_elem:
+                            if rating_elem:
                                     rating_text = rating_elem.text.strip()
                                     # Extract numeric rating
                                     rating_match = re.search(r'(\d+(\.\d+)?)', rating_text)
                                     if rating_match:
                                         rating = rating_match.group(1)
                                         break
-
+                            
                             # Extract reviews count
                             votes = ''
                             votes_selectors = [
@@ -161,7 +161,7 @@ class JustDialScraper:
                             ]
                             for tag, attrs in votes_selectors:
                                 votes_elem = listing.find(tag, attrs)
-                                if votes_elem:
+                            if votes_elem:
                                     votes_text = votes_elem.text.strip()
                                     # Extract numeric vote count
                                     votes_match = re.search(r'(\d+)', votes_text)

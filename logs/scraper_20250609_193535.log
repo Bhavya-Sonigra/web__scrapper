@@ -1,0 +1,207 @@
+2025-06-09 19:35:35,938 [INFO] [app.py:70] - === Starting new scraping session ===
+2025-06-09 19:35:35,939 [INFO] [app.py:71] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 19:35:35,939 [INFO] [app.py:72] - Operating System: win32
+2025-06-09 19:35:35,940 [INFO] [app.py:73] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 19:35:36,279 [INFO] [app.py:1495] - Starting Yellow Pages scraping...
+2025-06-09 19:35:36,280 [INFO] [yellowpages_scraper.py:75] - Setting up undetected-chromedriver...
+2025-06-09 19:35:36,285 [INFO] [yellowpages_scraper.py:55] - Chrome executable found at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-06-09 19:35:36,961 [INFO] [yellowpages_scraper.py:66] - Detected Chrome version: 137.0.7151.69 (Major: 137)
+2025-06-09 19:35:42,020 [INFO] [yellowpages_scraper.py:97] - Undetected-chromedriver is ready.
+2025-06-09 19:35:42,021 [INFO] [yellowpages_scraper.py:550] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=1
+2025-06-09 19:35:50,077 [INFO] [yellowpages_scraper.py:565] - Found 30 listings on page 1
+2025-06-09 19:35:50,078 [INFO] [yellowpages_scraper.py:568] - Scraping business 1/30 on page 1
+2025-06-09 19:35:50,360 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.nbww.com/
+2025-06-09 19:35:50,763 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://www.nbww.com/: 404 Client Error: Not Found for url: http://www.nbww.com/
+2025-06-09 19:35:50,765 [INFO] [yellowpages_scraper.py:568] - Scraping business 2/30 on page 1
+2025-06-09 19:35:50,973 [INFO] [yellowpages_scraper.py:568] - Scraping business 3/30 on page 1
+2025-06-09 19:35:51,165 [INFO] [yellowpages_scraper.py:568] - Scraping business 4/30 on page 1
+2025-06-09 19:35:51,353 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://claroarchitecture.com/
+2025-06-09 19:36:03,988 [INFO] [yellowpages_scraper.py:568] - Scraping business 5/30 on page 1
+2025-06-09 19:36:04,184 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.rrrgeneralcontractor.com/
+2025-06-09 19:36:16,164 [ERROR] [yellowpages_scraper.py:255] - Error scraping website http://www.rrrgeneralcontractor.com/: invalid literal for int() with base 10: 'of '
+2025-06-09 19:36:16,165 [INFO] [yellowpages_scraper.py:568] - Scraping business 6/30 on page 1
+2025-06-09 19:36:16,351 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://roomzoom.com/
+2025-06-09 19:36:26,873 [INFO] [yellowpages_scraper.py:568] - Scraping business 7/30 on page 1
+2025-06-09 19:36:27,074 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://alvarezmartialarts.com/
+2025-06-09 19:36:27,123 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://alvarezmartialarts.com/: HTTPConnectionPool(host='alvarezmartialarts.com', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x0000025E52C50950>: Failed to resolve 'alvarezmartialarts.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 19:36:27,125 [INFO] [yellowpages_scraper.py:568] - Scraping business 8/30 on page 1
+2025-06-09 19:36:27,309 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://offler.com/
+2025-06-09 19:36:29,653 [INFO] [yellowpages_scraper.py:568] - Scraping business 9/30 on page 1
+2025-06-09 19:36:29,864 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.rvlarch.com/about
+2025-06-09 19:36:34,286 [ERROR] [yellowpages_scraper.py:255] - Error scraping website https://www.rvlarch.com/about: invalid literal for int() with base 10: 'of '
+2025-06-09 19:36:34,287 [INFO] [yellowpages_scraper.py:568] - Scraping business 10/30 on page 1
+2025-06-09 19:36:34,513 [INFO] [yellowpages_scraper.py:568] - Scraping business 11/30 on page 1
+2025-06-09 19:36:34,694 [INFO] [yellowpages_scraper.py:568] - Scraping business 12/30 on page 1
+2025-06-09 19:36:34,897 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://bellonmilanes.com/
+2025-06-09 19:36:34,960 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://bellonmilanes.com/: HTTPConnectionPool(host='bellonmilanes.com', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x0000025E537E0AF0>: Failed to resolve 'bellonmilanes.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 19:36:34,961 [INFO] [yellowpages_scraper.py:568] - Scraping business 13/30 on page 1
+2025-06-09 19:36:35,145 [INFO] [yellowpages_scraper.py:568] - Scraping business 14/30 on page 1
+2025-06-09 19:36:35,334 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://garciaghezziarchitects.com/
+2025-06-09 19:36:37,115 [INFO] [yellowpages_scraper.py:568] - Scraping business 15/30 on page 1
+2025-06-09 19:36:37,302 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://siegersuarez.com/
+2025-06-09 19:36:41,039 [INFO] [yellowpages_scraper.py:568] - Scraping business 16/30 on page 1
+2025-06-09 19:36:41,241 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.paredesarchitects.com/
+2025-06-09 19:36:42,673 [INFO] [yellowpages_scraper.py:568] - Scraping business 17/30 on page 1
+2025-06-09 19:36:42,859 [INFO] [yellowpages_scraper.py:568] - Scraping business 18/30 on page 1
+2025-06-09 19:36:43,043 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://sebastianeilert.com/
+2025-06-09 19:36:44,658 [INFO] [yellowpages_scraper.py:568] - Scraping business 19/30 on page 1
+2025-06-09 19:36:44,955 [INFO] [yellowpages_scraper.py:568] - Scraping business 20/30 on page 1
+2025-06-09 19:36:45,160 [INFO] [yellowpages_scraper.py:568] - Scraping business 21/30 on page 1
+2025-06-09 19:36:45,354 [INFO] [yellowpages_scraper.py:568] - Scraping business 22/30 on page 1
+2025-06-09 19:36:45,550 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://engineerunner.com/
+2025-06-09 19:36:46,938 [INFO] [yellowpages_scraper.py:568] - Scraping business 23/30 on page 1
+2025-06-09 19:36:47,369 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://towingrus.com/
+2025-06-09 19:36:47,472 [INFO] [yellowpages_scraper.py:568] - Scraping business 24/30 on page 1
+2025-06-09 19:36:47,713 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://v3architecturalgroup.com/
+2025-06-09 19:36:50,067 [INFO] [yellowpages_scraper.py:568] - Scraping business 25/30 on page 1
+2025-06-09 19:36:50,225 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://bellonmilanes.com/
+2025-06-09 19:36:50,273 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://bellonmilanes.com/: HTTPConnectionPool(host='bellonmilanes.com', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x0000025E51A8BDF0>: Failed to resolve 'bellonmilanes.com' ([Errno 11001] getaddrinfo failed)"))
+2025-06-09 19:36:50,274 [INFO] [yellowpages_scraper.py:568] - Scraping business 26/30 on page 1
+2025-06-09 19:36:50,450 [INFO] [yellowpages_scraper.py:568] - Scraping business 27/30 on page 1
+2025-06-09 19:36:50,619 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.metrostudio.com/
+2025-06-09 19:36:52,395 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://www.metrostudio.com/: HTTPSConnectionPool(host='www.metrostudio.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.metrostudio.com'. (_ssl.c:1028)")))
+2025-06-09 19:36:52,398 [INFO] [yellowpages_scraper.py:568] - Scraping business 28/30 on page 1
+2025-06-09 19:36:52,572 [INFO] [yellowpages_scraper.py:568] - Scraping business 29/30 on page 1
+2025-06-09 19:36:52,742 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.openbuildingpermits.com/
+2025-06-09 19:37:07,810 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://www.openbuildingpermits.com/: HTTPConnectionPool(host='www.openbuildingpermits.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E537E08D0>, 'Connection to www.openbuildingpermits.com timed out. (connect timeout=15)'))
+2025-06-09 19:37:07,817 [INFO] [yellowpages_scraper.py:568] - Scraping business 30/30 on page 1
+2025-06-09 19:37:12,121 [INFO] [yellowpages_scraper.py:550] - Navigating to page 2: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=2
+2025-06-09 19:37:17,703 [INFO] [yellowpages_scraper.py:565] - Found 30 listings on page 2
+2025-06-09 19:37:17,703 [INFO] [yellowpages_scraper.py:568] - Scraping business 1/30 on page 2
+2025-06-09 19:37:17,947 [INFO] [yellowpages_scraper.py:568] - Scraping business 2/30 on page 2
+2025-06-09 19:37:18,148 [INFO] [yellowpages_scraper.py:568] - Scraping business 3/30 on page 2
+2025-06-09 19:37:18,329 [INFO] [yellowpages_scraper.py:568] - Scraping business 4/30 on page 2
+2025-06-09 19:37:18,573 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://elamiami.com/
+2025-06-09 19:37:19,184 [INFO] [yellowpages_scraper.py:568] - Scraping business 5/30 on page 2
+2025-06-09 19:37:19,403 [INFO] [yellowpages_scraper.py:568] - Scraping business 6/30 on page 2
+2025-06-09 19:37:19,603 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.demandtarchitecture.com/
+2025-06-09 19:37:34,608 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://www.demandtarchitecture.com/: HTTPConnectionPool(host='www.demandtarchitecture.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E51A8BF00>, 'Connection to www.demandtarchitecture.com timed out. (connect timeout=15)'))
+2025-06-09 19:37:34,612 [INFO] [yellowpages_scraper.py:568] - Scraping business 7/30 on page 2
+2025-06-09 19:37:34,801 [INFO] [yellowpages_scraper.py:568] - Scraping business 8/30 on page 2
+2025-06-09 19:37:34,977 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.nuryferia.com/
+2025-06-09 19:37:35,686 [INFO] [yellowpages_scraper.py:568] - Scraping business 9/30 on page 2
+2025-06-09 19:37:35,861 [INFO] [yellowpages_scraper.py:568] - Scraping business 10/30 on page 2
+2025-06-09 19:37:36,043 [INFO] [yellowpages_scraper.py:568] - Scraping business 11/30 on page 2
+2025-06-09 19:37:36,229 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://whadesign.com/
+2025-06-09 19:37:36,668 [WARNING] [yellowpages_scraper.py:249] - Error accessing website http://whadesign.com/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2025-06-09 19:37:36,671 [INFO] [yellowpages_scraper.py:568] - Scraping business 12/30 on page 2
+2025-06-09 19:37:37,032 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.whadesign.com/
+2025-06-09 19:37:37,882 [WARNING] [yellowpages_scraper.py:249] - Error accessing website https://www.whadesign.com/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2025-06-09 19:37:37,885 [INFO] [yellowpages_scraper.py:568] - Scraping business 13/30 on page 2
+2025-06-09 19:37:38,109 [INFO] [yellowpages_scraper.py:568] - Scraping business 14/30 on page 2
+2025-06-09 19:37:38,286 [INFO] [yellowpages_scraper.py:568] - Scraping business 15/30 on page 2
+2025-06-09 19:37:38,456 [INFO] [yellowpages_scraper.py:568] - Scraping business 16/30 on page 2
+2025-06-09 19:37:38,635 [INFO] [yellowpages_scraper.py:568] - Scraping business 17/30 on page 2
+2025-06-09 19:37:38,807 [INFO] [yellowpages_scraper.py:568] - Scraping business 18/30 on page 2
+2025-06-09 19:37:38,978 [INFO] [yellowpages_scraper.py:568] - Scraping business 19/30 on page 2
+2025-06-09 19:37:39,159 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://floridasturnpike.com/
+2025-06-09 19:37:40,633 [INFO] [yellowpages_scraper.py:568] - Scraping business 20/30 on page 2
+2025-06-09 19:37:40,835 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.lckaiainc.com/
+2025-06-09 19:37:41,473 [INFO] [yellowpages_scraper.py:568] - Scraping business 21/30 on page 2
+2025-06-09 19:37:41,651 [INFO] [yellowpages_scraper.py:568] - Scraping business 22/30 on page 2
+2025-06-09 19:37:41,824 [INFO] [yellowpages_scraper.py:568] - Scraping business 23/30 on page 2
+2025-06-09 19:37:42,009 [INFO] [yellowpages_scraper.py:568] - Scraping business 24/30 on page 2
+2025-06-09 19:37:42,182 [INFO] [yellowpages_scraper.py:568] - Scraping business 25/30 on page 2
+2025-06-09 19:37:42,354 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://nextgenmiami.com/
+2025-06-09 19:37:43,866 [INFO] [yellowpages_scraper.py:568] - Scraping business 26/30 on page 2
+2025-06-09 19:37:44,057 [INFO] [yellowpages_scraper.py:568] - Scraping business 27/30 on page 2
+2025-06-09 19:37:44,270 [INFO] [yellowpages_scraper.py:568] - Scraping business 28/30 on page 2
+2025-06-09 19:37:44,464 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://christophercawley.com/
+2025-06-09 19:37:46,887 [INFO] [yellowpages_scraper.py:568] - Scraping business 29/30 on page 2
+2025-06-09 19:37:47,066 [INFO] [yellowpages_scraper.py:568] - Scraping business 30/30 on page 2
+2025-06-09 19:37:51,819 [INFO] [yellowpages_scraper.py:550] - Navigating to page 3: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=3
+2025-06-09 19:37:57,487 [INFO] [yellowpages_scraper.py:565] - Found 30 listings on page 3
+2025-06-09 19:37:57,488 [INFO] [yellowpages_scraper.py:568] - Scraping business 1/30 on page 3
+2025-06-09 19:37:57,721 [INFO] [yellowpages_scraper.py:568] - Scraping business 2/30 on page 3
+2025-06-09 19:37:57,908 [INFO] [yellowpages_scraper.py:568] - Scraping business 3/30 on page 3
+2025-06-09 19:37:58,086 [INFO] [yellowpages_scraper.py:568] - Scraping business 4/30 on page 3
+2025-06-09 19:37:58,280 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://architect1.com/
+2025-06-09 19:37:59,999 [INFO] [yellowpages_scraper.py:568] - Scraping business 5/30 on page 3
+2025-06-09 19:38:00,183 [INFO] [yellowpages_scraper.py:568] - Scraping business 6/30 on page 3
+2025-06-09 19:38:00,336 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://archcollab.com/
+2025-06-09 19:38:31,187 [INFO] [yellowpages_scraper.py:568] - Scraping business 7/30 on page 3
+2025-06-09 19:38:31,440 [INFO] [yellowpages_scraper.py:568] - Scraping business 8/30 on page 3
+2025-06-09 19:38:31,692 [INFO] [yellowpages_scraper.py:568] - Scraping business 9/30 on page 3
+2025-06-09 19:38:31,935 [INFO] [yellowpages_scraper.py:568] - Scraping business 10/30 on page 3
+2025-06-09 19:38:32,185 [INFO] [yellowpages_scraper.py:568] - Scraping business 11/30 on page 3
+2025-06-09 19:38:32,451 [INFO] [yellowpages_scraper.py:568] - Scraping business 12/30 on page 3
+2025-06-09 19:38:32,704 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://meridiandesign.com/
+2025-06-09 19:38:32,962 [WARNING] [yellowpages_scraper.py:249] - Error accessing website https://meridiandesign.com/: 403 Client Error: Forbidden for url: https://meridiandesign.com/
+2025-06-09 19:38:32,963 [INFO] [yellowpages_scraper.py:568] - Scraping business 13/30 on page 3
+2025-06-09 19:38:33,236 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.mateuarchitecture.com/
+2025-06-09 19:38:35,587 [INFO] [yellowpages_scraper.py:568] - Scraping business 14/30 on page 3
+2025-06-09 19:38:35,864 [INFO] [yellowpages_scraper.py:568] - Scraping business 15/30 on page 3
+2025-06-09 19:38:36,124 [INFO] [yellowpages_scraper.py:568] - Scraping business 16/30 on page 3
+2025-06-09 19:38:36,387 [INFO] [yellowpages_scraper.py:568] - Scraping business 17/30 on page 3
+2025-06-09 19:38:36,674 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://vertexarchitecture.com/
+2025-06-09 19:38:47,720 [INFO] [yellowpages_scraper.py:568] - Scraping business 18/30 on page 3
+2025-06-09 19:38:47,906 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.arcbuildersandgroup.com/
+2025-06-09 19:38:50,830 [ERROR] [yellowpages_scraper.py:255] - Error scraping website http://www.arcbuildersandgroup.com/: invalid literal for int() with base 10: 'of '
+2025-06-09 19:38:50,831 [INFO] [yellowpages_scraper.py:568] - Scraping business 19/30 on page 3
+2025-06-09 19:38:50,998 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.landeraassociates.com/
+2025-06-09 19:38:54,599 [INFO] [yellowpages_scraper.py:568] - Scraping business 20/30 on page 3
+2025-06-09 19:38:54,788 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.paredesarchitects.com/
+2025-06-09 19:38:55,724 [INFO] [yellowpages_scraper.py:568] - Scraping business 21/30 on page 3
+2025-06-09 19:38:55,882 [INFO] [yellowpages_scraper.py:568] - Scraping business 22/30 on page 3
+2025-06-09 19:38:56,057 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.gershengroup.com/
+2025-06-09 19:38:59,724 [INFO] [yellowpages_scraper.py:568] - Scraping business 23/30 on page 3
+2025-06-09 19:38:59,902 [INFO] [yellowpages_scraper.py:568] - Scraping business 24/30 on page 3
+2025-06-09 19:39:00,117 [INFO] [yellowpages_scraper.py:568] - Scraping business 25/30 on page 3
+2025-06-09 19:39:00,403 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://vertexarchitecture.com/
+2025-06-09 19:39:06,066 [INFO] [yellowpages_scraper.py:568] - Scraping business 26/30 on page 3
+2025-06-09 19:39:06,357 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.jas-architects.com/
+2025-06-09 19:39:06,995 [INFO] [yellowpages_scraper.py:568] - Scraping business 27/30 on page 3
+2025-06-09 19:39:07,189 [INFO] [yellowpages_scraper.py:568] - Scraping business 28/30 on page 3
+2025-06-09 19:39:07,391 [INFO] [yellowpages_scraper.py:568] - Scraping business 29/30 on page 3
+2025-06-09 19:39:07,601 [INFO] [yellowpages_scraper.py:568] - Scraping business 30/30 on page 3
+2025-06-09 19:39:11,465 [INFO] [yellowpages_scraper.py:550] - Navigating to page 4: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=4
+2025-06-09 19:39:16,478 [INFO] [yellowpages_scraper.py:565] - Found 30 listings on page 4
+2025-06-09 19:39:16,479 [INFO] [yellowpages_scraper.py:568] - Scraping business 1/30 on page 4
+2025-06-09 19:39:16,779 [INFO] [yellowpages_scraper.py:568] - Scraping business 2/30 on page 4
+2025-06-09 19:39:17,008 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://imagenarchitects.com/
+2025-06-09 19:39:20,433 [INFO] [yellowpages_scraper.py:568] - Scraping business 3/30 on page 4
+2025-06-09 19:39:20,737 [INFO] [yellowpages_scraper.py:568] - Scraping business 4/30 on page 4
+2025-06-09 19:39:21,050 [INFO] [yellowpages_scraper.py:568] - Scraping business 5/30 on page 4
+2025-06-09 19:39:21,368 [INFO] [yellowpages_scraper.py:568] - Scraping business 6/30 on page 4
+2025-06-09 19:39:21,637 [INFO] [yellowpages_scraper.py:568] - Scraping business 7/30 on page 4
+2025-06-09 19:39:21,903 [INFO] [yellowpages_scraper.py:568] - Scraping business 8/30 on page 4
+2025-06-09 19:39:22,170 [INFO] [yellowpages_scraper.py:568] - Scraping business 9/30 on page 4
+2025-06-09 19:39:22,399 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://sol-arch.com/contact
+2025-06-09 19:39:26,771 [INFO] [yellowpages_scraper.py:568] - Scraping business 10/30 on page 4
+2025-06-09 19:39:27,019 [INFO] [yellowpages_scraper.py:568] - Scraping business 11/30 on page 4
+2025-06-09 19:39:27,266 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.msaarchitectsinc.com/locations-1
+2025-06-09 19:39:28,734 [WARNING] [yellowpages_scraper.py:249] - Error accessing website https://www.msaarchitectsinc.com/locations-1: 404 Client Error: Not Found for url: https://www.msaarchitectsinc.com/locations-1
+2025-06-09 19:39:28,736 [INFO] [yellowpages_scraper.py:568] - Scraping business 12/30 on page 4
+2025-06-09 19:39:28,996 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.hfarchitect.net/
+2025-06-09 19:39:29,649 [INFO] [yellowpages_scraper.py:568] - Scraping business 13/30 on page 4
+2025-06-09 19:39:29,867 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.elmarchmiami.com/contact.html
+2025-06-09 19:39:30,756 [WARNING] [yellowpages_scraper.py:249] - Error accessing website https://www.elmarchmiami.com/contact.html: 404 Client Error: Not Found for url: https://www.elmarchmiami.com/contact.html
+2025-06-09 19:39:30,758 [INFO] [yellowpages_scraper.py:568] - Scraping business 14/30 on page 4
+2025-06-09 19:39:30,974 [INFO] [yellowpages_scraper.py:568] - Scraping business 15/30 on page 4
+2025-06-09 19:39:31,208 [INFO] [yellowpages_scraper.py:568] - Scraping business 16/30 on page 4
+2025-06-09 19:39:31,411 [INFO] [yellowpages_scraper.py:568] - Scraping business 17/30 on page 4
+2025-06-09 19:39:31,625 [INFO] [yellowpages_scraper.py:568] - Scraping business 18/30 on page 4
+2025-06-09 19:39:31,833 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.figureh.com/
+2025-06-09 19:39:33,986 [INFO] [yellowpages_scraper.py:568] - Scraping business 19/30 on page 4
+2025-06-09 19:39:34,214 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://elmarchmiami.com/
+2025-06-09 19:39:36,133 [INFO] [yellowpages_scraper.py:568] - Scraping business 20/30 on page 4
+2025-06-09 19:39:36,505 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://claroarchitecture.com/
+2025-06-09 19:39:48,528 [INFO] [yellowpages_scraper.py:568] - Scraping business 21/30 on page 4
+2025-06-09 19:39:48,888 [INFO] [yellowpages_scraper.py:568] - Scraping business 22/30 on page 4
+2025-06-09 19:39:49,188 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.richardcortesarchitects.com/
+2025-06-09 19:39:51,318 [INFO] [yellowpages_scraper.py:568] - Scraping business 23/30 on page 4
+2025-06-09 19:39:51,583 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.jas-architects.com/contact.html
+2025-06-09 19:39:52,339 [INFO] [yellowpages_scraper.py:568] - Scraping business 24/30 on page 4
+2025-06-09 19:39:52,518 [INFO] [yellowpages_scraper.py:568] - Scraping business 25/30 on page 4
+2025-06-09 19:39:52,700 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.sblm.com/
+2025-06-09 19:39:53,473 [INFO] [yellowpages_scraper.py:568] - Scraping business 26/30 on page 4
+2025-06-09 19:39:53,646 [INFO] [yellowpages_scraper.py:214] - Scraping business website: http://www.themiamiarchitect.com/
+2025-06-09 19:39:55,611 [INFO] [yellowpages_scraper.py:568] - Scraping business 27/30 on page 4
+2025-06-09 19:39:55,929 [INFO] [yellowpages_scraper.py:568] - Scraping business 28/30 on page 4
+2025-06-09 19:39:56,199 [INFO] [yellowpages_scraper.py:568] - Scraping business 29/30 on page 4
+2025-06-09 19:39:56,488 [INFO] [yellowpages_scraper.py:568] - Scraping business 30/30 on page 4
+2025-06-09 19:39:56,700 [INFO] [yellowpages_scraper.py:214] - Scraping business website: https://www.trellescabarrocas.com/contact
+2025-06-09 19:40:02,127 [INFO] [yellowpages_scraper.py:585] - Scraping completed with 120 total results across 5 pages.
+2025-06-09 19:40:02,128 [INFO] [yellowpages_scraper.py:593] - Scraping session ended.
+2025-06-09 19:40:03,750 [INFO] [app.py:1580] - Results saved to Excel file: downloads\yellowpages_results_20250609_194003.xlsx
+2025-06-09 19:40:04,944 [INFO] [app.py:1239] - Sending Excel file: downloads\yellowpages_results_20250609_194003.xlsx

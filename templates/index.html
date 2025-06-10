@@ -457,7 +457,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         function displayResults(data) {
             const resultsDiv = document.getElementById('results') || document.createElement('div');
@@ -607,6 +607,8 @@
                 // Hide loading indicator
                 loadingIndicator.style.display = 'none';
                 
+                console.log('Response data:', data);
+                
                 // Handle success for both JustDial and Yellow Pages
                 if ((data.success || data.status === 'success') && 
                     ((data.data && data.data.length > 0) || data.count > 0)) {
@@ -624,8 +626,10 @@
                     const resultsDiv = document.getElementById('results');
                     
                     // Handle Excel download for any platform
-                    if (data.download_url || (data.excel_file && platform === 'yellowpages')) {
-                        const downloadUrl = data.download_url || `/download_excel/${data.excel_file}`;
+                    if (data.download_url || data.excel_file) {
+                        const downloadUrl = data.download_url || `/download/${data.excel_file}`;
+                        console.log('Download URL:', downloadUrl);
+                        
                         // Add download button
                         const downloadBtn = document.createElement('a');
                         downloadBtn.href = downloadUrl;
@@ -638,18 +642,26 @@
                         setTimeout(() => {
                             window.location.href = downloadUrl;
                         }, 1000);
+                    } else {
+                        console.log('No download URL or excel file in response');
                     }
                 } else {
-                    // Show error message
+                    // Show error message with more details
                     statusMessage.className = 'alert alert-danger';
-                    statusMessage.textContent = data.error || data.message || 'An error occurred';
+                    let errorMsg = data.error || data.message || 'An error occurred';
+                    if (data.data && data.data.length === 0) {
+                        errorMsg += '. No results found.';
+                    }
+                    statusMessage.textContent = errorMsg;
                     statusMessage.style.display = 'block';
+                    console.error('Error response:', data);
                 }
             })
             .catch(error => {
-                // Show error message
+                // Show detailed error message
+                console.error('Request error:', error);
                 statusMessage.className = 'alert alert-danger';
-                statusMessage.textContent = 'An error occurred. Please try again.';
+                statusMessage.textContent = `An error occurred: ${error.message}. Please try again.`;
                 statusMessage.style.display = 'block';
             })
             .finally(() => {

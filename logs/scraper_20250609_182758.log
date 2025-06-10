@@ -1,0 +1,12 @@
+2025-06-09 18:27:58,989 [INFO] [app.py:70] - === Starting new scraping session ===
+2025-06-09 18:27:58,990 [INFO] [app.py:71] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 18:27:58,990 [INFO] [app.py:72] - Operating System: win32
+2025-06-09 18:27:58,991 [INFO] [app.py:73] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 18:33:22,627 [INFO] [app.py:1495] - Starting Yellow Pages scraping...
+2025-06-09 18:33:22,628 [INFO] [yellowpages_scraper.py:55] - Setting up Chrome WebDriver...
+2025-06-09 18:33:24,213 [INFO] [yellowpages_scraper.py:77] - Chrome WebDriver is ready.
+2025-06-09 18:33:24,214 [INFO] [yellowpages_scraper.py:271] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=UK&page=1
+2025-06-09 18:33:44,677 [WARNING] [yellowpages_scraper.py:300] - Timeout waiting for results on page 1
+2025-06-09 18:33:44,679 [INFO] [yellowpages_scraper.py:306] - Scraping completed with 0 total results across 1 pages.
+2025-06-09 18:33:44,680 [INFO] [yellowpages_scraper.py:314] - Scraping session ended.
+2025-06-09 18:33:47,801 [INFO] [yellowpages_scraper.py:320] - WebDriver closed.

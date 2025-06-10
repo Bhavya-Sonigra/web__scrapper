@@ -1,0 +1,71 @@
+2025-06-09 18:36:15,666 [INFO] [app.py:70] - === Starting new scraping session ===
+2025-06-09 18:36:15,667 [INFO] [app.py:71] - Python version: 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+2025-06-09 18:36:15,667 [INFO] [app.py:72] - Operating System: win32
+2025-06-09 18:36:15,667 [INFO] [app.py:73] - Working Directory: C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper
+2025-06-09 18:36:19,974 [INFO] [app.py:1495] - Starting Yellow Pages scraping...
+2025-06-09 18:36:19,974 [INFO] [yellowpages_scraper.py:55] - Setting up Chrome WebDriver...
+2025-06-09 18:36:21,411 [INFO] [yellowpages_scraper.py:77] - Chrome WebDriver is ready.
+2025-06-09 18:36:21,412 [INFO] [yellowpages_scraper.py:271] - Navigating to page 1: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=1
+2025-06-09 18:36:27,665 [INFO] [yellowpages_scraper.py:286] - Found 30 listings on page 1
+2025-06-09 18:36:27,665 [INFO] [yellowpages_scraper.py:289] - Scraping business 1/30 on page 1
+2025-06-09 18:36:27,952 [INFO] [yellowpages_scraper.py:289] - Scraping business 2/30 on page 1
+2025-06-09 18:36:28,105 [INFO] [yellowpages_scraper.py:289] - Scraping business 3/30 on page 1
+2025-06-09 18:36:28,281 [INFO] [yellowpages_scraper.py:289] - Scraping business 4/30 on page 1
+2025-06-09 18:36:28,430 [INFO] [yellowpages_scraper.py:289] - Scraping business 5/30 on page 1
+2025-06-09 18:36:28,577 [INFO] [yellowpages_scraper.py:289] - Scraping business 6/30 on page 1
+2025-06-09 18:36:28,724 [INFO] [yellowpages_scraper.py:289] - Scraping business 7/30 on page 1
+2025-06-09 18:36:28,878 [INFO] [yellowpages_scraper.py:289] - Scraping business 8/30 on page 1
+2025-06-09 18:36:29,032 [INFO] [yellowpages_scraper.py:289] - Scraping business 9/30 on page 1
+2025-06-09 18:36:29,177 [INFO] [yellowpages_scraper.py:289] - Scraping business 10/30 on page 1
+2025-06-09 18:36:29,320 [INFO] [yellowpages_scraper.py:289] - Scraping business 11/30 on page 1
+2025-06-09 18:36:29,455 [INFO] [yellowpages_scraper.py:289] - Scraping business 12/30 on page 1
+2025-06-09 18:36:29,596 [INFO] [yellowpages_scraper.py:289] - Scraping business 13/30 on page 1
+2025-06-09 18:36:29,735 [INFO] [yellowpages_scraper.py:289] - Scraping business 14/30 on page 1
+2025-06-09 18:36:29,886 [INFO] [yellowpages_scraper.py:289] - Scraping business 15/30 on page 1
+2025-06-09 18:36:30,036 [INFO] [yellowpages_scraper.py:289] - Scraping business 16/30 on page 1
+2025-06-09 18:36:30,185 [INFO] [yellowpages_scraper.py:289] - Scraping business 17/30 on page 1
+2025-06-09 18:36:30,329 [INFO] [yellowpages_scraper.py:289] - Scraping business 18/30 on page 1
+2025-06-09 18:36:30,468 [INFO] [yellowpages_scraper.py:289] - Scraping business 19/30 on page 1
+2025-06-09 18:36:30,611 [INFO] [yellowpages_scraper.py:289] - Scraping business 20/30 on page 1
+2025-06-09 18:36:30,750 [INFO] [yellowpages_scraper.py:289] - Scraping business 21/30 on page 1
+2025-06-09 18:36:30,902 [INFO] [yellowpages_scraper.py:289] - Scraping business 22/30 on page 1
+2025-06-09 18:36:31,055 [INFO] [yellowpages_scraper.py:289] - Scraping business 23/30 on page 1
+2025-06-09 18:36:31,198 [INFO] [yellowpages_scraper.py:289] - Scraping business 24/30 on page 1
+2025-06-09 18:36:31,352 [INFO] [yellowpages_scraper.py:289] - Scraping business 25/30 on page 1
+2025-06-09 18:36:31,517 [INFO] [yellowpages_scraper.py:289] - Scraping business 26/30 on page 1
+2025-06-09 18:36:31,680 [INFO] [yellowpages_scraper.py:289] - Scraping business 27/30 on page 1
+2025-06-09 18:36:31,832 [INFO] [yellowpages_scraper.py:289] - Scraping business 28/30 on page 1
+2025-06-09 18:36:31,968 [INFO] [yellowpages_scraper.py:289] - Scraping business 29/30 on page 1
+2025-06-09 18:36:32,123 [INFO] [yellowpages_scraper.py:289] - Scraping business 30/30 on page 1
+2025-06-09 18:36:35,891 [INFO] [yellowpages_scraper.py:271] - Navigating to page 2: https://www.yellowpages.com/search?search_terms=architects&geo_location_terms=US&page=2
+2025-06-09 18:36:51,559 [WARNING] [yellowpages_scraper.py:300] - Timeout waiting for results on page 2
+2025-06-09 18:36:51,560 [INFO] [yellowpages_scraper.py:306] - Scraping completed with 30 total results across 2 pages.
+2025-06-09 18:36:51,561 [INFO] [yellowpages_scraper.py:314] - Scraping session ended.
+2025-06-09 18:36:52,593 [ERROR] [app.py:1562] - Error during scraping: No module named 'openpyxl'
+2025-06-09 18:36:52,617 [ERROR] [app.py:1563] - Traceback (most recent call last):
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\app.py", line 1552, in scrape_yellowpages_route
+    df.to_excel(filepath, index=False, engine='openpyxl')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\venv\Lib\site-packages\pandas\core\generic.py", line 2436, in to_excel
+    formatter.write(
+    ~~~~~~~~~~~~~~~^
+        excel_writer,
+        ^^^^^^^^^^^^^
+    ...<6 lines>...
+        engine_kwargs=engine_kwargs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\venv\Lib\site-packages\pandas\io\formats\excel.py", line 943, in write
+    writer = ExcelWriter(
+        writer,
+    ...<2 lines>...
+        engine_kwargs=engine_kwargs,
+    )
+  File "C:\Users\Bhavya\Desktop\PCCCCCCC\Buisness_scraper\web__scrapper\venv\Lib\site-packages\pandas\io\excel\_openpyxl.py", line 57, in __init__
+    from openpyxl.workbook import Workbook
+ModuleNotFoundError: No module named 'openpyxl'
+
+2025-06-09 18:36:54,938 [INFO] [yellowpages_scraper.py:320] - WebDriver closed.
