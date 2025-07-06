@@ -38,7 +38,7 @@ class YellowPagesScraper:
         }
         # Add reverse mapping (abbreviation to full name)
         self.us_states.update({v: v for v in self.us_states.values()})
-
+        
     def get_chrome_version(self):
         try:
             # Common Chrome installation paths
@@ -542,12 +542,12 @@ class YellowPagesScraper:
         try:
             formatted_search = search_query.lower().replace(' ', '+')
             formatted_location = location.upper() if len(location) <= 3 else location.title()
-
+            
             while len(results) < min_results:
                 url = f"https://www.yellowpages.com/search?search_terms={formatted_search}&geo_location_terms={formatted_location}&page={page}"
                 logger.info(f"Navigating to page {page}: {url}")
                 self.driver.get(url)
-
+                
                 try:
                     WebDriverWait(self.driver, 15).until(
                         EC.presence_of_element_located((By.CLASS_NAME, 'result'))

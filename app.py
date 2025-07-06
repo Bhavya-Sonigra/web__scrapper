@@ -1500,7 +1500,7 @@ def scrape_yellowpages_route():
                 'status': 'error',
                 'message': 'Both query and location parameters are required'
             }), 400
-
+        
         logger.info(f"Starting Yellow Pages scraping with minimum rating: {min_rating}...")
         scraper = YellowPagesScraper()
         
@@ -1521,7 +1521,7 @@ def scrape_yellowpages_route():
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f'yellowpages_results_{timestamp}.xlsx'
             filepath = os.path.join('downloads', filename)
-
+            
             # Process the data to split address and handle categories
             processed_data = []
             for item in data:
@@ -1569,7 +1569,7 @@ def scrape_yellowpages_route():
                             if state_match:
                                 address_parts['State'] = state_match.group(1)
                                 last_part = last_part[:state_match.start()].strip()
-                            
+            
                             # If there are parts between street and state/zip, it's the city
                             if len(parts) == 3:
                                 address_parts['City'] = parts[1].strip()
@@ -1699,7 +1699,7 @@ def scrape_yellowpages_route():
             writer.close()
             
             logger.info(f"Results saved to Excel file: {filepath}")
-
+            
             # Return success response with file info
             return jsonify({
                 'success': True,
@@ -1715,8 +1715,14 @@ def scrape_yellowpages_route():
                     'location': location
                 }
             })
-
         except Exception as e:
+            logger.error(f"Error during YellowPages scraping: {str(e)}")
+            return jsonify({
+                'status': 'error',
+                'message': f'Error during scraping: {str(e)}'
+            }), 500
+            
+    except Exception as e:
             logger.error(f"Error during YellowPages scraping: {str(e)}")
             return jsonify({
                 'status': 'error',
